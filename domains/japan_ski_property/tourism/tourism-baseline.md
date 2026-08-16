@@ -77,6 +77,46 @@ municipal data is required before this changes any conclusion.
 
 ---
 
+## 2a. Myoko's own numbers — and they complicate the story
+
+`FACT` (Tier 2, municipal government) — From Myoko City's **4th Tourism Promotion Plan**
+(FY2025–2029) [T4]:
+
+| Metric | FY2023 baseline | FY2029 target | Implied growth |
+| --- | --- | --- | --- |
+| Tourist arrivals | **5.11 million** | 6.1 million | +19% over 6 years |
+| Tourism sales | **¥17.3 billion** | ¥20.6 billion | +19% |
+| **Foreign overnight stays** | **120,000** | **180,000** | **+50%, ≈7%/year** |
+
+Three things follow, and the first is the most important.
+
+**1. Myoko is a minority of Niigata's foreign demand.** Myoko recorded ~120,000 foreign overnight
+stays in FY2023 against the prefecture's ~820,000 in 2025. Even allowing for growth between those
+years, **Myoko is a modest fraction of the prefecture total.** The +55% prefecture growth
+therefore **cannot be attributed to Myoko** without town-level evidence — and the reading that
+Niigata's surge is substantially a Niigata City or Yuzawa phenomenon gains weight.
+
+This materially weakens the strongest single piece of evidence for the Myoko early-stage case.
+
+**2. The city's own ambition is modest.** Myoko targets ~7% annual growth in foreign overnight
+stays to 2029, while its prefecture grew 55% in a single year. A municipality expecting to be
+transformed by a ¥70bn resort would plausibly plan for more. Either the plan predates the surge,
+or the city does not expect the surge to be a Myoko phenomenon. **Worth resolving — the plan's
+drafting date should be checked before this is weighted.**
+
+**3. The demand that does exist is unusually high quality.** International visitors reportedly
+stay **one to two weeks** in Myoko Kogen [T4], and Australian skiers are specifically identified
+as drawn there [T5].
+
+That last point matters more to this project than the growth rate. A one-to-two-week average stay
+is exactly the pattern a self-contained lodge wants: fewer turnovers, lower cleaning cost per
+night, higher occupancy per booking, and less dependence on constant marketing. A market with
+slower growth but longer stays can be a better operating asset than one with faster growth and
+weekend traffic.
+
+**Net effect on the Myoko question:** the volume case is weaker than the prefecture figure
+suggested; the *quality of demand* case is stronger than anything found so far.
+
 ## 3. Data located but not yet retrieved
 
 `FACT` — The Japan Tourism Agency's 宿泊旅行統計調査 publishes **2025 annual figures as 確定値
@@ -132,3 +172,9 @@ treat 2026-onward figures as not directly comparable with earlier years, and say
 | T1 | National 2025 foreign overnight stays, multiple reports | 4 | 2026-08-16 | 177.86m, +8%, record |
 | T2 | Patience Realty commentary on Niigata/Nagano winter tourism | 4 | 2026-08-16 | **Conflicted — brokerage with Myoko interest.** Sole source for the prefecture split |
 | T3 | JTA 宿泊旅行統計調査 index page (`mlit.go.jp/kankocho/tokei_hakusyo/shukuhakutokei.html`) | 1 | 2026-08-16 | Confirms 2025 annual **確定値**, 130-municipality breakdown, and the Jan-2026 stratification change |
+| T4 | 第4次妙高市観光振興計画 (Myoko City 4th Tourism Promotion Plan), `city.myoko.niigata.jp` | **2** | 2026-08-16 | FY2023 baselines and FY2029 targets; 1–2 week average international stay. **Municipal government — the best-quality tourism source obtained so far** |
+| T5 | 新潟日報 (Niigata Nippo) reporting on inbound tourism in Myoko Kogen | 5 | 2026-08-16 | Australian skiers specifically drawn to Myoko for snow quality and traditional character |
+
+**Stations identified for Phase 5 snow retrieval:** AMeDAS 関山 Sekiyama (54816), the Myoko-area
+station, and AMeDAS 野沢温泉 Nozawa Onsen (48031) at **576 m elevation**. Recording station
+elevation alongside every snowfall figure is required by `ski_area.json`.

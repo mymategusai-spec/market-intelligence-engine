@@ -254,8 +254,17 @@ inspectors or contractors, entering contracts, creating paid cloud resources —
 
 ## Status
 
-Early. Phase 1–3 foundations are in place; research phases are in progress. Current phase
-status is tracked in [`RESEARCH_PLAN.md`](RESEARCH_PLAN.md) and
+Early but running end to end. Phases 1–3 (architecture, core engine, domain module) are
+complete with 104 tests. Phase 4 screening has a first pass over six markets, with Phases 7, 8,
+12 and 21 advanced in part — several brought forward because they are gating.
+
+The engine works on real evidence today:
+
+```bash
+python3 scripts/analysis/screen_markets.py --all-profiles --explain
+```
+
+Current phase status is tracked in [`RESEARCH_PLAN.md`](RESEARCH_PLAN.md) and
 [`outputs/next-actions.md`](outputs/next-actions.md).
 
 No investment conclusion has been reached, and none should be inferred from the presence of

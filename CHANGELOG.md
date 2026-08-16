@@ -29,6 +29,39 @@ Format: date · phase · what changed · why it matters.
 - Flagged Myoko's reported −24.7% population projection to 2035 as material to labour,
   amenities and exit, pending IPSS verification.
 
+### Phase 8 — Tourism · `PARTIAL`
+
+- National foreign overnight stays reached a record **177.86m in 2025 (+8%)**. **Niigata grew
+  55%**, second-fastest of any prefecture, while its land prices fell; Nagano grew 5% from a base
+  three times larger.
+- **Retrieved Myoko City's own tourism plan** (municipal government, Tier 2 — the best tourism
+  source obtained so far): 120,000 foreign overnight stays in FY2023 against ~820,000
+  prefecture-wide. **Myoko is a minority of Niigata's foreign demand**, so the +55% cannot be
+  attributed to it — this materially weakens the strongest evidence for the Myoko early-stage
+  case. The city's own target is ~7%/year to 2029.
+- Recorded the countervailing finding: international visitors reportedly stay **one to two
+  weeks** in Myoko Kogen, with Australians specifically drawn there. For a self-contained lodge
+  this is the most valuable demand characteristic found anywhere in the research so far.
+- Located the JTA **130-municipality breakdown** (2025 annual, final) as the highest-value
+  outstanding retrieval, and flagged a **methodology break from January 2026** when survey
+  stratification changed from employee count to guest-room count.
+- Identified AMeDAS stations for Phase 5: 関山 Sekiyama (54816) for Myoko, 野沢温泉 (48031) at
+  576 m.
+
+### Engine — first end-to-end run
+
+- Added `scripts/analysis/screen_markets.py`, running config → evidence → explained ranking.
+- **The run exposed a real scoring flaw, now fixed.** Because the score normalises over applied
+  weights, a market scored only on its strong dimensions was flattered against one scored on
+  everything — Furano ranked top on three dimensions precisely because it had no risk score, and
+  risk carries the heaviest weight in several profiles. Added a weight-coverage guard: markets
+  below 25% coverage are withheld from ranking rather than ranked, because ranking them rewards
+  ignorance.
+- Provisional order **Hakuba > Nozawa Onsen > Myoko > Yuzawa** is stable across all five weight
+  profiles. The scorecard states plainly why that is weaker than it looks: two of five scored
+  dimensions derive from the same land-price dataset, so stability across weights is not
+  robustness across evidence.
+
 ### Phase 21 — Risk and counter-thesis · `PARTIAL` (brought forward)
 
 Brought forward because researching a thesis-critical risk *after* choosing a market would be

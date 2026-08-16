@@ -18,12 +18,27 @@ and `RESEARCH_PLAN.md`.
 | 1 — Architecture and foundations | `DONE` |
 | 2 — Core schemas and engine | `DONE` — 104 tests, stdlib only |
 | 3 — Domain module `japan_ski_property` | `DONE` |
-| 4 — Destination screening | `ACTIVE` — first pass written |
+| 4 — Destination screening | `ACTIVE` — first pass complete, six markets scored |
+| 7 — Historical property markets | `PARTIAL` — 2026 land prices + 30-year histories |
+| 8 — Tourism | `PARTIAL` — prefecture level, plus Myoko municipal |
 | 12 — Regulation | `PARTIAL` — brought forward because it is gating |
-| 5–11, 13–23 | `PENDING` |
+| 21 — Risk and counter-thesis | `PARTIAL` — brought forward, snow and depopulation |
+| 5, 6, 9–11, 13–20, 22, 23 | `PENDING` |
 
-Run the tests with `python3 -m unittest discover -s tests -t . -v` from the repository root.
-No install step.
+```bash
+python3 -m unittest discover -s tests -t . -v          # 104 tests, no install step
+python3 scripts/analysis/screen_markets.py --all-profiles --explain
+```
+
+The screening script runs the whole engine path on real evidence — config in, evidence in,
+explained and reproducible ranking out. Change a weight in
+`config/domains/japan_ski_property/weights.json` and re-run to see the ranking move.
+
+**Current provisional order** (5 of 20 dimensions scored, all `low` confidence, Kutchan and
+Furano withheld for insufficient coverage): **Hakuba > Nozawa Onsen > Myoko > Yuzawa**, stable
+across every weight profile. [`analysis/scorecards/phase-04-market-screening.md`](../analysis/scorecards/phase-04-market-screening.md)
+explains why that stability is weaker evidence than it appears — two of the five scored
+dimensions derive from the same land-price dataset.
 
 ---
 
@@ -68,6 +83,19 @@ Base elevation and regional regime are now screening criteria (D-0013).
 **46.7% of its population by 2050**. The sharper screening question is not "is the town
 shrinking?" but "**has tourism demonstrably decoupled from resident decline here?**" Hakuba and
 Kutchan appear to have; Myoko has not yet; Yuzawa did not over 33 years.
+
+**7a. Myoko's own tourism numbers complicate its case — in both directions.** Myoko City's 4th
+Tourism Promotion Plan (municipal government, the best tourism source obtained so far) records
+**120,000 foreign overnight stays in FY2023** against Niigata's ~820,000 prefecture-wide. Myoko
+is a **minority of the prefecture**, so the +55% cannot be attributed to it — weakening the
+strongest evidence for the early-stage case. The city's own target is ~7%/year to 2029, modest
+against a prefecture that grew 55% in a year.
+
+But international visitors reportedly stay **one to two weeks** in Myoko Kogen, with Australians
+specifically drawn there. For a self-contained lodge that is the single most valuable demand
+characteristic found anywhere in this research: fewer turnovers, lower cleaning cost per night,
+less marketing dependence. **The volume case is weaker than it looked; the quality-of-demand case
+is stronger than anything else found.**
 
 **8. A hypothesis now worth stating plainly.** The cheap Honshu markets tend to be lower-elevation
 Japan Sea side *and* more severely depopulating. That is not a coincidence, and it is the most

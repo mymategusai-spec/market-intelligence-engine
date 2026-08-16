@@ -20,7 +20,7 @@ phase waits unnecessarily on another if useful work can proceed (master prompt �
 | 5 | Ski / snow analysis | `PENDING` | `domains/japan_ski_property/research/` |
 | 6 | Town, vibe and micro-location analysis | `PENDING` | `town_profiles/`, `neighbourhoods/` |
 | 7 | Historical property markets | `PARTIAL` | `property_market/` |
-| 8 | Tourism | `PENDING` | `tourism/` |
+| 8 | Tourism | `PARTIAL` | `tourism/` |
 | 9 | Business and economic activity | `PENDING` | `business_activity/` |
 | 10 | Off-season economy | `PENDING` | `research/` |
 | 11 | Infrastructure and development pipeline | `PENDING` | `infrastructure/` |
@@ -84,7 +84,7 @@ transaction volume, vacancy, redevelopment. Compute 1/3/5/10-year change and CAG
 Use official Japanese land-price data (地価公示 / 都道府県地価調査).
 **Fails if:** asking prices are conflated with transaction prices.
 
-### Phase 8 — Tourism · `PENDING`
+### Phase 8 — Tourism · `PARTIAL`
 ~10 years: total, winter, international and domestic visitors, overnight stays, length of stay,
 occupancy, ADR, RevPAR, nationality mix, Australian share, repeat visitation, spend, seasonality.
 Classify each market: accelerating / steadily growing / flat / declining.
