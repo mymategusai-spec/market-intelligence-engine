@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-08-16
 **Branch:** `main`
-**Current phases:** 4 (destination screening, active) · 12 (regulation, partial)
+**Current phases:** 4 active · 7, 8, 12, 17, 21 partial
 **Overall status:** Foundations complete. Research under way. **No investment conclusion
 reached, and none should be inferred from anything in this repository.**
 
@@ -23,11 +23,13 @@ and `RESEARCH_PLAN.md`.
 | 8 — Tourism | `PARTIAL` — prefecture level, plus Myoko municipal |
 | 12 — Regulation | `PARTIAL` — brought forward because it is gating |
 | 21 — Risk and counter-thesis | `PARTIAL` — brought forward, snow and depopulation |
-| 5, 6, 9–11, 13–20, 22, 23 | `PENDING` |
+| 17 / 47 — Capital strategies | `PARTIAL` — cost side modelled, revenue side not |
+| 5, 6, 9–11, 13–16, 18–20, 22, 23 | `PENDING` |
 
 ```bash
 python3 -m unittest discover -s tests -t . -v          # 104 tests, no install step
 python3 scripts/analysis/screen_markets.py --all-profiles --explain
+python3 scripts/analysis/capital_model.py --strategies
 ```
 
 The screening script runs the whole engine path on real evidence — config in, evidence in,
@@ -96,6 +98,27 @@ specifically drawn there. For a self-contained lodge that is the single most val
 characteristic found anywhere in this research: fewer turnovers, lower cleaning cost per night,
 less marketing dependence. **The volume case is weaker than it looked; the quality-of-demand case
 is stronger than anything else found.**
+
+**7b. Purchase price understates the real investment by 93–284%.** The capital model gives an
+indicative answer to one of the four core questions:
+
+| Strategy | Purchase (A$) | **Total project cost (A$)** | Per owner | Multiple |
+| --- | --- | --- | --- | --- |
+| Shoestring | 71,000 | **167,000 – 273,000** | 84k – 137k | 2.35× – 3.84× |
+| Sensible | 222,000 | **429,000 – 635,000** | 215k – 317k | 1.93× – 2.85× |
+| Strong | 534,000 | **1,014,000 – 1,429,000** | 507k – 715k | 1.90× – 2.68× |
+
+**The cheaper the property, the worse the ratio.** Inspection, legal, licensing, compliance and
+furnishing do not scale down with purchase price, while a cheap building usually needs *more*
+renovation. This inverts the intuition the thesis rests on: buying cheaper concentrates the
+budget into the least predictable line while fixed costs stay fixed. **No revenue is modelled** —
+rates and occupancy were not obtained.
+→ [`domains/japan_ski_property/financial_models/capital-requirement.md`](../domains/japan_ski_property/financial_models/capital-requirement.md)
+
+**7c. FX is doing more work than anyone admits.** AUD rose from ~84 JPY in 2021 to ~112 in 2026,
+so the same property is **~25% cheaper in AUD with no change in its Japanese price**. Part of the
+"Japan is cheap" story is AUD strength — and it is reversible over a 10–15 year hold for owners
+earning JPY and spending AUD.
 
 **8. A hypothesis now worth stating plainly.** The cheap Honshu markets tend to be lower-elevation
 Japan Sea side *and* more severely depopulating. That is not a coincidence, and it is the most

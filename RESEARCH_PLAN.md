@@ -29,7 +29,7 @@ phase waits unnecessarily on another if useful work can proceed (master prompt �
 | 14 | Renovation and construction costs | `PENDING` | `renovation/` |
 | 15 | Inspector and contractor network | `PENDING` | `inspectors/` |
 | 16 | Management | `PENDING` | `management/` |
-| 17 | Financial modelling | `PENDING` | `financial_models/` |
+| 17 | Financial modelling | `PARTIAL` | `financial_models/` |
 | 18 | Continuous monitoring | `PENDING` | `workflows/`, `scripts/monitoring/` |
 | 19 | Opportunity detection | `PENDING` | `core/scoring/` |
 | 20 | Dashboard | `PENDING` | `app/dashboard/` |
@@ -137,7 +137,7 @@ Property and booking managers, cleaners, linen, snow clearing, maintenance, gues
 emergency support, accountants. Availability and cost feed property ranking.
 **Fails if:** remote operation is assumed feasible without identifying actual providers.
 
-### Phase 17 — Financial modelling · `PENDING`
+### Phase 17 — Financial modelling · `PARTIAL`
 Per candidate: rates by season, occupancy, gross revenue, full operating costs, NOI, yield on
 purchase price and on total project cost. Conservative / base / strong. Owner use as foregone
 revenue. Capacity optimisation across 6/8/10/12/16/20+ guests.

@@ -29,6 +29,24 @@ Format: date · phase · what changed · why it matters.
 - Flagged Myoko's reported −24.7% population projection to 2035 as material to labour,
   amenities and exit, pending IPSS verification.
 
+### Phase 17 / 47 — Capital strategies · `PARTIAL`
+
+- Built the capital requirement model, answering one of the brief's four core questions
+  indicatively. **Purchase price understates the real investment by 93–284%.** Shoestring:
+  A$71k purchase → **A$167–273k total project cost**. Sensible: A$222k → **A$429–635k**.
+  Strong: A$534k → **A$1.01–1.43m**.
+- **The cheaper the property, the worse the ratio** — fixed costs do not scale down while a
+  cheap building usually needs more renovation. This inverts the intuition the thesis rests on
+  and makes running out of money mid-renovation the most likely failure mode of the shoestring
+  strategy.
+- Deliberately produced **no revenue, NOI or yield**: rates and occupancy were not obtained.
+- Surfaced **FX as a first-class unhedged exposure**. AUD rose from ~84 JPY in 2021 to ~112 in
+  2026, making the same property ~25% cheaper in AUD with no change in its Japanese price. Part
+  of the "Japan is cheap" story is AUD strength, and it is reversible.
+- Recorded the model's biggest weakness prominently: renovation benchmarks are **residential**
+  akiya figures, while lawful **commercial** accommodation adds fire, evacuation and possibly
+  seismic costs those benchmarks exclude.
+
 ### Phase 8 — Tourism · `PARTIAL`
 
 - National foreign overnight stays reached a record **177.86m in 2025 (+8%)**. **Niigata grew
