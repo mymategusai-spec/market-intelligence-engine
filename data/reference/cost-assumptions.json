@@ -1,0 +1,100 @@
+{
+  "dataset": "japan_ski_property_cost_assumptions",
+  "domain": "japan_ski_property",
+  "as_of": "2026-08-16",
+  "description": "Cost inputs for the capital requirement model. Every line declares its claim type and source. Lines marked ESTIMATE are reasoned approximations, not quotes, and are the reason the model reports ranges rather than figures.",
+
+  "fx": {
+    "pair": "AUD/JPY",
+    "rate_jpy_per_aud": 112.37,
+    "rate_date": "2026-08-16",
+    "source": "Aggregated FX market data via search",
+    "claim_type": "FACT",
+    "confidence": "medium",
+    "volatility_note": "Quoted 112.37 with a recent weekly range of roughly 113.17-114.53 and early-August prints near 110.1. Treat as approximately 110-114, not a precise figure.",
+    "material_context": "AUD has risen from roughly 84 JPY in 2021 to about 112 in 2026, up ~17.5% in the past year, driven mainly by the Australia-Japan interest rate gap. A property priced at 30,000,000 JPY cost about A$357,000 at 84, and about A$267,000 at 112.37 - a 25% fall in AUD terms with no change in the Japanese price. A material part of the 'Japan is cheap' story for Australian buyers is AUD strength rather than Japanese cheapness, and it is reversible."
+  },
+
+  "acquisition_costs": {
+    "agent_commission_percent": {
+      "value": 3.3,
+      "claim_type": "FACT",
+      "confidence": "high",
+      "source": "SEC-JP-REGULATION",
+      "note": "3% + 60,000 JPY plus 10% consumption tax. Statutory maximum; sometimes negotiable."
+    },
+    "registration_transfer_tax_percent": {
+      "value": 1.8,
+      "claim_type": "ESTIMATE",
+      "confidence": "medium",
+      "source": "SEC-JP-REGULATION",
+      "note": "Blended from 1.5% on land and 2.0% on buildings. The true figure depends on the land/building split, which is property-specific."
+    },
+    "acquisition_tax_effective_percent": {
+      "value": 2.0,
+      "claim_type": "ESTIMATE",
+      "confidence": "low",
+      "source": "Derived from SEC-JP-REGULATION",
+      "note": "Statutory rate is ~3% of ASSESSED value, not purchase price. Assessed values commonly run below market, so ~2% of purchase price is used as an effective rate. For a cheap building on a large parcel the two can diverge sharply. Arrives months after settlement - a working capital item, not a settlement item."
+    },
+    "legal_scrivener_jpy": {
+      "low": 200000, "high": 500000,
+      "claim_type": "ESTIMATE",
+      "confidence": "low",
+      "note": "Judicial scrivener (司法書士) and conveyancing. Not quoted; no provider engaged."
+    },
+    "due_diligence_jpy": {
+      "low": 150000, "high": 500000,
+      "claim_type": "ESTIMATE",
+      "confidence": "low",
+      "note": "Independent building inspection. Phase 15 has not identified providers or fees, so this is a placeholder. Master prompt section 25 requires an independent structural inspection AND a separate renovation estimate - two engagements, not one."
+    }
+  },
+
+  "renovation_scenarios_jpy": {
+    "_basis": "Japanese renovation professionals commonly recommend 5-10m JPY for a full akiya renovation. Regional labour rates in Niigata are described as more reasonable than metro. Practitioners advise budgeting 130-150% of the initial estimate because 20-30% overruns are common where older buildings hide defects.",
+    "_claim_type": "ESTIMATE",
+    "_confidence": "low",
+    "_source": "Akiya renovation cost guides, Tier 4",
+    "_critical_caveat": "These benchmarks are for RESIDENTIAL akiya renovation. Converting to lawful COMMERCIAL accommodation adds fire compliance, evacuation, and possibly structural and seismic work that residential benchmarks do not include. Commercial conversion should be assumed to cost materially more, and the licensing_compliance line is separate for that reason.",
+
+    "minimum_viable": { "low": 5000000, "high": 10000000,
+      "note": "Legally operational and presentable. Aligns with the standard full-akiya-renovation benchmark." },
+    "good_lodge_standard": { "low": 12000000, "high": 25000000,
+      "note": "Strong mid-market commercial finish. Extrapolated above the residential benchmark for commercial fit-out, higher-traffic durability, and guest-facing quality. Weakly evidenced." },
+    "premium_repositioning": { "low": 30000000, "high": 60000000,
+      "note": "Higher-end repositioning targeting stronger nightly rates. Extrapolation only - no comparable project data obtained. Lowest confidence in this file." }
+  },
+
+  "other_capital_jpy": {
+    "furnishing": { "low": 1500000, "high": 4000000,
+      "claim_type": "ESTIMATE", "confidence": "low",
+      "note": "Scales with guest capacity. Includes beds, linen, kitchen, common areas." },
+    "licensing_compliance": { "low": 500000, "high": 2000000,
+      "claim_type": "ESTIMATE", "confidence": "low",
+      "note": "Fire and evacuation compliance for a 旅館業法 licence, plus application costs. Phase 12 has not established the standards, so this is the least reliable line in the model and could be materially higher." },
+    "working_capital_months": { "value": 6,
+      "claim_type": "ASSUMPTION", "confidence": "medium",
+      "note": "Six months of operating cost before reliable trading. Winter-dominant revenue means a property completed in spring waits most of a year for meaningful income." }
+  },
+
+  "contingency": {
+    "renovation_contingency_percent": {
+      "value": 30,
+      "claim_type": "ESTIMATE",
+      "confidence": "medium",
+      "source": "Akiya renovation guides advising 130-150% of initial estimate",
+      "note": "Applied to renovation only. 30% is the lower end of the advised range; 50% would be defensible for a commercial conversion of an older building."
+    }
+  },
+
+  "not_modelled": [
+    "Revenue, nightly rates and occupancy - NOT obtained. No NOI or yield is produced by this model, and none should be inferred.",
+    "Ongoing operating costs beyond the working capital allowance",
+    "Japanese debt - assumed unavailable (ASSUMPTIONS.md D1)",
+    "Ongoing Japanese tax on rental income for non-residents",
+    "Tax representative (納税管理人) fees - required for non-residents",
+    "Travel and inspection trip costs for the owners",
+    "Currency hedging or transfer costs"
+  ]
+}
