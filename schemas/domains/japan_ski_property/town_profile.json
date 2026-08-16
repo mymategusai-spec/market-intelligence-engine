@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/domains/japan_ski_property/town_profile.json",
+  "title": "Town profile (japan_ski_property)",
+  "description": "What a destination is actually like to stay in. Treated as a first-class investment input, not colour commentary: a property in a town guests do not enjoy is a bad investment at any price. Objective counts are separated from subjective judgements throughout, because the two have very different evidential weight.",
+  "type": "object",
+
+  "properties": {
+    "entity_id": { "type": "string", "description": "Core entity ID for the town." },
+    "town_name": { "type": "string" },
+    "town_name_ja": { "type": ["string", "null"] },
+    "municipality": { "type": ["string", "null"] },
+    "municipality_code": { "type": ["string", "null"], "description": "Enables joins to official statistics." },
+    "prefecture": { "type": "string" },
+    "region": { "type": "string", "enum": ["Hokkaido", "Tohoku", "Nagano", "Niigata", "Gunma", "Gifu", "Yamagata", "Akita", "Other"] },
+
+    "population": { "type": ["integer", "null"] },
+    "population_trend_10y_percent": {
+      "type": ["number", "null"],
+      "description": "Depopulation erodes local services, labour supply and eventual exit demand."
+    },
+
+    "amenities": {
+      "type": "object",
+      "description": "Objective counts where obtainable. Counts are more defensible than adjectives and can be re-verified.",
+      "properties": {
+        "supermarkets": { "type": ["integer", "null"], "minimum": 0 },
+        "convenience_stores": { "type": ["integer", "null"], "minimum": 0 },
+        "restaurants": { "type": ["integer", "null"], "minimum": 0 },
+        "bars": { "type": ["integer", "null"], "minimum": 0 },
+        "cafes": { "type": ["integer", "null"], "minimum": 0 },
+        "bakeries": { "type": ["integer", "null"], "minimum": 0 },
+        "pharmacies": { "type": ["integer", "null"], "minimum": 0 },
+        "medical_facilities": { "type": ["integer", "null"], "minimum": 0 },
+        "hospital_within_30min": { "type": ["boolean", "null"] },
+        "atms": { "type": ["integer", "null"], "minimum": 0 },
+        "ski_shops": { "type": ["integer", "null"], "minimum": 0 },
+        "rental_outlets": { "type": ["integer", "null"], "minimum": 0 },
+        "ski_schools": { "type": ["integer", "null"], "minimum": 0 },
+        "onsens": { "type": ["integer", "null"], "minimum": 0 },
+        "gyms": { "type": ["integer", "null"], "minimum": 0 },
+        "laundromats": { "type": ["integer", "null"], "minimum": 0 },
+        "childcare": { "type": ["boolean", "null"] },
+        "english_language_services": { "type": ["string", "null"], "enum": ["extensive", "moderate", "limited", "minimal", "none", null] },
+        "counts_as_of": { "oneOf": [{ "$ref": "../../core/common.json#/$defs/iso_date" }, { "type": "null" }] },
+        "counts_method": { "type": ["string", "null"], "description": "How counted, e.g. mapping-service query with a stated radius. Method affects comparability between towns." }
+      },
+      "additionalProperties": false
+    },
+
+    "transport": {
+      "type": "object",
+      "properties": {
+        "nearest_station": { "type": ["string", "null"] },
+        "nearest_shinkansen_station": { "type": ["string", "null"] },
+        "shinkansen_minutes": { "type": ["number", "null"] },
+        "nearest_airport": { "type": ["string", "null"] },
+        "airport_transfer_minutes": { "type": ["number", "null"] },
+        "airport_transfer_options": { "type": "array", "items": { "type": "string" } },
+        "local_bus_or_shuttle": { "type": ["boolean", "null"] },
+        "shuttle_quality_note": { "type": ["string", "null"] },
+        "taxis_available": { "type": ["boolean", "null"] },
+        "guests_need_car": {
+          "type": ["boolean", "null"],
+          "description": "One of the highest-impact facts about a destination for Australian guests, most of whom would rather not drive on snow."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "character": {
+      "type": "object",
+      "description": "Subjective assessments. Every field here is OPINION and must be corroborated across independent sources before it influences scoring.",
+      "properties": {
+        "atmosphere": { "type": ["string", "null"] },
+        "traditional_character": { "type": ["string", "null"], "enum": ["strong", "moderate", "limited", "none", null] },
+        "internationalisation": { "type": ["string", "null"], "enum": ["very_high", "high", "moderate", "low", "minimal", null] },
+        "appeals_to": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["families", "snowboarders", "premium", "backpackers", "couples", "groups", "japanese_domestic"] }
+        },
+        "nightlife": { "type": ["string", "null"], "enum": ["lively", "moderate", "quiet", "none", null] },
+        "apres_ski": { "type": ["string", "null"], "enum": ["strong", "moderate", "limited", "none", null] },
+        "walkable_amenities": { "type": ["boolean", "null"] },
+        "restaurants_book_out": { "type": ["boolean", "null"] },
+        "businesses_close_early": { "type": ["boolean", "null"] },
+        "active_after_skiing": { "type": ["boolean", "null"] },
+        "bad_weather_options": { "type": ["string", "null"], "enum": ["plenty", "some", "few", "none", null] },
+        "non_skiers_enjoy": { "type": ["boolean", "null"] },
+        "supports_seven_night_stay": {
+          "type": ["boolean", "null"],
+          "description": "Whether guests would happily stay a full week. Directly drives achievable length of stay and therefore occupancy."
+        },
+        "likely_repeat_visitation": { "type": ["string", "null"], "enum": ["high", "moderate", "low", "unknown", null] }
+      },
+      "additionalProperties": false
+    },
+
+    "seven_day_guest_experience": {
+      "type": ["object", "null"],
+      "description": "The concrete scenario: four Australian snowboarders, seven nights. Modelled rather than asserted, because friction that looks trivial on a map decides whether guests return.",
+      "properties": {
+        "arrival_and_transfer": { "type": ["string", "null"] },
+        "groceries": { "type": ["string", "null"] },
+        "daily_mountain_transport": { "type": ["string", "null"] },
+        "equipment_hire": { "type": ["string", "null"] },
+        "dining": { "type": ["string", "null"] },
+        "nightlife": { "type": ["string", "null"] },
+        "rest_day": { "type": ["string", "null"] },
+        "bad_weather_day": { "type": ["string", "null"] },
+        "transport_friction": { "type": ["string", "null"] },
+        "overall_convenience": { "type": ["string", "null"], "enum": ["excellent", "good", "acceptable", "poor", null] },
+        "likely_satisfaction": { "type": ["string", "null"], "enum": ["high", "moderate", "low", null] },
+        "would_return": { "type": ["boolean", "null"] }
+      },
+      "additionalProperties": false
+    },
+
+    "off_season": {
+      "type": ["object", "null"],
+      "properties": {
+        "classification": { "type": "string", "enum": ["winter_only", "winter_dominant", "emerging_four_season", "genuine_four_season", "unknown"] },
+        "activities": { "type": "array", "items": { "type": "string" } },
+        "summer_visitation_note": { "type": ["string", "null"] },
+        "evidence_basis": {
+          "type": "string",
+          "enum": ["measured_visitation", "operator_reporting", "tourism_board_plans", "anecdotal", "unknown"],
+          "description": "Tourism-board aspirations are not demand. A four-season classification requires measured visitation, not a strategy document."
+        }
+      },
+      "required": ["classification", "evidence_basis"],
+      "additionalProperties": false
+    },
+
+    "management_availability": {
+      "type": ["string", "null"],
+      "enum": ["established_market", "some_providers", "few_providers", "none_identified", "unknown", null],
+      "description": "Gating for remote ownership. A town with no property managers cannot be operated from Australia."
+    },
+
+    "profile_completeness": {
+      "type": "string",
+      "enum": ["screening_only", "partial", "substantial", "complete"],
+      "description": "Guards against a thin profile being read as a full assessment."
+    },
+    "data_gaps": { "type": "array", "items": { "type": "string" } },
+    "provenance": { "$ref": "../../core/common.json#/$defs/provenance" }
+  },
+
+  "required": ["entity_id", "town_name", "prefecture", "region", "profile_completeness", "provenance"],
+  "additionalProperties": false
+}

@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/domains/japan_ski_property/property.json",
+  "title": "Property (japan_ski_property)",
+  "description": "A Japanese ski-area property tracked as a potential acquisition. Specialises the core asset: core fields live in the asset record, this schema defines the domain_attributes payload. Carries the full attribute set required by the master prompt section 20, including the history fields that make a delisted property useful as a comparable.",
+  "type": "object",
+
+  "properties": {
+    "property_type": {
+      "type": "string",
+      "enum": [
+        "house", "chalet", "apartment", "ski_lodge", "pension", "guesthouse",
+        "ryokan", "minshuku", "small_hotel", "former_hotel", "commercial_accommodation",
+        "fixer_upper", "multi_building", "land", "other"
+      ]
+    },
+    "current_use": {
+      "type": "string",
+      "enum": ["owner_occupied", "operating_accommodation", "closed_accommodation", "vacant", "tenanted", "unknown"]
+    },
+    "vacant_since": { "oneOf": [{ "$ref": "../../core/common.json#/$defs/iso_date" }, { "type": "null" }] },
+
+    "land_size_m2": { "type": ["number", "null"], "minimum": 0 },
+    "building_size_m2": { "type": ["number", "null"], "minimum": 0 },
+    "size_original_units": {
+      "type": ["string", "null"],
+      "description": "Japanese listings often quote tsubo. The original figure and unit are retained; conversion is a recorded transformation."
+    },
+    "year_built": { "type": ["integer", "null"] },
+    "construction_type": {
+      "type": ["string", "null"],
+      "enum": ["timber", "reinforced_concrete", "steel_frame", "mixed", "unknown", null],
+      "description": "Bears directly on renovation cost, insulation potential, snow-load capacity and financing."
+    },
+    "pre_1981_seismic_standard": {
+      "type": ["boolean", "null"],
+      "description": "Buildings predating the 1981 seismic code revision carry materially different risk and upgrade cost. Verify from the construction date rather than assuming."
+    },
+
+    "bedrooms": { "type": ["integer", "null"], "minimum": 0 },
+    "bathrooms": { "type": ["number", "null"], "minimum": 0 },
+    "practical_guest_capacity": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "description": "Guests the property could realistically sleep to a commercial standard — not the listing's optimistic figure, and constrained by bathrooms and common space, not just beds."
+    },
+    "capacity_basis": {
+      "type": ["string", "null"],
+      "enum": ["listing_claim", "licence_document", "assessed_from_plan", "estimated", null]
+    },
+
+    "has_owner_quarters": { "type": ["boolean", "null"] },
+    "has_manager_quarters": { "type": ["boolean", "null"] },
+    "has_staff_accommodation": { "type": ["boolean", "null"] },
+    "has_lock_off_units": { "type": ["boolean", "null"] },
+    "separate_buildings": { "type": ["integer", "null"], "minimum": 0 },
+    "has_drying_room": { "type": ["boolean", "null"] },
+    "has_ski_storage": { "type": ["boolean", "null"] },
+    "parking_spaces": { "type": ["integer", "null"], "minimum": 0 },
+
+    "heating_type": { "type": ["string", "null"] },
+    "insulation_note": { "type": ["string", "null"] },
+    "glazing": { "type": ["string", "null"], "enum": ["single", "double", "triple", "mixed", "unknown", null] },
+    "water_supply": { "type": ["string", "null"], "enum": ["municipal", "well", "spring", "unknown", null] },
+    "sewerage": { "type": ["string", "null"], "enum": ["municipal", "septic", "unknown", null] },
+    "onsen_rights": {
+      "type": ["boolean", "null"],
+      "description": "Hot-spring rights materially affect both nightly rate and operating cost, and do not always transfer with the land."
+    },
+
+    "licence_status": {
+      "type": "string",
+      "enum": [
+        "none", "residential_only", "minpaku_notified", "simple_lodging_licence",
+        "ryokan_licence", "hotel_licence", "expired_licence", "unknown"
+      ],
+      "description": "Never assume a residential property can lawfully be operated as commercial accommodation. An existing transferable licence is one of the strongest value signals in this domain."
+    },
+    "licence_transferable": { "type": ["boolean", "null"] },
+    "licence_evidence_source_id": { "type": ["string", "null"] },
+    "zoning": { "type": ["string", "null"] },
+    "zoning_permits_lodging": { "type": ["boolean", "null"] },
+
+    "renovation_condition": {
+      "type": ["string", "null"],
+      "enum": ["turnkey", "cosmetic_only", "moderate", "major", "structural_unknown", "derelict", null]
+    },
+    "known_defects": { "type": "array", "items": { "type": "string" } },
+    "condition_assessment_basis": {
+      "type": "string",
+      "enum": ["independent_inspection", "site_visit", "listing_photos", "listing_text", "unknown"],
+      "description": "listing_photos is the weakest basis. A condition judged from photographs must never drive a firm renovation figure."
+    },
+
+    "expected_operating_model": {
+      "type": ["string", "null"],
+      "enum": ["whole_property_rental", "room_by_room", "hybrid_owner_use", "operating_business_continuation", "undecided", null]
+    },
+
+    "snow_load_zone": { "type": ["string", "null"] },
+    "hazard_notes": {
+      "type": ["string", "null"],
+      "description": "Avalanche, flood, landslide or volcanic exposure noted from hazard maps."
+    },
+
+    "agent_name": { "type": ["string", "null"] },
+    "agent_contacted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Always false unless the owner has explicitly approved contact. The engine never contacts agents autonomously."
+    },
+
+    "shortlist_status": {
+      "type": ["string", "null"],
+      "enum": ["longlist", "shortlist", "finalist", "inspect_first", "rejected", null]
+    },
+    "rejection_reason": { "type": ["string", "null"] },
+
+    "data_gaps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Attributes not yet established. Listed explicitly so that an incomplete record is never mistaken for a complete one."
+    }
+  },
+
+  "required": ["property_type", "licence_status", "condition_assessment_basis"],
+  "additionalProperties": false
+}

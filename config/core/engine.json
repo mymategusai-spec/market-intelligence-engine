@@ -1,0 +1,50 @@
+{
+  "config_version": "1.0.0",
+  "description": "Engine-level configuration, domain-agnostic. Values here shape how evidence is weighted everywhere, so changes belong in DECISIONS.md.",
+
+  "catalyst_status_weights": {
+    "_comment": "How much a development at each status may contribute to forward supply and infrastructure scoring. A rumour must never count like a funded project (master prompt sections 31 and 56). These are deliberately steep: resort development pipelines are full of announcements that never break ground.",
+    "rumoured": 0.0,
+    "proposed": 0.1,
+    "announced": 0.2,
+    "planning": 0.35,
+    "approved": 0.6,
+    "funded": 0.8,
+    "under_construction": 0.95,
+    "completed": 1.0,
+    "cancelled": 0.0,
+    "unknown": 0.0
+  },
+
+  "reliability_tier_confidence": {
+    "_comment": "Default confidence implied by a source's tier, before source-specific adjustment.",
+    "1": "high",
+    "2": "high",
+    "3": "medium",
+    "4": "medium",
+    "5": "low",
+    "6": "low"
+  },
+
+  "price_change_materiality_bands": {
+    "_comment": "Percentage move thresholds for classifying a price change. Conservative because thin markets carry routine small adjustments.",
+    "major": 20.0,
+    "significant": 10.0,
+    "notable": 3.0
+  },
+
+  "claim_types": ["FACT", "CALCULATION", "ESTIMATE", "ASSUMPTION", "OPINION"],
+
+  "citation_rules": {
+    "candidate_sources_citable": false,
+    "tier_6_alone_supports_material_claim": false,
+    "_comment": "A source that has been identified but not retrieved cannot be cited. Community and anecdotal sources are admissible as OPINION but never alone for a material investment claim."
+  },
+
+  "collection_ethics": {
+    "require_robots_check_before_automation": true,
+    "require_terms_review_before_automation": true,
+    "default_permission_when_unchecked": false,
+    "_comment": "Absence of a check is not permission. Sources prohibiting automated access are not crawled; the blocker is recorded and an alternative sought."
+  }
+}

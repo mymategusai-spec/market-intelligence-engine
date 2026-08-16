@@ -1,0 +1,66 @@
+{
+  "config_version": "1.0.0",
+  "description": "Hard filters and reference bands. Filters exclude; scores rank. The two are kept separate so it is always clear whether a candidate is absent because it was excluded or because it ranked poorly.",
+
+  "price_tiers_aud": [
+    { "key": "under_200k", "label": "Under AUD $200k", "min": 0, "max": 200000 },
+    { "key": "200k_300k", "label": "$200k - $300k", "min": 200000, "max": 300000 },
+    { "key": "300k_400k", "label": "$300k - $400k", "min": 300000, "max": 400000 },
+    { "key": "400k_600k", "label": "$400k - $600k", "min": 400000, "max": 600000 },
+    { "key": "600k_800k", "label": "$600k - $800k", "min": 600000, "max": 800000 },
+    { "key": "800k_1m", "label": "$800k - $1m", "min": 800000, "max": 1000000 },
+    { "key": "1m_1_5m", "label": "$1m - $1.5m", "min": 1000000, "max": 1500000 },
+    { "key": "over_1_5m", "label": "$1.5m+", "min": 1500000, "max": null }
+  ],
+
+  "primary_currency": "AUD",
+  "secondary_currency": "JPY",
+  "currency_note": "AUD is the primary displayed currency. JPY is always retained alongside, with the FX rate and its date.",
+
+  "lift_proximity_bands_minutes": [
+    { "key": "0_5", "label": "0-5 minutes", "max_minutes": 5, "rating": "excellent" },
+    { "key": "5_10", "label": "5-10 minutes", "max_minutes": 10, "rating": "good" },
+    { "key": "10_15", "label": "10-15 minutes", "max_minutes": 15, "rating": "acceptable" },
+    { "key": "over_15", "label": "Over 15 minutes", "max_minutes": null, "rating": "exceptional_case_only" }
+  ],
+  "lift_proximity_note": "Beyond 15 minutes a candidate is considered only where the investment case is exceptional, and the reason must be recorded on the property.",
+
+  "guest_capacity_options": [6, 8, 10, 12, 16, 20],
+  "guest_capacity_note": "No capacity is assumed optimal. The economically best size is an output of Phase 17, not an input.",
+
+  "renovation_scenarios": ["minimum_viable", "good_lodge_standard", "premium_repositioning"],
+
+  "default_hard_filters": {
+    "_comment": "Applied during screening unless explicitly relaxed. Deliberately few: over-filtering early would hide exactly the unfashionable markets this project is meant to find.",
+    "max_minutes_to_lift": 15,
+    "max_minutes_to_supermarket": 15,
+    "require_legal_operating_path": true,
+    "require_identified_management": false,
+    "require_identified_management_note": "Not a screening filter, because absence of an English-language web presence is not absence of providers. It becomes gating before any recommendation."
+  },
+
+  "disqualification_rules": [
+    {
+      "rule": "no_lawful_operating_model",
+      "description": "The intended commercial accommodation use cannot be lawfully licensed for this property type in this municipality.",
+      "action": "disqualify"
+    },
+    {
+      "rule": "no_management_available",
+      "description": "No credible local management provider identified, making remote operation from Australia unviable.",
+      "action": "disqualify_at_recommendation_stage"
+    }
+  ],
+
+  "opportunity_signals": {
+    "_comment": "Declarative triggers for NEW HIGH-PRIORITY CANDIDATE. Every fired signal is shown to the user; a flag is never opaque.",
+    "large_price_reduction_percent": 15.0,
+    "long_days_on_market": 365,
+    "below_market_price_per_m2_percent": 25.0,
+    "high_capacity_per_dollar_threshold": null,
+    "high_capacity_per_dollar_note": "Threshold to be set once enough real listings exist to establish a distribution. Set from data, not invented.",
+    "existing_transferable_licence": true,
+    "walk_minutes_to_lift_max": 10,
+    "funded_infrastructure_nearby": true
+  }
+}

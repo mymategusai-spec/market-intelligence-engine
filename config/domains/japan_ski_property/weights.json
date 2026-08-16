@@ -1,0 +1,160 @@
+{
+  "config_version": "1.0.0",
+  "description": "Weight sets for scoring. Subjective preferences live here, never in code, so the owners can move them and see rankings change (master prompt sections 38 and 57). Rankings are only comparable within a single weight set.",
+
+  "default_weight_set": "balanced",
+
+  "preference_axes": {
+    "_comment": "The trade-offs the owners can dial. Each named weight set below is a position on these axes; the dashboard exposes them as sliders.",
+    "return_vs_lifestyle": "How much personal enjoyment is traded for financial return",
+    "cheap_entry_vs_premium": "Low acquisition cost versus better asset quality",
+    "established_vs_emerging": "Proven market versus earlier-stage upside",
+    "winter_vs_four_season": "Core-season performance versus year-round trading",
+    "turnkey_vs_renovation": "Ready to operate versus value-add work",
+    "low_risk_vs_high_upside": "Downside protection versus potential",
+    "town_life_vs_ski_proximity": "Amenity and atmosphere versus distance to lifts",
+    "cash_flow_vs_capital_growth": "Income now versus appreciation later"
+  },
+
+  "weight_sets": {
+    "balanced": {
+      "label": "Balanced",
+      "description": "Neutral starting point pending owner preferences. Deliberately not treated as 'correct' — it is a default, not a recommendation.",
+      "weights": {
+        "affordability": 3.0,
+        "ski_quality": 3.0,
+        "snow_reliability": 3.0,
+        "tourism_growth": 2.5,
+        "rental_demand": 2.5,
+        "winter_occupancy": 2.0,
+        "off_season_demand": 1.5,
+        "accessibility": 2.0,
+        "amenities": 2.5,
+        "town_vibe": 2.5,
+        "management_availability": 2.5,
+        "regulation": 3.0,
+        "renovation_opportunity": 1.5,
+        "property_price_momentum": 1.5,
+        "business_growth": 1.5,
+        "infrastructure": 2.0,
+        "future_supply_balance": 2.0,
+        "capital_growth_potential": 2.0,
+        "exit_liquidity": 2.0,
+        "risk": 3.0
+      }
+    },
+
+    "pure_investment": {
+      "label": "Pure investment",
+      "description": "Return-maximising. Lifestyle factors weighted only insofar as they drive guest demand.",
+      "weights": {
+        "affordability": 3.5,
+        "ski_quality": 2.0,
+        "snow_reliability": 2.5,
+        "tourism_growth": 3.5,
+        "rental_demand": 3.5,
+        "winter_occupancy": 3.5,
+        "off_season_demand": 2.5,
+        "accessibility": 2.0,
+        "amenities": 2.0,
+        "town_vibe": 2.0,
+        "management_availability": 3.0,
+        "regulation": 3.5,
+        "renovation_opportunity": 2.0,
+        "property_price_momentum": 2.5,
+        "business_growth": 2.0,
+        "infrastructure": 2.0,
+        "future_supply_balance": 3.0,
+        "capital_growth_potential": 3.0,
+        "exit_liquidity": 3.0,
+        "risk": 3.5
+      }
+    },
+
+    "lifestyle": {
+      "label": "Lifestyle first",
+      "description": "Weighted toward what the owners would enjoy using, while still requiring the operation to be lawful and manageable.",
+      "weights": {
+        "affordability": 2.5,
+        "ski_quality": 4.0,
+        "snow_reliability": 4.0,
+        "tourism_growth": 1.0,
+        "rental_demand": 1.5,
+        "winter_occupancy": 1.5,
+        "off_season_demand": 1.5,
+        "accessibility": 2.5,
+        "amenities": 3.5,
+        "town_vibe": 4.0,
+        "management_availability": 2.5,
+        "regulation": 3.0,
+        "renovation_opportunity": 1.5,
+        "property_price_momentum": 1.0,
+        "business_growth": 1.0,
+        "infrastructure": 1.5,
+        "future_supply_balance": 1.0,
+        "capital_growth_potential": 1.5,
+        "exit_liquidity": 1.5,
+        "risk": 2.5
+      }
+    },
+
+    "emerging_upside": {
+      "label": "Emerging upside",
+      "description": "Seeks earlier-stage markets. Deliberately paired with a high risk weight: emerging markets are cheap for reasons, and this profile must not be allowed to reward optimism.",
+      "weights": {
+        "affordability": 4.0,
+        "ski_quality": 3.0,
+        "snow_reliability": 3.5,
+        "tourism_growth": 3.5,
+        "rental_demand": 2.0,
+        "winter_occupancy": 2.0,
+        "off_season_demand": 2.0,
+        "accessibility": 2.0,
+        "amenities": 2.0,
+        "town_vibe": 2.0,
+        "management_availability": 2.5,
+        "regulation": 3.0,
+        "renovation_opportunity": 3.0,
+        "property_price_momentum": 3.0,
+        "business_growth": 3.5,
+        "infrastructure": 3.5,
+        "future_supply_balance": 2.5,
+        "capital_growth_potential": 4.0,
+        "exit_liquidity": 1.5,
+        "risk": 3.5
+      }
+    },
+
+    "low_risk": {
+      "label": "Low risk",
+      "description": "Prioritises evidenced, liquid, well-serviced markets over upside.",
+      "weights": {
+        "affordability": 2.0,
+        "ski_quality": 2.5,
+        "snow_reliability": 4.0,
+        "tourism_growth": 2.5,
+        "rental_demand": 3.0,
+        "winter_occupancy": 3.0,
+        "off_season_demand": 2.5,
+        "accessibility": 3.0,
+        "amenities": 3.0,
+        "town_vibe": 2.5,
+        "management_availability": 4.0,
+        "regulation": 4.0,
+        "renovation_opportunity": 1.0,
+        "property_price_momentum": 1.5,
+        "business_growth": 2.0,
+        "infrastructure": 2.0,
+        "future_supply_balance": 3.0,
+        "capital_growth_potential": 1.5,
+        "exit_liquidity": 4.0,
+        "risk": 5.0
+      }
+    }
+  },
+
+  "owner_preference_status": {
+    "set_by_owner": false,
+    "note": "No owner preference has been recorded. 'balanced' is used as a neutral default and must not be presented as the owners' chosen profile. See ASSUMPTIONS.md A4 and outputs/next-actions.md."
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/domains/japan_ski_property/renovation_budget.json",
+  "title": "Renovation budget (japan_ski_property)",
+  "description": "Domain specialisation of the core value_add_project. Defines the component vocabulary for Japanese mountain accommodation, including the items foreign buyers most often omit: snow-load capacity, insulation, fire compliance and the drying room that guests judge a lodge by.",
+  "type": "object",
+
+  "properties": {
+    "scenario": {
+      "type": "string",
+      "enum": ["minimum_viable", "good_lodge_standard", "premium_repositioning"],
+      "description": "minimum_viable = legally operational and presentable. good_lodge_standard = strong mid-market commercial finish. premium_repositioning = higher-end, targeting stronger nightly rates."
+    },
+
+    "components": {
+      "type": "object",
+      "description": "Each component is a money range, not a point figure, unless a real quote exists.",
+      "properties": {
+        "kitchen": { "$ref": "../../core/common.json#/$defs/money" },
+        "bathrooms": { "$ref": "../../core/common.json#/$defs/money" },
+        "flooring": { "$ref": "../../core/common.json#/$defs/money" },
+        "painting": { "$ref": "../../core/common.json#/$defs/money" },
+        "electrical": { "$ref": "../../core/common.json#/$defs/money" },
+        "plumbing": { "$ref": "../../core/common.json#/$defs/money" },
+        "heating": { "$ref": "../../core/common.json#/$defs/money" },
+        "insulation": { "$ref": "../../core/common.json#/$defs/money" },
+        "glazing": { "$ref": "../../core/common.json#/$defs/money" },
+        "roof": { "$ref": "../../core/common.json#/$defs/money" },
+        "exterior": { "$ref": "../../core/common.json#/$defs/money" },
+        "structure": { "$ref": "../../core/common.json#/$defs/money" },
+        "seismic_upgrade": { "$ref": "../../core/common.json#/$defs/money" },
+        "snow_load_upgrade": { "$ref": "../../core/common.json#/$defs/money" },
+        "fire_compliance": { "$ref": "../../core/common.json#/$defs/money" },
+        "drying_room": { "$ref": "../../core/common.json#/$defs/money" },
+        "ski_storage": { "$ref": "../../core/common.json#/$defs/money" },
+        "furniture": { "$ref": "../../core/common.json#/$defs/money" },
+        "appliances": { "$ref": "../../core/common.json#/$defs/money" }
+      },
+      "additionalProperties": false
+    },
+
+    "compliance_required_components": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Components without which the property cannot be lawfully operated. These are not discretionary and must not be trimmed to make a budget work."
+    },
+
+    "renovation_confidence": {
+      "$ref": "../../core/common.json#/$defs/confidence",
+      "description": "Confidence in the estimate as a whole. A budget derived from listing photographs is low, and every downstream figure inherits that."
+    },
+    "renovation_contingency_percent": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Explicit contingency. Mountain renovation of older Japanese buildings routinely uncovers work not visible at inspection."
+    },
+
+    "basis": {
+      "type": "string",
+      "enum": ["contractor_quote", "local_benchmark_rates", "comparable_project", "inferred_from_images", "assumption"],
+      "description": "The weakest basis in the budget governs how the total may be presented."
+    },
+    "benchmark_source_ids": { "type": "array", "items": { "type": "string" } },
+
+    "cost_per_m2": { "oneOf": [{ "$ref": "../../core/common.json#/$defs/money" }, { "type": "null" }] },
+    "total_before_contingency": { "$ref": "../../core/common.json#/$defs/money" },
+    "total_with_contingency": { "$ref": "../../core/common.json#/$defs/money" },
+
+    "assumptions": { "type": "array", "items": { "type": "string" } },
+    "data_gaps": { "type": "array", "items": { "type": "string" } },
+    "provenance": { "$ref": "../../core/common.json#/$defs/provenance" }
+  },
+
+  "required": ["scenario", "renovation_confidence", "renovation_contingency_percent", "basis", "provenance"],
+  "additionalProperties": false
+}

@@ -1,0 +1,135 @@
+{
+  "config_version": "1.0.0",
+  "description": "The scorecard dimensions for japan_ski_property, each scored 0-10. Definitions are recorded here so that a score means the same thing across markets, across sessions and across agents. What each score is derived from is stated, so a score can be challenged on its evidence rather than argued about as an opinion.",
+
+  "components": {
+    "affordability": {
+      "label": "Affordability",
+      "definition": "Entry price for a property capable of the intended operating model, relative to other candidate markets.",
+      "derived_from": ["median_asking_price", "price_per_m2", "qualifying_listings_count"],
+      "high_score_means": "Viable stock available well below the candidate-market median."
+    },
+    "ski_quality": {
+      "label": "Ski quality",
+      "definition": "Terrain quality, variety and scale for a competent snowboarder, including access to nearby linked resorts.",
+      "derived_from": ["ski_area.terrain", "ski_area.lifts", "ski_area.connectivity"],
+      "high_score_means": "A serious snowboarder would happily spend seven days here."
+    },
+    "snow_reliability": {
+      "label": "Snow reliability",
+      "definition": "Measured snowfall, season length and multi-year trend. Weighted toward meteorological records over marketing figures.",
+      "derived_from": ["ski_area.snow.measured_annual_snowfall_cm", "ski_area.snow.season_length_days", "ski_area.snow.snowfall_trend_note"],
+      "high_score_means": "Deep, consistent, long season with no adverse measured trend."
+    },
+    "tourism_growth": {
+      "label": "Tourism growth",
+      "definition": "Trajectory of visitation and overnight stays, domestic and international.",
+      "derived_from": ["visitor_nights", "international_visitor_share", "visitor_growth_rates"],
+      "high_score_means": "Sustained, evidenced growth rather than a single-year rebound."
+    },
+    "rental_demand": {
+      "label": "Rental demand",
+      "definition": "Depth of demand for the accommodation product the owners would operate.",
+      "derived_from": ["occupancy", "adr", "length_of_stay"],
+      "high_score_means": "Strong demand across a full season, not only peak weeks."
+    },
+    "winter_occupancy": {
+      "label": "Winter occupancy",
+      "definition": "Achievable occupancy during the core season for a well-run property.",
+      "derived_from": ["accommodation_survey_occupancy", "platform_observed_occupancy"],
+      "high_score_means": "High occupancy achievable without discounting to fill."
+    },
+    "off_season_demand": {
+      "label": "Off-season demand",
+      "definition": "Measured April-November demand. Plans and strategies do not count.",
+      "derived_from": ["town_profile.off_season"],
+      "high_score_means": "Genuine four-season trading, evidenced by measured visitation."
+    },
+    "accessibility": {
+      "label": "Accessibility",
+      "definition": "Ease of arrival from Australia: airport transfer time, transfer options, and friction on arrival.",
+      "derived_from": ["town_profile.transport"],
+      "high_score_means": "Simple, reliable transfer that does not require guests to drive on snow."
+    },
+    "amenities": {
+      "label": "Amenities",
+      "definition": "Substance of the town: food, groceries, medical, services, and whether they are walkable.",
+      "derived_from": ["town_profile.amenities", "town_profile.character.walkable_amenities"],
+      "high_score_means": "Guests can live comfortably for a week without a car."
+    },
+    "town_vibe": {
+      "label": "Town vibe",
+      "definition": "Whether guests enjoy being there, and would return. Subjective, corroborated across independent sources.",
+      "derived_from": ["town_profile.character", "town_profile.seven_day_guest_experience"],
+      "high_score_means": "Somewhere guests recommend, not merely tolerate."
+    },
+    "management_availability": {
+      "label": "Management availability",
+      "definition": "Whether competent local management, cleaning and maintenance demonstrably exist.",
+      "derived_from": ["service_provider records"],
+      "high_score_means": "Multiple credible providers, so the owners are not dependent on one person.",
+      "gating": true,
+      "gating_note": "A market with no identified providers cannot be operated remotely and is disqualified, not merely scored low."
+    },
+    "regulation": {
+      "label": "Regulation",
+      "definition": "Whether the intended commercial operating model is lawful and licensable for the property type.",
+      "derived_from": ["regulation research", "property.licence_status", "property.zoning_permits_lodging"],
+      "high_score_means": "Clear, obtainable licensing with transferable licences available.",
+      "gating": true,
+      "gating_note": "Where the operating model cannot be made lawful, the subject is disqualified regardless of every other score."
+    },
+    "renovation_opportunity": {
+      "label": "Renovation opportunity",
+      "definition": "Scope to add value through renovation at a cost that is manageable and reasonably estimable.",
+      "derived_from": ["renovation_budget", "property.renovation_condition"],
+      "high_score_means": "Meaningful uplift available for a cost that is both affordable and predictable."
+    },
+    "property_price_momentum": {
+      "label": "Property price momentum",
+      "definition": "Direction and rate of change in land and property values.",
+      "derived_from": ["land_price_series", "asking_price_indicators"],
+      "high_score_means": "Evidence of a turning or rising market, not a decade of decline."
+    },
+    "business_growth": {
+      "label": "Business growth",
+      "definition": "Whether private capital is actually entering the town: net business formation, openings and closures.",
+      "derived_from": ["economic_census", "observed_openings_closures"],
+      "high_score_means": "Net formation, especially in hospitality and accommodation."
+    },
+    "infrastructure": {
+      "label": "Infrastructure",
+      "definition": "Committed transport, lift and tourism infrastructure, weighted by development status.",
+      "derived_from": ["market_catalyst records", "catalyst_status_weights"],
+      "high_score_means": "Funded or under-construction projects, not announcements."
+    },
+    "future_supply_balance": {
+      "label": "Future supply balance",
+      "definition": "Forward accommodation supply against demand growth. High supply growth scores low.",
+      "derived_from": ["forward_supply_ratio", "tourism_growth"],
+      "high_score_means": "Demand growing faster than committed new supply."
+    },
+    "capital_growth_potential": {
+      "label": "Capital growth potential",
+      "definition": "Prospects for appreciation over 10-15 years on evidenced drivers, not narrative.",
+      "derived_from": ["property_price_momentum", "infrastructure", "tourism_growth", "future_supply_balance"],
+      "high_score_means": "Multiple independent drivers pointing the same way."
+    },
+    "exit_liquidity": {
+      "label": "Exit liquidity",
+      "definition": "Whether a plausible buyer exists in 10-15 years, and how hard the sale would be.",
+      "derived_from": ["transaction_volume", "buyer_pool_research"],
+      "high_score_means": "An active, identifiable buyer pool beyond foreign speculators."
+    },
+    "risk": {
+      "label": "Risk (inverted)",
+      "definition": "Aggregate downside exposure. Scored inverted: 10 means low risk.",
+      "derived_from": ["risk_factor records"],
+      "high_score_means": "Few material risks, none thesis-critical.",
+      "inverted": true
+    }
+  },
+
+  "gating_components": ["regulation", "management_availability"],
+  "gating_note": "Failing a gating component disqualifies the subject outright. A market where the operating model is not legal, or cannot be run remotely, is not a worse option — it is not an option."
+}

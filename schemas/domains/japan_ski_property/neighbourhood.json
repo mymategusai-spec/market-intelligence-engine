@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/domains/japan_ski_property/neighbourhood.json",
+  "title": "Neighbourhood (japan_ski_property)",
+  "description": "A submarket within a destination. Entry price and guest convenience vary far more within a resort town than between towns, so treating a whole region as one market is the fastest way to buy something cheap and unrentable.",
+  "type": "object",
+
+  "properties": {
+    "entity_id": { "type": "string" },
+    "name": { "type": "string" },
+    "name_ja": { "type": ["string", "null"] },
+    "town_entity_id": { "type": "string" },
+
+    "character": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "walk_to_lift", "nightlife", "family", "premium", "quiet",
+          "value", "shuttle_dependent", "car_dependent", "inconvenient_cheap"
+        ]
+      },
+      "description": "inconvenient_cheap is deliberately nameable: the cheap-but-unviable submarket is the trap this analysis exists to avoid."
+    },
+
+    "typical_asking_price": { "oneOf": [{ "$ref": "../../core/common.json#/$defs/money" }, { "type": "null" }] },
+    "price_per_m2": { "oneOf": [{ "$ref": "../../core/common.json#/$defs/money" }, { "type": "null" }] },
+    "typical_nightly_rate": { "oneOf": [{ "$ref": "../../core/common.json#/$defs/money" }, { "type": "null" }] },
+    "estimated_occupancy_percent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+
+    "walk_minutes_to_lift": { "type": ["number", "null"], "minimum": 0 },
+    "walk_minutes_to_supermarket": { "type": ["number", "null"], "minimum": 0 },
+    "walk_minutes_to_restaurants": { "type": ["number", "null"], "minimum": 0 },
+    "walkability": { "type": ["string", "null"], "enum": ["excellent", "good", "moderate", "poor", null] },
+    "guests_need_car": { "type": ["boolean", "null"] },
+
+    "supply_note": { "type": ["string", "null"], "description": "Existing and pipeline accommodation concentrated in this submarket." },
+    "why_cheap": {
+      "type": ["string", "null"],
+      "description": "Required for any submarket priced materially below its town. Cheap usually means correctly priced for a reason not yet identified."
+    },
+
+    "data_gaps": { "type": "array", "items": { "type": "string" } },
+    "provenance": { "$ref": "../../core/common.json#/$defs/provenance" }
+  },
+
+  "required": ["entity_id", "name", "town_entity_id", "provenance"],
+  "additionalProperties": false
+}

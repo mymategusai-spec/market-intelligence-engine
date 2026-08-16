@@ -218,8 +218,10 @@ Scoring is transparent and re-runnable, never a black box.
 - **Component scores** are 0–10 per dimension (affordability, ski quality, snow reliability,
   tourism growth, town vibe, regulation, infrastructure, future-supply balance, exit liquidity,
   risk, …), each with the evidence and confidence that produced it.
-- **Weights live in config**, not code — `config/domains/japan_ski_property/weights.yaml`.
-  Subjective preferences are never hard-coded (master prompt §38).
+- **Weights live in config**, not code — `config/domains/japan_ski_property/weights.json`.
+  Subjective preferences are never hard-coded (master prompt §38). Config is JSON rather than
+  YAML because the stdlib parses JSON and does not parse YAML (D-0002); the dashboard reads the
+  same files directly.
 - **Preference axes** are exposed as sliders the owners can move: investment return ↔ lifestyle,
   cheap entry ↔ premium, established ↔ emerging, winter ↔ four-season, turnkey ↔ renovation,
   low risk ↔ high upside, town life ↔ ski proximity, cash flow ↔ capital appreciation.

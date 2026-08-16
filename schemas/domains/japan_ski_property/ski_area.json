@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/domains/japan_ski_property/ski_area.json",
+  "title": "Ski area (japan_ski_property)",
+  "description": "The mountain product a destination sells. Snowfall is the field most likely to be misreported: resort marketing figures and measured meteorological records frequently disagree, so both are stored, separately and attributably.",
+  "type": "object",
+
+  "properties": {
+    "entity_id": { "type": "string" },
+    "resort_name": { "type": "string" },
+    "resort_name_ja": { "type": ["string", "null"] },
+    "town_entity_id": { "type": ["string", "null"] },
+    "prefecture": { "type": "string" },
+
+    "terrain": {
+      "type": "object",
+      "properties": {
+        "skiable_hectares": { "type": ["number", "null"], "minimum": 0 },
+        "vertical_metres": { "type": ["number", "null"], "minimum": 0 },
+        "base_elevation_m": { "type": ["number", "null"] },
+        "summit_elevation_m": { "type": ["number", "null"] },
+        "longest_run_km": { "type": ["number", "null"], "minimum": 0 },
+        "number_of_courses": { "type": ["integer", "null"], "minimum": 0 },
+        "beginner_percent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "intermediate_percent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "advanced_percent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "tree_skiing_permitted": {
+          "type": ["boolean", "null"],
+          "description": "Decisive for the powder-seeking market. Japanese resorts vary widely and policies change."
+        },
+        "backcountry_access": { "type": ["string", "null"], "enum": ["excellent", "good", "limited", "prohibited", "unknown", null] },
+        "terrain_variety": { "type": ["string", "null"], "enum": ["excellent", "good", "moderate", "limited", null] }
+      },
+      "additionalProperties": false
+    },
+
+    "lifts": {
+      "type": "object",
+      "properties": {
+        "total_lifts": { "type": ["integer", "null"], "minimum": 0 },
+        "gondolas": { "type": ["integer", "null"], "minimum": 0 },
+        "detachable_quads_or_better": { "type": ["integer", "null"], "minimum": 0 },
+        "oldest_lift_year": {
+          "type": ["integer", "null"],
+          "description": "Ageing lift infrastructure is a real risk: replacement is capital-intensive and small Japanese operators may not fund it."
+        },
+        "lift_infrastructure_quality": { "type": ["string", "null"], "enum": ["modern", "mixed", "dated", "poor", "unknown", null] },
+        "typical_queue_experience": { "type": ["string", "null"], "enum": ["none", "short", "moderate", "long", "unknown", null] },
+        "recent_lift_investment": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+
+    "snow": {
+      "type": "object",
+      "description": "Two independent records, deliberately not merged.",
+      "properties": {
+        "marketed_annual_snowfall_cm": {
+          "type": ["number", "null"],
+          "description": "As claimed by the operator or tourism body. Recorded as OPINION."
+        },
+        "marketed_snowfall_source_id": { "type": ["string", "null"] },
+        "measured_annual_snowfall_cm": {
+          "type": ["number", "null"],
+          "description": "From meteorological observation. Recorded as FACT where a nearby station exists."
+        },
+        "measured_station_name": { "type": ["string", "null"] },
+        "measured_station_distance_km": { "type": ["number", "null"] },
+        "measured_station_elevation_m": {
+          "type": ["number", "null"],
+          "description": "Valley stations under-report mountain snowfall. Elevation difference must be stated for the comparison to be honest."
+        },
+        "measurement_years": { "type": ["string", "null"] },
+        "snowfall_trend_note": { "type": ["string", "null"], "description": "Multi-year direction. Relevant to the 10-15 year horizon and to climate risk." },
+        "powder_quality": { "type": ["string", "null"], "enum": ["exceptional", "excellent", "good", "variable", "unknown", null] },
+        "snow_reliability": { "type": ["string", "null"], "enum": ["very_high", "high", "moderate", "low", "unknown", null] },
+        "typical_season_start": { "type": ["string", "null"] },
+        "typical_season_end": { "type": ["string", "null"] },
+        "season_length_days": { "type": ["integer", "null"], "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+
+    "connectivity": {
+      "type": ["object", "null"],
+      "properties": {
+        "linked_resorts": { "type": "array", "items": { "type": "string" } },
+        "shared_lift_pass": { "type": ["string", "null"] },
+        "resorts_within_30min": { "type": ["integer", "null"], "minimum": 0 },
+        "note": {
+          "type": ["string", "null"],
+          "description": "Multiple accessible resorts materially extend how long guests stay engaged, and reduce the risk of one operator's decline."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "seven_day_verdict": {
+      "type": ["object", "null"],
+      "description": "The master prompt's test: could a serious snowboarder happily spend seven days here?",
+      "properties": {
+        "verdict": { "type": "string", "enum": ["yes_comfortably", "yes_with_nearby_resorts", "marginal", "no", "unknown"] },
+        "reasoning": { "type": "string" },
+        "benchmark_vs_hakuba": { "type": ["string", "null"] },
+        "benchmark_vs_niseko": { "type": ["string", "null"] }
+      },
+      "required": ["verdict", "reasoning"],
+      "additionalProperties": false
+    },
+
+    "data_gaps": { "type": "array", "items": { "type": "string" } },
+    "provenance": { "$ref": "../../core/common.json#/$defs/provenance" }
+  },
+
+  "required": ["entity_id", "resort_name", "prefecture", "provenance"],
+  "additionalProperties": false
+}
