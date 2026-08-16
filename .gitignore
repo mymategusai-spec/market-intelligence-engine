@@ -1,0 +1,55 @@
+# --- Secrets: never commit ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.yaml
+config/**/secrets.*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Node / dashboard build ---
+node_modules/
+app/dashboard/dist/
+app/dashboard/.cache/
+*.tsbuildinfo
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+!.vscode/extensions.json
+
+# --- Scratch / local-only working files ---
+scratch/
+tmp/
+*.local.*
+
+# --- Large or regenerable artefacts ---
+# NOTE: data/raw is intentionally NOT ignored by default. Raw captures are
+# evidence and belong in git (see ARCHITECTURE.md, "Data lives in git").
+# Ignore only genuinely large binary captures that cannot be committed.
+data/raw/**/*.zip
+data/raw/**/*.gz
+data/raw/**/*.pdf.bin
+*.sqlite
+*.duckdb
+
+# --- Agent working dirs ---
+.claude/.cc-writes/

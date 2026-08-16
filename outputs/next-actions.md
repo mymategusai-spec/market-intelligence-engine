@@ -1,114 +1,105 @@
 # Next Actions
 
 **Last updated:** 2026-08-16
-**Branch:** `task/bootstrap-intake`
-**Status:** Blocked at intake — awaiting the master prompt.
+**Branch:** `main`
+**Current phase:** 2–4 (core schemas, domain schemas, destination screening)
+**Overall status:** Foundations built. Research beginning. **No investment conclusion reached.**
+
+This is the handoff file. An agent picking up this repository should read this first, then
+`prompts/master-prompt.md`, then `PROJECT_BRIEF.md` and `RESEARCH_PLAN.md`.
 
 ---
 
-## Current repository state
+## Where the project stands
 
-| Item | State |
-| --- | --- |
-| Commits | 1 (`d2557d8` — "Initialise market intelligence engine") |
-| Tracked files | `README.md` (empty, 0 bytes) |
-| Remote | `origin` → `github.com/mymategusai-spec/market-intelligence-engine` |
-| Project docs | None (no `CLAUDE.md`, no brief, no phase definitions) |
-| Source code | None |
-| Data / outputs | None prior to this file |
+Phase 1 is complete: the two-layer architecture, repository structure, dependency policy and
+foundational documentation are in place, and the owner's master prompt is saved as the
+authoritative brief.
 
----
-
-## Blocker
-
-**What is needed:** the master prompt (project brief / phase definitions).
-
-**Why it matters:** the autonomy instruction directs work to proceed "through the phases
-sequentially," resolving open questions from "the master prompt, repository documentation,
-existing data, or standard engineering/research practice." Three of those four sources are
-empty, and the fourth cannot substitute for them:
-
-- The repository contains no brief, spec, phase list, or documentation of any kind.
-- There is no existing data to infer scope from.
-- No prior Claude Code session exists for this project — the session transcript directory
-  contains only the current session, and project memory is empty.
-- Standard practice can supply *how* to build a market intelligence engine, but not *what
-  market*, *whose competitors*, *which sources*, or *what deliverables* — and every one of
-  those choices determines essentially all downstream work.
-
-**Why this was not resolved by assumption:** the unknown is the entire subject matter, not a
-detail. Guessing an industry, a competitor set, and an output format would produce a
-plausible-looking codebase with a high probability of being wholly irrelevant. There is no
-conservative reversible default for "which market to analyse."
-
-**Searched before escalating:**
-
-```
-git log --stat --all                     # 1 commit, empty README
-find . -not -path './.git/*'             # .claude/, README.md only
-~/.claude/projects/-Users-gusai-market-intelligence-engine/   # current session only
-~/.claude/projects/.../memory/           # empty
-find ~ -maxdepth 3 -iname '*master*prompt*' -o -iname '*market*intel*' -o -iname '*brief*'
-```
+Nothing has been researched yet. The source register is populated with identified official
+sources, but every row is `CANDIDATE` — **none has been accessed, and nothing in it may be
+cited as evidence yet.**
 
 ---
 
-## To unblock
+## Immediate next actions
 
-Provide the master prompt by whichever route is easiest:
+In priority order. Each is independently startable.
 
-1. **Paste it into the session** — fastest; work resumes immediately.
-2. **Commit it to the repo** — e.g. `docs/master-prompt.md`, then say so. Preferred for
-   durability: it survives session boundaries and future runs can read it directly.
-3. **Point at a file path or URL** and it will be read in.
-4. **Ask for a draft** — a candidate scope can be proposed (market, sources, phases,
-   deliverables) for approval or editing, rather than the brief being written from scratch.
-
-The minimum needed to start Phase 1 productively:
-
-- **Market / domain** — the industry, category, or vertical under analysis.
-- **Subject** — whose position this serves (a company, product, or neutral market view).
-- **Deliverables** — reports, dashboard, dataset, API, alerting, or some combination.
-- **Sources** — which data sources are in scope, and which credentials exist for them.
-- **Phases** — the sequence the work should follow, if a specific one is intended.
-
----
-
-## Secondary blocker: GitHub authentication
-
-`gh auth status` reports the token for `mymategusai-spec` is invalid:
-
-```
-X Failed to log in to github.com account mymategusai-spec (default)
-  - The token in default is invalid.
-```
-
-This does **not** block git itself — `git push` authenticates via the macOS keychain
-credential helper and succeeded for this branch. It only blocks `gh` CLI operations (PR
-creation, issue and API access), which will be needed if the work later involves pull
-requests.
-
-Re-authenticate with `! gh auth login -h github.com` in this session (the `!` prefix runs it
-here, so the output lands in the conversation). Credentials are not altered or created
-without explicit approval, so this is left for the owner.
+1. **Finish Phase 2 — core schemas.** Author `schemas/core/*.json` for `source`, `observation`,
+   `entity`, `asset`, `snapshot`, `event`, `market_catalyst`, `value_add_project`,
+   `location_metric`, `market_indicator`, `risk_factor`, `score`, `financial_model`. Mirror in
+   `core/models/` dataclasses. Enforce: no observation without a `source_id`; FX carries rate
+   and rate date.
+2. **Finish Phase 3 — domain schemas.** `property`, `town_profile`, `neighbourhood`, `ski_area`,
+   `renovation_budget`, `development_project`, `management_provider`, `inspector`. The property
+   schema must carry the full attribute set from master prompt §20 including first/last seen and
+   listing status.
+3. **Phase 4 — destination screening.** Screen the longlist and actively discover overlooked
+   towns. Record every claim with provenance. Do **not** assume Myoko.
+4. **Verify source access.** For each Tier 1 source, confirm the URL, check access method and
+   record it as `ACCESSED` in `SOURCES.md`. Prioritise `JP-JMA-SNOW` (snow reality vs marketing
+   claims), `JP-MLIT-TORIHIKI` (transaction vs asking prices) and `JP-JTA-SHUKUHAKU`
+   (accommodation demand).
+5. **Check portal terms before any automated collection.** Phase 13's design depends on what
+   robots.txt and site terms permit. Establish this early — it may constrain the whole
+   collection approach.
+6. **Write the boundary test** (`tests/test_core_is_domain_agnostic.py`) before `core/` grows.
+   Enforcing the rule after the fact is much harder.
 
 ---
 
-## Work completed this session
+## Known blockers
 
-- Repository, git state, session history, and project memory surveyed for the master prompt.
-- Task branch `task/bootstrap-intake` created (main left untouched, per the working contract).
-- This blocker record written and committed.
+| Blocker | Impact | Workaround in use |
+| --- | --- | --- |
+| `gh` CLI token invalid | No PR/issue/API operations via `gh` | None needed — `git push` works via keychain; fix with `gh auth login -h github.com` when convenient |
+| No Python package manager or index access in the sandbox | Cannot install third-party libraries | **Resolved by design** — stdlib-only core (`DECISIONS.md` D-0002) |
+| Portal terms unverified | Phase 13 collection design cannot be finalised | Verify robots.txt and terms before building any collector |
 
-## Deferred pending the master prompt
+---
 
-Everything below is deliberately *not* started, because each would encode a guess about the
-domain that is likely wrong:
+## Requires owner approval
 
-- Language, runtime, and dependency choices.
-- Repository scaffolding, module layout, and test harness.
-- Data source integrations and credential/secret handling (`.env.example`).
-- Schema design for collected market data.
-- Output format, and the reporting or visualisation layer.
+Never actioned autonomously (master prompt §53). Nothing here is currently blocking research.
 
-No further independent work can be done without materially guessing at scope.
+| Item | Why it needs approval | When it will matter |
+| --- | --- | --- |
+| Contacting agents, sellers, inspectors, contractors | External contact with real people | Phase 15/16, and before any inspection |
+| Purchasing paid data sources | Spends money | If Phase 7/13 finds material data is paywalled — candidates will be listed in `SOURCES.md` |
+| Creating paid cloud resources | Spends money | Only if the static dashboard proves insufficient (D-0007) |
+| Any property transaction step | Financial commitment | Not applicable at this stage |
+
+---
+
+## Open questions for the owner
+
+None blocking. Recorded for when convenient:
+
+- **Capital ceiling.** Currently assumed open-ended (`ASSUMPTIONS.md` A3). A rough ceiling would
+  sharpen screening considerably, but the engine will derive shoestring/sensible/strong
+  requirements regardless.
+- **Return vs lifestyle weighting.** The scoring axes are adjustable by design; owner
+  preferences would set sensible defaults rather than neutral ones.
+
+---
+
+## Standing rules for whoever works next
+
+- Do not delete historical observations. Append.
+- Do not present an `ESTIMATE` as a `FACT`, or cite a `CANDIDATE` source as evidence.
+- Do not let a proposed development score like a funded one.
+- Do not assume a residential property can legally be operated as commercial accommodation.
+- Search Japanese-language sources, not only English ones.
+- Commit and push to `origin/main` after every meaningful work unit.
+- Update this file, `CHANGELOG.md`, `SOURCES.md`, `ASSUMPTIONS.md` and `DECISIONS.md` as work
+  proceeds — not in a batch at the end.
+
+---
+
+## Session log
+
+**2026-08-16 —** Intake blocker (master prompt absent) recorded, then resolved when the owner
+supplied the brief. Master prompt saved. Phase 1 completed: architecture, structure,
+documentation, dependency policy, source register, assumptions and decision log. Phases 2–4
+started.
