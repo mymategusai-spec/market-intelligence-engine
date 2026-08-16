@@ -33,7 +33,7 @@ phase waits unnecessarily on another if useful work can proceed (master prompt �
 | 18 | Continuous monitoring | `PENDING` | `workflows/`, `scripts/monitoring/` |
 | 19 | Opportunity detection | `PENDING` | `core/scoring/` |
 | 20 | Dashboard | `PENDING` | `app/dashboard/` |
-| 21 | Risk and counter-thesis | `PENDING` | `research/` |
+| 21 | Risk and counter-thesis | `PARTIAL` | `research/` |
 | 22 | Investment ranking | `PENDING` | `outputs/` |
 | 23 | Investment Committee recommendation | `PENDING` | `outputs/` |
 
@@ -157,7 +157,7 @@ reasons.
 Static, client-side-filterable decision tool with adjustable weights and full drill-down.
 **Fails if:** changing a weight does not change the ranking, or provenance is not surfaced.
 
-### Phase 21 — Risk and counter-thesis · `PENDING`
+### Phase 21 — Risk and counter-thesis · `PARTIAL`
 Structured attempt to destroy every attractive conclusion: climate and snow trend, depopulation,
 oversupply, labour, seismic and volcanic, avalanche, flood, insurance, FX, tourism shock,
 regulatory change, ageing lifts, competition, resale liquidity. Plus, per market: *why is this

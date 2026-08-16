@@ -58,7 +58,25 @@ surface and a sentiment-led one would miss.
 **11.1× in Hakuba** and **14.0× in Myoko**, against ~6× between municipalities. No property may
 be scored on a market-level view alone (D-0012).
 
-**6. The buyer is not the constraint; the licence is.**
+**6. Snow risk is real, and elevation-specific.** Japan's operational resort count is **40% below
+its 1999 peak**. Peer-reviewed work finds snow declining at **low elevations on the Japan Sea
+side**, but stable-to-heavier at **high elevations in eastern Honshu**, with no clear decline in
+Hokkaido. Takada — adjacent to Myoko — is one of two stations named as showing marked decline.
+Base elevation and regional regime are now screening criteria (D-0013).
+
+**7. Depopulation is severe, and worst in the cheapest market.** Myoko is projected to lose
+**46.7% of its population by 2050**. The sharper screening question is not "is the town
+shrinking?" but "**has tourism demonstrably decoupled from resident decline here?**" Hakuba and
+Kutchan appear to have; Myoko has not yet; Yuzawa did not over 33 years.
+
+**8. A hypothesis now worth stating plainly.** The cheap Honshu markets tend to be lower-elevation
+Japan Sea side *and* more severely depopulating. That is not a coincidence, and it is the most
+plausible current answer to *why hasn't capital arbitraged this away?* — **the discount may be
+compensation for real risk rather than an oversight.** Testing this is the central task of
+Phases 5–11.
+→ [`domains/japan_ski_property/research/thesis-critical-risks.md`](../domains/japan_ski_property/research/thesis-critical-risks.md)
+
+**9. The buyer is not the constraint; the licence is.**
 Foreign freehold ownership is unrestricted with no nationality surcharge. What determines the
 business is the operating licence — and the minpaku 180-night cap probably does **not** bind on
 a winter-dominant ski property, whose sellable season is ~100–140 nights. It constrains the
@@ -79,8 +97,18 @@ In priority order. Each is independently startable.
 2. **Retrieve IPSS municipal population projections** for every longlist town. Depopulation is
    the constraint the marketing omits and applies across rural Japan; it must be measured per
    town, not assumed.
-3. **Research Nozawa Onsen properly.** Newly promoted on evidence; currently the largest gap
-   between what the data says and what has actually been researched.
+3. **Retrieve IPSS projections for Hakuba, Nozawa, Kutchan, Iiyama, Yuzawa and Furano.**
+   Currently only Myoko's is known, so no cross-market comparison is possible. This is the
+   highest-priority single gap — it is what would show whether the appreciating markets are
+   also the depopulating ones.
+4. **Pull JMA station series** for each candidate: 30+ years, with station elevation and
+   distance recorded alongside. This resolves E3 per market rather than nationally.
+5. **Research Nozawa Onsen properly.** Newly promoted on evidence; currently the largest gap
+   between what the data says and what has actually been researched. Note its **565 m base** is
+   the lowest of the Honshu candidates — the land-price signal and the snow-risk signal point in
+   opposite directions here.
+6. **Read the two peer-reviewed snow papers in full.** The elevation-dependence finding is
+   load-bearing for screening and was accessed via summary only.
 3. **Establish the accommodation capacity of the Patience Capital Myoko development.** Until
    room and bed counts are known it cannot enter the forward supply ratio — and a large nearby
    development raises a destination's profile *and* its competing supply at once.

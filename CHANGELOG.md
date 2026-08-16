@@ -29,6 +29,35 @@ Format: date · phase · what changed · why it matters.
 - Flagged Myoko's reported −24.7% population projection to 2035 as material to labour,
   amenities and exit, pending IPSS verification.
 
+### Phase 21 — Risk and counter-thesis · `PARTIAL` (brought forward)
+
+Brought forward because researching a thesis-critical risk *after* choosing a market would be
+researching to confirm a decision already made.
+
+- **Snow risk is real and elevation-specific.** Japan's operational ski resort count is at a
+  record low, **40% below its 1999 peak**, attributed to lack of snow. Peer-reviewed work
+  (1959–2020) finds declining maximum snow depth at **low elevations on the Japan Sea side**,
+  but **no trend at high elevations in eastern Honshu** and a significant *increase* in maximum
+  daily snowfall there; Sapporo and Akita show no clear long-term decline. Base elevation and
+  regional regime are now first-class screening criteria (`DECISIONS.md` D-0013).
+- Noted that **Takada — adjacent to Myoko — is one of two stations named as showing marked
+  long-term decline**, and that Hakuba, the fastest-appreciating land market in Japan, is
+  simultaneously piling snow onto its highest course to keep operating. Land prices and snow
+  reliability are not measuring the same thing.
+- **Rejected rather than recorded** a reported Myoko vertical of 1,724 m, which contradicts the
+  same source's own statement that only five Japanese resorts exceed 1,000 m vertical.
+- **Myoko is projected to lose 46.7% of its population by 2050** (IPSS 2023 projections), to
+  ~16,200 people. In Hokkaido, 129 municipalities are projected to fall to ≤60% of current
+  population by 2050.
+- Added assumption **E6**: that tourism demand can decouple from resident decline. Hakuba and
+  Kutchan appear to have decoupled; Myoko has not yet; Yuzawa did not over 33 years. This
+  reframes the screening question from "is the town shrinking?" to "**has tourism demonstrably
+  decoupled from resident decline here?**"
+- Recorded the interaction as the most plausible current answer to *why hasn't capital
+  arbitraged this away?* — **the discount may be compensation for real snow, labour and
+  liquidity risk rather than an oversight.** Stated as a hypothesis to be tested in Phases 5–11,
+  not as a conclusion.
+
 ### Phase 7 — Historical property markets · `PARTIAL` (brought forward)
 
 - **Verified the 2026 land-price figures** against a second independent source, agreeing to

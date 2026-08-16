@@ -7,6 +7,31 @@ it**. A decision without a reversal trigger is a belief, not a decision.
 
 ---
 
+## D-0013 · 2026-08-16 · Base elevation and regional snow regime are first-class screening criteria
+
+**Decision.** Snow risk is assessed per market as a function of **base elevation** and
+**regional snow regime**, not as a single national judgement. Elevation is not compared across
+regions — a 260 m base in Hokkaido is not equivalent to a 260 m base on Honshu's Japan Sea side.
+
+**Evidence.** Peer-reviewed work covering 1959–2020 finds significant **decreasing** trends in
+maximum snow depth and daily snowfall **at lower elevations** on the Japan Sea side of eastern
+and western Japan, while **higher elevations in eastern Japan** show no trend in maximum snow
+depth and a significant **increasing** trend in maximum daily snowfall. Long-term station data
+shows marked decline at Takada (adjacent to Myoko) and Fukui, but no clear decline at Sapporo or
+Akita. Japan's operational resort count is down 40% from its 1999 peak.
+
+**Confidence.** Medium-high on the mechanism; the underlying papers were read via summaries
+rather than in full.
+
+**Changes it if:** full-text reading of the source papers contradicts the elevation dependence,
+or JMA station series for specific candidates diverge from the regional pattern.
+
+**Uncomfortable consequence, recorded deliberately:** the cheap Honshu markets tend to be
+lower-elevation Japan Sea side, so this criterion works directly against the affordability
+thesis. That tension is a finding and must not be smoothed over.
+
+---
+
 ## D-0012 · 2026-08-16 · Neighbourhood analysis is mandatory before any property is scored
 
 **Decision.** No property may be scored on a market-level view alone. Every candidate must be
