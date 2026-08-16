@@ -29,6 +29,28 @@ Format: date · phase · what changed · why it matters.
 - Flagged Myoko's reported −24.7% population projection to 2035 as material to labour,
   amenities and exit, pending IPSS verification.
 
+### Phase 7 — Historical property markets · `PARTIAL` (brought forward)
+
+- **Verified the 2026 land-price figures** against a second independent source, agreeing to
+  within 0.02 percentage points. The Phase 4 headline tension is now corroborated rather than a
+  lead. Data in `data/reference/land-prices-2026.json`; analysis in
+  `domains/japan_ski_property/property_market/land-price-regimes.md`.
+- **Established that Japanese ski land is three markets, not one:** recovering strongly
+  (Hakuba +26.9% national #1, Nozawa Onsen +21.7% #2), established and still rising
+  (Kutchan +12.3%, Furano +6.7%), and flat or falling (Myoko −0.79%, Yuzawa −0.44%).
+- **Promoted Nozawa Onsen to serious research.** The national #2 performer receives a fraction
+  of the promotional coverage Myoko does — exactly what an evidence-led screen should surface.
+- **Documented Yuzawa as a 33-year value trap:** −85% from its 1993 peak and still falling,
+  despite Shinkansen access, snow and cheap stock. Adopted as the benchmark every cheap
+  candidate must be tested against (`DECISIONS.md` D-0011).
+- **Reframed Hakuba** with 30-year context: down 84% from its 1995 peak to a 2018 low, nearly
+  tripled since, and still 54% below peak. "Too expensive" is a claim about seven years, not
+  thirty.
+- **Measured the within-town spread at 11–14×** against a between-town spread of ~6×, making
+  neighbourhood analysis mandatory before any property is scored (`DECISIONS.md` D-0012).
+- Noted MLIT's own attribution of Hakuba's rise to foreign buyers **opening accommodation
+  businesses** — this project's exact strategy, already executed at scale by others there.
+
 ### Phase 12 — Regulation · `PARTIAL` (brought forward)
 
 - Researched early because it is gating. **Foreign freehold ownership confirmed unrestricted**,

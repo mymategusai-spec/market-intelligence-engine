@@ -1,0 +1,146 @@
+{
+  "dataset": "japan_ski_municipality_land_prices_2026",
+  "domain": "japan_ski_property",
+  "schema_version": "1.0.0",
+  "description": "Municipality-level official land prices for Japanese ski markets, 2026 公示地価 (Published Land Prices) with 基準地価 (Prefectural Land Survey) where available. Values are averages across all survey points in the municipality and mix residential, commercial and industrial land — they indicate direction, not the price of any specific parcel.",
+
+  "source": {
+    "primary_source_id": "JP-MLIT-CHIKA",
+    "primary_publisher": "MLIT 国土交通省",
+    "primary_publication_date": "2026-03-18",
+    "primary_publication_note": "The MLIT portal page is dated 令和8年3月18日. The press release fetched separately reported 2026-03-17. Both dates are recorded; the one-day discrepancy is likely announcement versus publication and is not material, but it is not silently reconciled.",
+    "retrieved_via_source_id": "AGG-TOCHIDAI",
+    "retrieved_via_note": "Figures retrieved from tochidai.info, an aggregator that republishes official MLIT land-price data by municipality. Tier 4. Independently corroborates the per-market figures previously recorded as UNVERIFIED from commercial commentary, to within rounding.",
+    "retrieved_at": "2026-08-16",
+    "verification_status": "CORROBORATED_SECONDARY",
+    "verification_note": "Two independent secondary sources now agree on Hakuba, Kutchan and Myoko to within 0.01-0.02 percentage points. Direct retrieval from MLIT remains outstanding and is required before these figures support a final recommendation."
+  },
+
+  "currency": "JPY",
+  "units": "JPY per square metre",
+  "fx_note": "No AUD conversion applied. Converting requires a sourced rate and rate date (core/models/common.py refuses conversion without one). AUD figures will be added when an FX source is registered.",
+
+  "municipalities": [
+    {
+      "municipality": "白馬村",
+      "romaji": "Hakuba",
+      "prefecture": "Nagano",
+      "market": "Hakuba Valley",
+      "koji_chika_2026_jpy_m2": 25556,
+      "change_percent": 26.93,
+      "national_rank_change_rate": 1,
+      "kijun_chika_2025_jpy_m2": 23500,
+      "kijun_chika_2025_change_percent": 17.56,
+      "highest_point_jpy_m2": 67500,
+      "lowest_point_jpy_m2": 6100,
+      "within_municipality_spread_x": 11.1,
+      "historic_peak_jpy_m2": 55333,
+      "historic_peak_year": 1995,
+      "historic_low_jpy_m2": 8686,
+      "historic_low_year": 2018,
+      "percent_below_peak": -53.8,
+      "percent_above_low": 194.2,
+      "regime": "recovering_strongly",
+      "claim_type": "FACT",
+      "confidence": "medium",
+      "notes": "National rank 1 for residential appreciation. Benchmark point 白馬-1 at ¥27,400/m² rose 33.0%, after 29.6% the previous year. Commercial point 白馬5-1 at ¥40,300/m² rose 35.2%, national rank 3."
+    },
+    {
+      "municipality": "野沢温泉村",
+      "romaji": "Nozawa Onsen",
+      "prefecture": "Nagano",
+      "market": "Nozawa Onsen",
+      "koji_chika_2026_jpy_m2": 29350,
+      "change_percent": 21.69,
+      "national_rank_change_rate": 2,
+      "regime": "recovering_strongly",
+      "claim_type": "FACT",
+      "confidence": "medium",
+      "notes": "National rank 2. Notably absent from the 'emerging market' promotional narrative despite outperforming every market except Hakuba."
+    },
+    {
+      "municipality": "倶知安町",
+      "romaji": "Kutchan",
+      "prefecture": "Hokkaido",
+      "market": "Niseko",
+      "koji_chika_2026_jpy_m2": 120750,
+      "change_percent": 12.33,
+      "national_rank_change_rate": 21,
+      "regime": "established_still_rising",
+      "claim_type": "FACT",
+      "confidence": "medium",
+      "notes": "By far the highest absolute level of any ski municipality here - roughly 4.7x Hakuba and 6.1x Myoko. Hirafu benchmark reported at ¥189,000/m², +21.9% (UNVERIFIED)."
+    },
+    {
+      "municipality": "富良野市",
+      "romaji": "Furano",
+      "prefecture": "Hokkaido",
+      "market": "Furano",
+      "koji_chika_2026_jpy_m2": 35760,
+      "change_percent": 6.73,
+      "national_rank_change_rate": 56,
+      "regime": "rising_moderately",
+      "claim_type": "FACT",
+      "confidence": "medium"
+    },
+    {
+      "municipality": "湯沢町",
+      "romaji": "Yuzawa",
+      "prefecture": "Niigata",
+      "market": "Yuzawa / Gala",
+      "koji_chika_2026_jpy_m2": 28100,
+      "change_percent": -0.44,
+      "kijun_chika_2025_jpy_m2": 19162,
+      "kijun_chika_2025_change_percent": -0.33,
+      "highest_point_jpy_m2": 43800,
+      "lowest_point_jpy_m2": 9510,
+      "historic_peak_jpy_m2": 190062,
+      "historic_peak_year": 1993,
+      "percent_below_peak": -85.2,
+      "regime": "still_declining",
+      "claim_type": "FACT",
+      "confidence": "medium",
+      "notes": "Down roughly 85% from its 1993 peak and still falling 33 years later, despite direct Shinkansen access from Tokyo. The clearest available evidence that cheap and accessible does not mean undervalued."
+    },
+    {
+      "municipality": "妙高市",
+      "romaji": "Myoko",
+      "prefecture": "Niigata",
+      "market": "Myoko Kogen",
+      "koji_chika_2026_jpy_m2": 19904,
+      "change_percent": -0.79,
+      "kijun_chika_2025_jpy_m2": 11777,
+      "kijun_chika_2025_change_percent": -0.77,
+      "survey_points_ranked": 21,
+      "highest_point_jpy_m2": 35800,
+      "highest_point_location": "旭町 (Asahi-cho, commercial)",
+      "lowest_point_jpy_m2": 2550,
+      "lowest_point_location": "二俣 (Futamatsu, rural)",
+      "within_municipality_spread_x": 14.0,
+      "historic_peak_jpy_m2": 54033,
+      "historic_peak_year": 1993,
+      "historic_low_jpy_m2": 18911,
+      "historic_low_year": 2022,
+      "percent_below_peak": -63.2,
+      "percent_above_low": 5.3,
+      "regime": "bottomed_but_flat",
+      "claim_type": "FACT",
+      "confidence": "medium",
+      "notes": "The central finding. Myoko bottomed in 2022 and has recovered only ~5%, still declining year-on-year in 2026, while being promoted as the emerging market of choice. The anticipated repricing has not yet appeared in official land values."
+    }
+  ],
+
+  "not_in_top_ranking": {
+    "municipalities": ["山ノ内町 (Shiga Kogen)", "飯山市 (Iiyama)", "ニセコ町 (Niseko-cho)", "八幡平市 (Appi)"],
+    "note": "Absent from the retrieved ranking extract. This means 'not established', not 'no change'. Retrieve individually before drawing any conclusion."
+  },
+
+  "data_gaps": [
+    "Direct retrieval from MLIT rather than via an aggregator",
+    "Madarao (within Iiyama City) has no separate municipal figure",
+    "Niseko-cho, Shiga Kogen, Iiyama, Appi, Rusutsu, Kiroro not yet retrieved",
+    "Residential-only breakdowns, rather than all-use averages, for each municipality",
+    "Full year-by-year series for markets other than Hakuba, Myoko and Yuzawa",
+    "No FX rate registered, so no AUD figures"
+  ]
+}

@@ -19,7 +19,7 @@ phase waits unnecessarily on another if useful work can proceed (master prompt �
 | 4 | Japan-wide destination screening | `ACTIVE` | `domains/japan_ski_property/research/` |
 | 5 | Ski / snow analysis | `PENDING` | `domains/japan_ski_property/research/` |
 | 6 | Town, vibe and micro-location analysis | `PENDING` | `town_profiles/`, `neighbourhoods/` |
-| 7 | Historical property markets | `PENDING` | `property_market/` |
+| 7 | Historical property markets | `PARTIAL` | `property_market/` |
 | 8 | Tourism | `PENDING` | `tourism/` |
 | 9 | Business and economic activity | `PENDING` | `business_activity/` |
 | 10 | Off-season economy | `PENDING` | `research/` |
@@ -78,7 +78,7 @@ options) and the seven-day guest experience model. Decompose each destination in
 neighbourhoods with their own price and convenience characteristics.
 **Fails if:** a whole resort region is treated as one market, or vibe claims are unsourced.
 
-### Phase 7 — Historical property markets · `PENDING`
+### Phase 7 — Historical property markets · `PARTIAL`
 ~2015–2026 and longer where reliable: residential, commercial and land prices, price/m²,
 transaction volume, vacancy, redevelopment. Compute 1/3/5/10-year change and CAGR. Charts.
 Use official Japanese land-price data (地価公示 / 都道府県地価調査).

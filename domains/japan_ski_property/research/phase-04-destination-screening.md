@@ -42,22 +42,33 @@ data**.
 
 `FACT` — Chitose recorded the largest commercial increase nationwide, at **+44.1%** [S2].
 
-`UNVERIFIED` — Reported per-market averages requiring confirmation against MLIT primary data:
+`FACT` (corroborated) — 2026 公示地価 municipal averages, now confirmed by a second independent
+source [S10] agreeing with [S3] to within 0.02 percentage points:
 
-| Market | Avg ¥/m² | Change | Points | Status |
+| Market | Avg ¥/m² | Change | National rank | Regime |
 | --- | --- | --- | --- | --- |
-| Kutchan | 120,750 | +12.32% | — | `UNVERIFIED` |
-| Kutchan (Hirafu benchmark) | 189,000 | +21.9% | 1 | `UNVERIFIED` |
-| Hakuba | 25,557 | +26.9% | 3 | `UNVERIFIED` |
-| Myoko | 19,904 | **−0.78%** | 9 | `UNVERIFIED` |
+| Kutchan / Niseko | 120,750 | +12.33% | 21 | Established, still rising |
+| **Hakuba** | 25,556 | **+26.93%** | **1** | Recovering strongly |
+| **Nozawa Onsen** | 29,350 | **+21.69%** | **2** | Recovering strongly |
+| Furano | 35,760 | +6.73% | 56 | Rising moderately |
+| **Yuzawa** | 28,100 | **−0.44%** | — | Still declining |
+| **Myoko** | 19,904 | **−0.79%** | — | Bottomed but flat |
 
-These came from secondary commentary [S3] summarising the MLIT release. They are directionally
-consistent with the confirmed national ranking facts, but **must be verified point-by-point
-against `JP-MLIT-CHIKA` before use in scoring.**
+Full analysis, including 30-year histories and the within-town spread, is in
+[`../property_market/land-price-regimes.md`](../property_market/land-price-regimes.md). Three
+findings from it change this screen materially:
 
-Note the sample sizes even as reported: Hakuba's +26.9% rests on **three** benchmark points,
-Myoko's decline on **nine**. A three-point average is a signal about three locations, not about
-a valley. This is exactly why Phase 6 decomposes destinations into neighbourhoods.
+1. **Nozawa Onsen is the national #2 performer** and was barely present in the promotional
+   narrative that shaped the first pass. An evidence-led screen surfaces it; a sentiment-led one
+   would not have.
+2. **Yuzawa is a documented 33-year value trap** — down 85% from its 1993 peak and still falling,
+   despite Shinkansen access, snow and cheap stock. It is now the benchmark every cheap candidate
+   must be tested against.
+3. **The within-town price spread (11–14×) is roughly double the between-town spread (~6×).**
+   Choosing the right neighbourhood matters about twice as much as choosing the right town.
+
+Direct MLIT retrieval is still outstanding and is required before these figures support a final
+recommendation.
 
 ### Why this matters
 
@@ -187,24 +198,38 @@ days** of purchase; failure carries penalties up to 6 months imprisonment or ¥5
 
 **Provisional. Based on market-level signals only — no snow, town or property analysis yet.**
 
-### Tier A — established, proven, expensive
+### Tier A — proven appreciation, highest entry cost
 Niseko / Kutchan, Hakuba.
-Strong evidenced appreciation and deep infrastructure. The affordability thesis is hardest here,
-but "expensive" is not "bad": these markets have demonstrated exit liquidity, which most of the
-longlist has not. **Hakuba's lower-cost fringes (Otari, outer valley) are a specific priority**,
-since a +33% village core does not describe the whole valley.
+Deep infrastructure and demonstrated exit liquidity, which most of the longlist lacks. The
+affordability thesis is hardest here — but note that Hakuba remains **54% below its 1995 peak**,
+so "too expensive" is a claim about the last seven years, not the last thirty. **Hakuba's
+lower-cost fringes (Otari, outer valley) are a specific priority**: a +33% benchmark point does
+not describe an 11×-spread valley.
 
-### Tier B — the "emerging" candidates, requiring the most sceptical treatment
-Myoko Kogen, Madarao, Nozawa Onsen.
-Where the thesis is most attractive and the evidence thinnest. Myoko carries a genuine funded
-catalyst and a genuine land-price contradiction simultaneously.
+### Tier A− — promoted on evidence: Nozawa Onsen
+**Moved up from Tier B.** National **#2** for land-price appreciation (+21.69%), with strong
+traditional character and an established onsen town — and materially less promotional coverage
+than Myoko. This is the clearest case in the screen of evidence and narrative pointing in
+different directions. Requires full Phase 5–6 research.
 
-### Tier C — under-researched, no position taken
-Furano, Rusutsu, Kiroro, Moiwa, Appi Kogen, Shiga Kogen, Iiyama, Arai, Yuzawa, other Hokkaido
-and Tohoku markets.
-Absence from this pass reflects **research not yet done**, not adverse findings. Yuzawa in
-particular deserves early attention as a known cheap-resort-apartment market — an obvious test
-of whether cheap and viable coincide.
+### Tier B — the "emerging" candidate, requiring the most sceptical treatment
+Myoko Kogen, Madarao.
+Myoko carries a genuine funded catalyst (PCG) and a genuine land-price contradiction
+simultaneously: bottomed in 2022, up only ~5% since, still negative year-on-year. The case rests
+on **anticipated** repricing. That is a legitimate investment posture, but it must be stated as
+such — and it produces a falsifiable, monitorable prediction (land prices should turn positive as
+2028 approaches).
+
+### Tier C — cautionary benchmark: Yuzawa
+**Moved out of "under-researched".** Down **85% from its 1993 peak** and still falling, with
+Shinkansen access and abundant cheap stock. Not a candidate, but the most useful market on the
+list: **every cheap candidate must answer "what is different here that was not true of
+Yuzawa?"** A market that cannot has not been distinguished from a documented 33-year decline.
+
+### Tier D — under-researched, no position taken
+Furano (+6.73%, moderate riser), Rusutsu, Kiroro, Moiwa, Appi Kogen, Shiga Kogen, Iiyama (which
+contains Madarao), Arai, other Hokkaido and Tohoku markets.
+Absence reflects **research not yet done**, not adverse findings.
 
 ### Not yet searched — required before Phase 4 closes
 Actively discovered towns beyond the named longlist, per master prompt §9. **The screen is not
@@ -253,6 +278,8 @@ Recorded explicitly so that later readers do not over-read this document:
 | S7 | Japanese property tax and ownership guides | 4 | 2026-08-16 | Foreign ownership rights, acquisition costs, MoF reporting. |
 | S8 | Multiple independent property guides | 4 | 2026-08-16 | Corroborates S7 on ownership and costs. |
 | S9 | Minpaku regulation commentary | 4 | 2026-08-16 | 180-day cap, licence categories, municipal ordinance powers. |
+| S10 | tochidai.info — aggregator of official MLIT land-price data | 4 | 2026-08-16 | Municipal 公示地価 averages, change rates, national rankings, 30-year histories, highest/lowest points. Independently corroborates S3. |
+| S11 | MLIT 令和8年地価公示 portal page + Nagano regional reporting | 1–5 | 2026-08-16 | Publication date 令和8年3月18日; benchmark points 白馬-1 (¥27,400/m², +33.0%, prior year +29.6%) and 白馬5-1 (¥40,300/m², +35.2%); MLIT commentary attributing Hakuba's rise to foreign buyers **opening accommodation businesses**. |
 
 **Source-quality caveat.** This pass leans on Tier 4–5 commercial commentary because it was the
 fastest route to a first orientation. Every material figure is flagged accordingly, and Phase 4

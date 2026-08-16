@@ -27,17 +27,38 @@ No install step.
 
 ---
 
-## The two findings that matter so far
+## The findings that matter so far
 
-**1. Narrative and official data disagree about Myoko.**
-Hakuba recorded the largest residential land-price rise in Japan for 2026 (+33.0%) and Kutchan
-continued rising, while Myoko — the market most heavily promoted to exactly this project's buyer
-profile — appears flat to slightly negative on the best figures currently available. That is not
-disqualifying; it may be what a pre-capital market looks like. But it means the Myoko case rests
-on **anticipated** rather than **realised** appreciation.
-→ [`domains/japan_ski_property/research/phase-04-destination-screening.md`](../domains/japan_ski_property/research/phase-04-destination-screening.md)
+**1. Japanese ski land is three markets, not one.** Corroborated across two independent sources
+to within 0.02pp:
 
-**2. The buyer is not the constraint; the licence is.**
+| Regime | Markets (2026 公示地価 change) |
+| --- | --- |
+| Recovering strongly | Hakuba **+26.9%** (national #1), Nozawa Onsen **+21.7%** (#2) |
+| Established, still rising | Kutchan **+12.3%**, Furano **+6.7%** |
+| Flat or still falling | Myoko **−0.79%**, Yuzawa **−0.44%** |
+
+→ [`domains/japan_ski_property/property_market/land-price-regimes.md`](../domains/japan_ski_property/property_market/land-price-regimes.md)
+
+**2. Narrative and official data disagree about Myoko.** The market promoted hardest to exactly
+this project's buyer profile bottomed in 2022, has recovered ~5%, and was still negative in 2026.
+That is not disqualifying — it may be what a pre-capital market looks like — but the Myoko case
+rests on **anticipated** rather than **realised** appreciation. It yields a monitorable
+prediction: land prices should turn positive as the 2028 first stage approaches.
+
+**3. Yuzawa is a documented 33-year value trap, and is now the benchmark.** Down **85%** from its
+1993 peak and *still falling*, despite Shinkansen access, snow and abundant cheap stock. Every
+cheap candidate must now answer: *what is different here that was not true of Yuzawa?* (D-0011)
+
+**4. Nozawa Onsen was under-weighted and has been promoted.** National **#2** for appreciation,
+with a fraction of Myoko's promotional coverage — precisely what an evidence-led screen should
+surface and a sentiment-led one would miss.
+
+**5. Neighbourhood matters about twice as much as town.** Within-town land-price spreads are
+**11.1× in Hakuba** and **14.0× in Myoko**, against ~6× between municipalities. No property may
+be scored on a market-level view alone (D-0012).
+
+**6. The buyer is not the constraint; the licence is.**
 Foreign freehold ownership is unrestricted with no nationality surcharge. What determines the
 business is the operating licence — and the minpaku 180-night cap probably does **not** bind on
 a winter-dominant ski property, whose sellable season is ~100–140 nights. It constrains the
@@ -51,12 +72,15 @@ can designate zero-day lodging zones and varies between neighbouring towns.
 
 In priority order. Each is independently startable.
 
-1. **Replace every `UNVERIFIED` land-price figure with primary MLIT data.** The Phase 4 finding
-   currently rests on secondary commentary published by parties with transactional interests.
-   Until this is done, the headline tension is a lead, not a fact.
+1. **Retrieve land prices directly from MLIT**, upgrading `verification_status` from
+   `CORROBORATED_SECONDARY`. Also retrieve the missing municipalities — Niseko-cho, Shiga
+   Kogen/Yamanouchi, Iiyama (which contains Madarao), Appi/Hachimantai, Rusutsu, Kiroro — and
+   build full year-by-year series with 1/3/5/10-year change and CAGR for survivors.
 2. **Retrieve IPSS municipal population projections** for every longlist town. Depopulation is
    the constraint the marketing omits and applies across rural Japan; it must be measured per
    town, not assumed.
+3. **Research Nozawa Onsen properly.** Newly promoted on evidence; currently the largest gap
+   between what the data says and what has actually been researched.
 3. **Establish the accommodation capacity of the Patience Capital Myoko development.** Until
    room and bed counts are known it cannot enter the forward supply ratio — and a large nearby
    development raises a destination's profile *and* its competing supply at once.

@@ -7,6 +7,43 @@ it**. A decision without a reversal trigger is a belief, not a decision.
 
 ---
 
+## D-0012 · 2026-08-16 · Neighbourhood analysis is mandatory before any property is scored
+
+**Decision.** No property may be scored on a market-level view alone. Every candidate must be
+placed in a named submarket with its own price and convenience characteristics.
+
+**Evidence.** Within-municipality land-price spreads are **11.1× in Hakuba** (¥67,500 vs
+¥6,100/m²) and **14.0× in Myoko** (¥35,800 vs ¥2,550/m²), against a between-municipality spread
+of roughly 6× across the whole longlist. Neighbourhood choice accounts for about twice the
+variance that town choice does. Myoko's cheapest rural parcels are not a discount on Myoko
+Kogen; they are a different and largely unrentable product.
+
+**Confidence.** High — measured directly from official survey points.
+
+**Changes it if:** nothing. This strengthens an existing architectural commitment
+(`neighbourhood.json`) with measured evidence.
+
+---
+
+## D-0011 · 2026-08-16 · Yuzawa is the benchmark every cheap market must be tested against
+
+**Decision.** Any market proposed as cheap-and-undervalued must explicitly answer: *what is
+different here that was not true of Yuzawa?* A candidate that cannot answer it is not treated as
+distinguished from a documented long-run decline.
+
+**Evidence.** Yuzawa has fallen **85% from its 1993 peak** (¥190,062 → ¥28,100/m²) and was
+**still falling in 2026** (−0.44%) — despite direct Shinkansen access from Tokyo, extensive
+terrain, onsen, and abundant cheap apartment stock. It scores well on every naive screening
+criterion this project might use. Bubble-era oversupply into a shrinking domestic market has not
+cleared in three decades.
+
+**Confidence.** High.
+
+**Changes it if:** nothing. Yuzawa may itself become interesting if the overhang finally clears —
+that would be a finding, not a reason to drop the test.
+
+---
+
 ## D-0010 · 2026-08-16 · Minpaku-only status constrains diversification, not the core case
 
 **Decision.** A property limited to the 180-night minpaku regime is **not** treated as

@@ -105,6 +105,8 @@ date, access date, what was extracted, and reliability tier.
 | `SEC-PROPERTY-COMMENTARY` | various | Multiple property commentators | 2026 | 2026-08-16 | Per-market land-price averages (Kutchan, Hakuba, Myoko) and the Myoko population projection. **All `UNVERIFIED`** pending MLIT and IPSS primary data. | 5 |
 | `SEC-MOTHERSHIP-PCG` | `mothership.sg` | Mothership.SG | 2025-03 | 2026-08-16 | Patience Capital Group Myoko development: 350 ha, ~US$1.4bn/S$1.8bn, first stage 2028, up to ¥70bn, ¥35bn raised incl. Mizuho, Pavilion Capital. | 5 |
 | `SEC-JP-REGULATION` | various | Japanese property and lodging-law commentators | 2026 | 2026-08-16 | Foreign ownership unrestricted; acquisition costs ~6–8%; MoF report within 20 days; minpaku 180-night cap; 旅館業法 licence classes; municipal ordinance powers incl. zero-day zones. | 4 |
+| `AGG-TOCHIDAI` | `tochidai.info` | tochidai.info | 2026 | 2026-08-16 | Aggregator republishing official MLIT land-price data by municipality. Supplied 2026 公示地価 averages, change rates, national rankings, highest/lowest survey points and 30-year histories for Hakuba, Myoko, Yuzawa, Nozawa, Kutchan, Furano. **Corroborates `SEC-PROPERTY-COMMENTARY` to within 0.02pp.** Aggregator, not the ministry — direct MLIT retrieval still required. | 4 |
+| `MLIT-CHIKA-PORTAL` | `mlit.go.jp/page/kanbo01_hy_010767.html` | MLIT | 2026-03-18 | 2026-08-16 | 令和8年地価公示 portal. Benchmark points 白馬-1 (¥27,400/m², +33.0%; prior year +29.6%) and 白馬5-1 (¥40,300/m², +35.2%). MLIT commentary attributes Hakuba's rise to overseas buyers purchasing homes and **opening accommodation businesses**. | 1 |
 
 ---
 
