@@ -14,8 +14,8 @@ phase waits unnecessarily on another if useful work can proceed (master prompt �
 | # | Phase | Status | Output location |
 | --- | --- | --- | --- |
 | 1 | Architecture and foundational repository | `DONE` | repo root, `ARCHITECTURE.md` |
-| 2 | Reusable core schemas | `ACTIVE` | `schemas/core/`, `core/models/` |
-| 3 | Japan ski-property domain schemas | `ACTIVE` | `schemas/domains/japan_ski_property/` |
+| 2 | Reusable core schemas | `DONE` | `schemas/core/`, `core/models/` |
+| 3 | Japan ski-property domain schemas | `DONE` | `schemas/domains/japan_ski_property/` |
 | 4 | Japan-wide destination screening | `ACTIVE` | `domains/japan_ski_property/research/` |
 | 5 | Ski / snow analysis | `PENDING` | `domains/japan_ski_property/research/` |
 | 6 | Town, vibe and micro-location analysis | `PENDING` | `town_profiles/`, `neighbourhoods/` |
@@ -24,7 +24,7 @@ phase waits unnecessarily on another if useful work can proceed (master prompt �
 | 9 | Business and economic activity | `PENDING` | `business_activity/` |
 | 10 | Off-season economy | `PENDING` | `research/` |
 | 11 | Infrastructure and development pipeline | `PENDING` | `infrastructure/` |
-| 12 | Regulation | `PENDING` | `regulation/` |
+| 12 | Regulation | `PARTIAL` | `regulation/` |
 | 13 | Property collection | `PENDING` | `properties/`, `data/property-listings/` |
 | 14 | Renovation and construction costs | `PENDING` | `renovation/` |
 | 15 | Inspector and contractor network | `PENDING` | `inspectors/` |
@@ -46,13 +46,13 @@ Two-layer architecture, directory structure, core documentation, dependency poli
 remote workflow established.
 **Fails if:** the core/domain boundary is not enforceable, or the repo depends on one machine.
 
-### Phase 2 — Reusable core schemas · `ACTIVE`
+### Phase 2 — Reusable core schemas · `DONE`
 Domain-agnostic contracts: `source`, `observation`, `entity`, `asset`, `snapshot`, `event`,
 `market_catalyst`, `value_add_project`, `location_metric`, `market_indicator`, `risk_factor`,
 `score`, `financial_model`. Provenance and confidence built in at record level.
 **Fails if:** a domain concept leaks into core, or an observation can exist without a source.
 
-### Phase 3 — Japan ski-property domain schemas · `ACTIVE`
+### Phase 3 — Japan ski-property domain schemas · `DONE`
 Specialisations: property listing (with full attribute set from master prompt §20), town
 profile, neighbourhood, ski area, renovation budget, development project, management provider,
 inspector.
@@ -107,7 +107,7 @@ Shinkansen, airports, air routes. Every project status-classified on the ladder 
 scored above its status. Forward accommodation supply by town.
 **Fails if:** a rumour is counted like a funded project.
 
-### Phase 12 — Regulation · `PENDING`
+### Phase 12 — Regulation · `PARTIAL`
 Foreign ownership, freehold/leasehold, minpaku and the 180-day limit, Hotel Business Act, hotel
 / ryokan / simple-lodging licences, municipal restrictions, zoning, fire, evacuation, food
 service, change of use, licence transferability, taxation, GK structures, visas, and financing

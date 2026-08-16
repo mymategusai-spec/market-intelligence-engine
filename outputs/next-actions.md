@@ -2,23 +2,48 @@
 
 **Last updated:** 2026-08-16
 **Branch:** `main`
-**Current phase:** 2–4 (core schemas, domain schemas, destination screening)
-**Overall status:** Foundations built. Research beginning. **No investment conclusion reached.**
+**Current phases:** 4 (destination screening, active) · 12 (regulation, partial)
+**Overall status:** Foundations complete. Research under way. **No investment conclusion
+reached, and none should be inferred from anything in this repository.**
 
-This is the handoff file. An agent picking up this repository should read this first, then
-`prompts/master-prompt.md`, then `PROJECT_BRIEF.md` and `RESEARCH_PLAN.md`.
+This is the handoff file. Read it first, then `prompts/master-prompt.md`, `PROJECT_BRIEF.md`
+and `RESEARCH_PLAN.md`.
 
 ---
 
 ## Where the project stands
 
-Phase 1 is complete: the two-layer architecture, repository structure, dependency policy and
-foundational documentation are in place, and the owner's master prompt is saved as the
-authoritative brief.
+| Phase | Status |
+| --- | --- |
+| 1 — Architecture and foundations | `DONE` |
+| 2 — Core schemas and engine | `DONE` — 104 tests, stdlib only |
+| 3 — Domain module `japan_ski_property` | `DONE` |
+| 4 — Destination screening | `ACTIVE` — first pass written |
+| 12 — Regulation | `PARTIAL` — brought forward because it is gating |
+| 5–11, 13–23 | `PENDING` |
 
-Nothing has been researched yet. The source register is populated with identified official
-sources, but every row is `CANDIDATE` — **none has been accessed, and nothing in it may be
-cited as evidence yet.**
+Run the tests with `python3 -m unittest discover -s tests -t . -v` from the repository root.
+No install step.
+
+---
+
+## The two findings that matter so far
+
+**1. Narrative and official data disagree about Myoko.**
+Hakuba recorded the largest residential land-price rise in Japan for 2026 (+33.0%) and Kutchan
+continued rising, while Myoko — the market most heavily promoted to exactly this project's buyer
+profile — appears flat to slightly negative on the best figures currently available. That is not
+disqualifying; it may be what a pre-capital market looks like. But it means the Myoko case rests
+on **anticipated** rather than **realised** appreciation.
+→ [`domains/japan_ski_property/research/phase-04-destination-screening.md`](../domains/japan_ski_property/research/phase-04-destination-screening.md)
+
+**2. The buyer is not the constraint; the licence is.**
+Foreign freehold ownership is unrestricted with no nationality surcharge. What determines the
+business is the operating licence — and the minpaku 180-night cap probably does **not** bind on
+a winter-dominant ski property, whose sellable season is ~100–140 nights. It constrains the
+four-season upside instead. The genuinely open risk is the **municipal ordinance layer**, which
+can designate zero-day lodging zones and varies between neighbouring towns.
+→ [`domains/japan_ski_property/regulation/regulatory-baseline.md`](../domains/japan_ski_property/regulation/regulatory-baseline.md)
 
 ---
 
@@ -26,80 +51,85 @@ cited as evidence yet.**
 
 In priority order. Each is independently startable.
 
-1. **Finish Phase 2 — core schemas.** Author `schemas/core/*.json` for `source`, `observation`,
-   `entity`, `asset`, `snapshot`, `event`, `market_catalyst`, `value_add_project`,
-   `location_metric`, `market_indicator`, `risk_factor`, `score`, `financial_model`. Mirror in
-   `core/models/` dataclasses. Enforce: no observation without a `source_id`; FX carries rate
-   and rate date.
-2. **Finish Phase 3 — domain schemas.** `property`, `town_profile`, `neighbourhood`, `ski_area`,
-   `renovation_budget`, `development_project`, `management_provider`, `inspector`. The property
-   schema must carry the full attribute set from master prompt §20 including first/last seen and
-   listing status.
-3. **Phase 4 — destination screening.** Screen the longlist and actively discover overlooked
-   towns. Record every claim with provenance. Do **not** assume Myoko.
-4. **Verify source access.** For each Tier 1 source, confirm the URL, check access method and
-   record it as `ACCESSED` in `SOURCES.md`. Prioritise `JP-JMA-SNOW` (snow reality vs marketing
-   claims), `JP-MLIT-TORIHIKI` (transaction vs asking prices) and `JP-JTA-SHUKUHAKU`
-   (accommodation demand).
-5. **Check portal terms before any automated collection.** Phase 13's design depends on what
-   robots.txt and site terms permit. Establish this early — it may constrain the whole
-   collection approach.
-6. **Write the boundary test** (`tests/test_core_is_domain_agnostic.py`) before `core/` grows.
-   Enforcing the rule after the fact is much harder.
+1. **Replace every `UNVERIFIED` land-price figure with primary MLIT data.** The Phase 4 finding
+   currently rests on secondary commentary published by parties with transactional interests.
+   Until this is done, the headline tension is a lead, not a fact.
+2. **Retrieve IPSS municipal population projections** for every longlist town. Depopulation is
+   the constraint the marketing omits and applies across rural Japan; it must be measured per
+   town, not assumed.
+3. **Establish the accommodation capacity of the Patience Capital Myoko development.** Until
+   room and bed counts are known it cannot enter the forward supply ratio — and a large nearby
+   development raises a destination's profile *and* its competing supply at once.
+4. **Pull JMA measured snowfall** for candidate towns and compare against marketed figures. The
+   schema already stores both separately; the station's distance and elevation must be recorded
+   with each figure.
+5. **Check municipal minpaku ordinances** for Myoko, Hakuba, Nozawa, Madarao and Kutchan.
+6. **Research the towns nobody is marketing.** Yuzawa first — a known cheap resort-apartment
+   market and a clean test of whether cheap and viable coincide. Phase 4 cannot close until the
+   screen has looked where the marketing does not.
+7. **Check portal robots.txt and terms** before designing any Phase 13 collector. This may
+   constrain the whole collection approach, so establish it before building.
 
 ---
 
 ## Known blockers
 
-| Blocker | Impact | Workaround in use |
+| Blocker | Impact | Status |
 | --- | --- | --- |
-| `gh` CLI token invalid | No PR/issue/API operations via `gh` | None needed — `git push` works via keychain; fix with `gh auth login -h github.com` when convenient |
-| No Python package manager or index access in the sandbox | Cannot install third-party libraries | **Resolved by design** — stdlib-only core (`DECISIONS.md` D-0002) |
-| Portal terms unverified | Phase 13 collection design cannot be finalised | Verify robots.txt and terms before building any collector |
+| MLIT per-municipality land-price detail not in the press release | Phase 4's main finding stays `UNVERIFIED` | Detail pages and the Real Estate Information Library identified; retrieval is the next step |
+| Japan Today returns HTTP 403 | One Myoko source unavailable | Worked around — same wire story via Financial Express; recorded in `SOURCES.md` |
+| `gh` CLI token invalid | No PR/issue/API via `gh` | Not blocking — `git push` works via keychain. Fix with `gh auth login -h github.com` |
+| No package manager or index access | Cannot install third-party libraries | **Resolved by design** — stdlib-only core (D-0002) |
 
 ---
 
 ## Requires owner approval
 
-Never actioned autonomously (master prompt §53). Nothing here is currently blocking research.
+Never actioned autonomously (master prompt §53).
 
-| Item | Why it needs approval | When it will matter |
+| Item | Why it needs approval | Blocking? |
 | --- | --- | --- |
-| Contacting agents, sellers, inspectors, contractors | External contact with real people | Phase 15/16, and before any inspection |
-| Purchasing paid data sources | Spends money | If Phase 7/13 finds material data is paywalled — candidates will be listed in `SOURCES.md` |
-| Creating paid cloud resources | Spends money | Only if the static dashboard proves insufficient (D-0007) |
-| Any property transaction step | Financial commitment | Not applicable at this stage |
+| **MLIT Real Estate Information Library API registration** | Free, but creates an account in the owners' name — an external commitment. Would give programmatic access to **actual transaction prices** from Q3 2005, the highest-value dataset for Phases 7, 13 and 22 | **No** — the same data is browsable without the API. It slows research, it does not stop it |
+| Contacting agents, sellers, inspectors, contractors | External contact with real people | No — not needed until Phase 15/16 |
+| Purchasing paid data | Spends money | No — none identified as necessary yet |
+| Creating paid cloud resources | Spends money | No — the dashboard is designed to be static and free (D-0007) |
 
 ---
 
 ## Open questions for the owner
 
-None blocking. Recorded for when convenient:
+None blocking. Both would sharpen the work when convenient:
 
-- **Capital ceiling.** Currently assumed open-ended (`ASSUMPTIONS.md` A3). A rough ceiling would
-  sharpen screening considerably, but the engine will derive shoestring/sensible/strong
-  requirements regardless.
-- **Return vs lifestyle weighting.** The scoring axes are adjustable by design; owner
-  preferences would set sensible defaults rather than neutral ones.
+- **Capital ceiling.** Currently open-ended (`ASSUMPTIONS.md` A3). The engine will derive
+  shoestring / sensible / strong requirements regardless, but a rough ceiling would focus
+  screening considerably.
+- **Return vs lifestyle weighting.** Five weight profiles exist and are fully adjustable.
+  `balanced` is being used as a neutral default and is explicitly flagged as *not* the owners'
+  stated preference.
 
 ---
 
 ## Standing rules for whoever works next
 
 - Do not delete historical observations. Append.
-- Do not present an `ESTIMATE` as a `FACT`, or cite a `CANDIDATE` source as evidence.
+- Do not cite a `CANDIDATE` source as evidence, or present an `ESTIMATE` as a `FACT`.
 - Do not let a proposed development score like a funded one.
-- Do not assume a residential property can legally be operated as commercial accommodation.
-- Search Japanese-language sources, not only English ones.
+- Do not assume a residential property can lawfully be operated as commercial accommodation.
+- Treat commentary from brokerages and developers as conflicted (D-0009); label it, use it, do
+  not rely on it alone.
+- Search Japanese-language sources. English-only research systematically over-weights the
+  internationalised markets — the ones least likely to be undervalued.
 - Commit and push to `origin/main` after every meaningful work unit.
 - Update this file, `CHANGELOG.md`, `SOURCES.md`, `ASSUMPTIONS.md` and `DECISIONS.md` as work
-  proceeds — not in a batch at the end.
+  proceeds, not in a batch at the end.
 
 ---
 
 ## Session log
 
-**2026-08-16 —** Intake blocker (master prompt absent) recorded, then resolved when the owner
-supplied the brief. Master prompt saved. Phase 1 completed: architecture, structure,
-documentation, dependency policy, source register, assumptions and decision log. Phases 2–4
-started.
+**2026-08-16 —** Intake blocker resolved when the owner supplied the master prompt. Phases 1–3
+completed: architecture, core schemas and engine logic (104 tests), and the
+`japan_ski_property` domain module with its scoring configuration. Phase 4 first pass written,
+surfacing the narrative-versus-data tension on Myoko and the conflicted-source problem. Phase 12
+brought forward, resolving foreign ownership favourably and identifying the municipal ordinance
+layer as the largest open regulatory risk.

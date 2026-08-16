@@ -38,7 +38,7 @@ now a fact) · `RETIRED` (shown false or no longer relevant)
 | --- | --- | --- | --- | --- | --- |
 | C1 | Local management will be required | `HELD` | High | Owners remain in Australia (A5) | Owners appoint an on-site partner or relocate |
 | C2 | Competent local management can actually be procured in the chosen market | `TESTING` | **Low** | Assumed pending Phase 16 | Phase 16 finds no providers → market may be disqualified |
-| C3 | Commercial accommodation operation is legally achievable for the asset type and market | `TESTING` | **Low** | Assumed pending Phase 12 | Phase 12 licensing research — this is a gating assumption |
+| C3 | Commercial accommodation operation is legally achievable for the asset type and market | `TESTING` | **Low–Medium** | Partly evidenced 2026-08-16: foreign freehold ownership is unrestricted, and a lawful national path to unlimited operation exists via a 旅館業法 licence. See [regulatory baseline](domains/japan_ski_property/regulation/regulatory-baseline.md) | The **municipal** layer, which is where this can still fail: local ordinances can designate zero-day lodging zones. Must be checked per town |
 | C4 | Tourism revenue can materially support ownership costs | `TESTING` | **Low** | This is the thesis, not a premise | Phase 17 modelling |
 
 ## D. Finance
@@ -64,7 +64,8 @@ now a fact) · `RETIRED` (shown false or no longer relevant)
 
 | ID | Assumption | Status | Confidence | Basis | What would change it |
 | --- | --- | --- | --- | --- | --- |
-| F1 | Public, permitted sources provide enough data for a defensible conclusion | `TESTING` | Medium | Assumed pending Phases 4–13 | Material data available only from paid providers → owner decision required |
+| F1 | Public, permitted sources provide enough data for a defensible conclusion | `TESTING` | Medium–High | Strengthened 2026-08-16: MLIT publishes actual transaction prices and land values free, and JMA publishes measured snowfall free. The highest-value datasets are public | Material data proving available only from paid providers → owner decision required |
+| F6 | Accessible English-language commentary on Japanese ski property is systematically biased toward markets its publishers transact in | `HELD` | Medium | Observed 2026-08-16: the most prominent "emerging market" commentary is published by brokerages and developers with direct interests. See Phase 4 screening §3 | Discovery of substantial independent English-language coverage; or Japanese-language sources showing the same emphasis |
 | F2 | Committed files are sufficient as a datastore at this volume | `HELD` | Medium | `ARCHITECTURE.md` §5 | Volume or query needs justify a DuckDB index over the files |
 | F3 | Asking prices are a usable but biased proxy where transaction data is unavailable | `HELD` | Medium | Standard practice; Japanese transaction data is limited | Access to reliable transaction-level data |
 | F4 | Historical listing records will become valuable comparable evidence | `HELD` | Medium | Master prompt §55 | — (drives the append-only rule) |

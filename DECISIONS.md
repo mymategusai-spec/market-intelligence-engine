@@ -7,6 +7,49 @@ it**. A decision without a reversal trigger is a belief, not a decision.
 
 ---
 
+## D-0010 · 2026-08-16 · Minpaku-only status constrains diversification, not the core case
+
+**Decision.** A property limited to the 180-night minpaku regime is **not** treated as
+disqualified. It is scored down on `off_season_demand` and `capital_growth_potential`, while its
+core winter case is scored normally. A transferable 旅館業法 licence is scored as a significant
+positive.
+
+**Evidence.** The 180-night cap is widely described as crippling, but a Japanese ski season runs
+roughly December to early April — on the order of 100–140 sellable nights. A winter-dominant
+property is unlikely to reach 180 nights of *demand*, so the cap does not bind on core trading.
+What it forecloses is the four-season upside the brief asks about in §19.
+
+**Confidence.** Medium. The reasoning is sound but rests on a seasonal-demand estimate, not on
+observed occupancy data for a specific town.
+
+**Changes it if:** Phase 8 occupancy data shows achievable winter-plus-shoulder nights
+approaching or exceeding 180 in a candidate market — in which case the cap becomes binding and
+this decision must be revisited for that market.
+
+---
+
+## D-0009 · 2026-08-16 · Weight commentary by the publisher's transactional interest
+
+**Decision.** Sources publishing on markets in which they transact are registered with an
+explicit conflict note, capped at Tier 4–5, and may not alone support a material investment
+claim. Where a market's attractiveness is asserted mainly by such sources, that fact is reported
+as part of the finding.
+
+**Evidence.** Phase 4 screening found that the most prominent English-language commentary
+promoting "emerging" Japanese ski markets is published by brokerages and developers — including
+a land-price commentary site sharing a name with the developer of the largest project in the
+market it highlights. Meanwhile the best available official land-price data for that same market
+is flat to slightly negative. Screening on accessible sentiment would have selected for
+marketing spend rather than fundamentals.
+
+**Confidence.** High. This is standard source-criticism, and the specific conflict was directly
+observed.
+
+**Changes it if:** nothing. Conflicted sources remain useful — they are often first to real
+information — but they are labelled.
+
+---
+
 ## D-0008 · 2026-08-16 · Screening must actively discover unfashionable markets
 
 **Decision.** Phase 4 screening treats the master prompt's named longlist as a starting point,

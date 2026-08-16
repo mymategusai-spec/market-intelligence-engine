@@ -98,7 +98,13 @@ date, access date, what was extracted, and reliability tier.
 
 | ID | URL | Publisher | Published | Accessed | Extracted | Tier |
 | --- | --- | --- | --- | --- | --- | --- |
-| *(none yet — Phase 4 in progress)* | | | | | | |
+| `JP-MLIT-CHIKA` | `mlit.go.jp/report/press/tochi_fudousan_kensetsugyo04_hh_000001_00074.html` | MLIT | 2026-03-17 | 2026-08-16 | 令和8年地価公示 press release: 26,000 survey points; all-use, residential and commercial each rose for a 5th consecutive year. **Per-municipality figures are not in the release** — they are in the linked detail pages, still to be retrieved. | 1 |
+| `JP-MLIT-REINFOLIB` | `reinfolib.mlit.go.jp` | MLIT | — | 2026-08-16 | Real Estate Information Library. Confirms an official **API since April 2024** covering published land prices, prefectural land surveys, **actual transaction prices** (from Q3 2005) and urban planning data, all 47 prefectures, free. **API use requires an application.** | 1 |
+| `JP-JMA-SNOW` | `data.jma.go.jp/risk/obsdl/` and `data.jma.go.jp/stats/etrn/` | Japan Meteorological Agency | — | 2026-08-16 | Confirms downloadable historical station data including snow depth (積雪深) and cumulative snowfall, with CSV export. This is the antidote to marketed snowfall claims. | 1 |
+| `SEC-PATIENCE-REALTY` | `patiencerealty.com` | Patience Realty | 2026 | 2026-08-16 | 2026 land prices: Hakuba Village **+33.0%** largest residential rise nationwide; Chitose **+44.1%** largest commercial. **Conflict: a brokerage with transactional interest; shares a name with the Myoko developer.** | 4 |
+| `SEC-PROPERTY-COMMENTARY` | various | Multiple property commentators | 2026 | 2026-08-16 | Per-market land-price averages (Kutchan, Hakuba, Myoko) and the Myoko population projection. **All `UNVERIFIED`** pending MLIT and IPSS primary data. | 5 |
+| `SEC-MOTHERSHIP-PCG` | `mothership.sg` | Mothership.SG | 2025-03 | 2026-08-16 | Patience Capital Group Myoko development: 350 ha, ~US$1.4bn/S$1.8bn, first stage 2028, up to ¥70bn, ¥35bn raised incl. Mizuho, Pavilion Capital. | 5 |
+| `SEC-JP-REGULATION` | various | Japanese property and lodging-law commentators | 2026 | 2026-08-16 | Foreign ownership unrestricted; acquisition costs ~6–8%; MoF report within 20 days; minpaku 180-night cap; 旅館業法 licence classes; municipal ordinance powers incl. zero-day zones. | 4 |
 
 ---
 
@@ -106,7 +112,7 @@ date, access date, what was extracted, and reliability tier.
 
 | ID | Source | Reason | Alternative pursued |
 | --- | --- | --- | --- |
-| *(none recorded yet)* | | | |
+| `SEC-JAPANTODAY` | Japan Today article on foreign investment in Myoko | **HTTP 403** on direct fetch (2026-08-16) | Same wire story carried by The Financial Express; substance captured via search summary. Claim recorded at Tier 5 with the access failure noted. |
 
 Blockers are recorded rather than worked around silently. Where a source is unavailable, the
 alternative pursued is named, so a later reader can judge whether a gap in the evidence is a
@@ -122,4 +128,10 @@ to decide.
 
 | Source | What it would add | Indicative cost | Status |
 | --- | --- | --- | --- |
-| *(none identified yet)* | | | |
+| *(no paid source identified yet)* | | | |
+
+### Free, but requiring registration — owner decision
+
+| Source | What it would add | What it requires | Status |
+| --- | --- | --- | --- |
+| `JP-MLIT-REINFOLIB` API | Programmatic access to **actual transaction prices** (not asking prices) from Q3 2005, published land prices and prefectural land surveys, all 47 prefectures — the single highest-value dataset for Phases 7, 13 and 22 | A **free API application** to MLIT, which means creating an account in the owners' name | **Awaiting owner approval.** Registering an account is an external commitment made on the owners' behalf and is not done autonomously. The same data is browsable without the API, so research is not blocked — only slowed. |
