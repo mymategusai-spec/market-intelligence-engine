@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/market_indicator.json",
+  "title": "Market indicator",
+  "description": "A derived, comparable measure of a market's state or trajectory, computed from observations. Indicators are always regenerable from committed data — the method is stored with the value so any figure can be recomputed and audited.",
+  "type": "object",
+
+  "properties": {
+    "indicator_id": { "type": "string" },
+    "domain": { "$ref": "common.json#/$defs/domain_id" },
+    "market_entity_id": { "type": "string" },
+
+    "indicator_key": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "e.g. median_asking_price, median_price_per_m2, forward_supply_ratio, visitor_nights_growth, median_days_on_market."
+    },
+    "label": { "type": "string" },
+
+    "as_of": { "$ref": "common.json#/$defs/iso_date" },
+    "period": {
+      "type": ["object", "null"],
+      "properties": {
+        "start": { "$ref": "common.json#/$defs/iso_date" },
+        "end": { "$ref": "common.json#/$defs/iso_date" }
+      },
+      "required": ["start", "end"],
+      "additionalProperties": false
+    },
+
+    "value": { "type": ["number", "null"] },
+    "units": { "$ref": "common.json#/$defs/unit" },
+    "money_value": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+
+    "changes": {
+      "type": ["object", "null"],
+      "description": "Standard change windows. Null where the series is too short — never extrapolated to fill a gap.",
+      "properties": {
+        "change_1y_percent": { "type": ["number", "null"] },
+        "change_3y_percent": { "type": ["number", "null"] },
+        "change_5y_percent": { "type": ["number", "null"] },
+        "change_10y_percent": { "type": ["number", "null"] },
+        "cagr_percent": { "type": ["number", "null"] },
+        "cagr_years": { "type": ["number", "null"] }
+      },
+      "additionalProperties": false
+    },
+
+    "trend_classification": {
+      "type": ["string", "null"],
+      "enum": ["accelerating", "steadily_growing", "flat", "declining", "volatile", "insufficient_data", null]
+    },
+
+    "method": {
+      "type": "string",
+      "description": "How the indicator was computed, precisely enough to reproduce it."
+    },
+    "sample_size": { "type": ["integer", "null"], "minimum": 0 },
+    "source_observation_ids": { "type": "array", "items": { "type": "string" } },
+
+    "caveats": {
+      "type": ["string", "null"],
+      "description": "e.g. asking prices are not transaction prices; small sample; proxy measure used in place of direct data."
+    },
+    "confidence": { "$ref": "common.json#/$defs/confidence" },
+    "claim_type": { "$ref": "common.json#/$defs/claim_type" },
+    "meta": { "$ref": "common.json#/$defs/record_meta" }
+  },
+
+  "required": ["indicator_id", "domain", "market_entity_id", "indicator_key", "as_of", "units", "method", "confidence", "claim_type", "meta"],
+  "additionalProperties": false
+}

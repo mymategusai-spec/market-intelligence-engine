@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/observation.json",
+  "title": "Observation",
+  "description": "A single measured or reported value about a subject at a point in time. The atom of the evidence store. An observation without a source is invalid — this is the rule that makes every downstream number auditable.",
+  "type": "object",
+
+  "properties": {
+    "observation_id": { "type": "string" },
+    "domain": { "$ref": "common.json#/$defs/domain_id" },
+
+    "subject_type": {
+      "type": "string",
+      "enum": ["entity", "asset", "market", "catalyst", "value_add_project", "indicator", "other"]
+    },
+    "subject_id": { "type": "string", "description": "ID of the entity, asset or market observed." },
+
+    "metric": {
+      "type": "string",
+      "description": "Domain-defined metric key, e.g. annual_snowfall_cm, median_land_price_per_m2, asking_price, overnight_stays.",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "metric_label": { "type": ["string", "null"] },
+
+    "observed_at": {
+      "$ref": "common.json#/$defs/iso_date",
+      "description": "The date the value refers to — not the date it was retrieved."
+    },
+    "period": {
+      "type": ["object", "null"],
+      "description": "For values covering a span rather than an instant.",
+      "properties": {
+        "start": { "$ref": "common.json#/$defs/iso_date" },
+        "end": { "$ref": "common.json#/$defs/iso_date" },
+        "granularity": { "type": "string", "enum": ["day", "month", "quarter", "season", "year", "multi_year"] }
+      },
+      "required": ["start", "end"],
+      "additionalProperties": false
+    },
+
+    "original_value": {
+      "type": ["number", "string", "boolean", "null"],
+      "description": "The value exactly as published, before any transformation."
+    },
+    "original_units": { "$ref": "common.json#/$defs/unit" },
+
+    "normalised_value": { "type": ["number", "string", "boolean", "null"] },
+    "normalised_units": { "oneOf": [{ "$ref": "common.json#/$defs/unit" }, { "type": "null" }] },
+
+    "money_value": {
+      "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }],
+      "description": "Used instead of numeric value when the observation is monetary, so currency and FX travel with it."
+    },
+
+    "transformation": { "oneOf": [{ "$ref": "common.json#/$defs/transformation" }, { "type": "null" }] },
+
+    "provenance": { "$ref": "common.json#/$defs/provenance" },
+
+    "value_is_range": { "type": "boolean", "default": false },
+    "range_low": { "type": ["number", "null"] },
+    "range_high": { "type": ["number", "null"] },
+
+    "is_missing": {
+      "type": "boolean",
+      "default": false,
+      "description": "True where the value is genuinely unavailable. Missing data is recorded as missing, never invented."
+    },
+    "missing_reason": { "type": ["string", "null"] },
+
+    "meta": { "$ref": "common.json#/$defs/record_meta" }
+  },
+
+  "required": ["observation_id", "domain", "subject_type", "subject_id", "metric", "observed_at", "provenance", "meta"],
+  "additionalProperties": false,
+
+  "allOf": [
+    {
+      "if": { "properties": { "is_missing": { "const": false } } },
+      "then": {
+        "anyOf": [
+          { "required": ["original_value"], "properties": { "original_value": { "not": { "type": "null" } } } },
+          { "required": ["money_value"], "properties": { "money_value": { "not": { "type": "null" } } } }
+        ],
+        "description": "A non-missing observation must carry a value."
+      }
+    },
+    {
+      "if": { "properties": { "is_missing": { "const": true }, "missing_reason": { "type": "null" } } },
+      "then": { "required": ["missing_reason"] }
+    },
+    {
+      "if": { "properties": { "value_is_range": { "const": true } } },
+      "then": { "required": ["range_low", "range_high"] }
+    }
+  ]
+}

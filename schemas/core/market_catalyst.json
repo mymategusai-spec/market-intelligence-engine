@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/market_catalyst.json",
+  "title": "Market catalyst",
+  "description": "A forward-looking development that could change a market: infrastructure, transport, accommodation supply, public or private investment. Generic by design — a new gondola, a rail extension and a hotel are all catalysts. The status ladder is the point of this schema: a rumour must never be scored like a funded project.",
+  "type": "object",
+
+  "properties": {
+    "catalyst_id": { "type": "string" },
+    "domain": { "$ref": "common.json#/$defs/domain_id" },
+
+    "name": { "type": "string" },
+    "name_original_language": { "type": ["string", "null"] },
+    "catalyst_type": {
+      "type": "string",
+      "description": "Domain-defined, e.g. hotel, lodge, dwellings, subdivision, resort_expansion, lift, gondola, road, rail, airport, air_route, tourism_infrastructure, public_investment.",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+
+    "market_entity_id": { "type": ["string", "null"] },
+    "submarket_entity_id": { "type": ["string", "null"] },
+    "location": { "oneOf": [{ "$ref": "common.json#/$defs/geo_point" }, { "type": "null" }] },
+
+    "status": {
+      "type": "string",
+      "enum": ["rumoured", "proposed", "announced", "planning", "approved", "funded", "under_construction", "completed", "cancelled", "unknown"],
+      "description": "Position on the development ladder. Confidence weight per status lives in config, so pipeline totals cannot silently overstate future supply."
+    },
+    "status_history": {
+      "type": "array",
+      "description": "Append-only record of status transitions with evidence.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string" },
+          "as_of": { "$ref": "common.json#/$defs/iso_date" },
+          "source_id": { "type": "string" },
+          "note": { "type": ["string", "null"] }
+        },
+        "required": ["status", "as_of", "source_id"],
+        "additionalProperties": false
+      }
+    },
+
+    "developer": { "type": ["string", "null"] },
+    "investor": { "type": ["string", "null"] },
+    "estimated_value": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+
+    "capacity": {
+      "type": ["object", "null"],
+      "description": "What this catalyst adds to supply, where it adds accommodation. Feeds the forward supply ratio.",
+      "properties": {
+        "rooms": { "type": ["integer", "null"], "minimum": 0 },
+        "keys": { "type": ["integer", "null"], "minimum": 0 },
+        "beds": { "type": ["integer", "null"], "minimum": 0 },
+        "residential_units": { "type": ["integer", "null"], "minimum": 0 },
+        "capacity_is_estimated": { "type": "boolean", "default": false }
+      },
+      "additionalProperties": false
+    },
+
+    "date_announced": { "oneOf": [{ "$ref": "common.json#/$defs/iso_date" }, { "type": "null" }] },
+    "expected_completion": { "oneOf": [{ "$ref": "common.json#/$defs/iso_date" }, { "type": "null" }] },
+    "expected_completion_confidence": { "$ref": "common.json#/$defs/confidence" },
+    "latest_update": { "oneOf": [{ "$ref": "common.json#/$defs/iso_date" }, { "type": "null" }] },
+
+    "expected_impact": {
+      "type": ["string", "null"],
+      "description": "How this would change the market if delivered. Reasoned, not asserted."
+    },
+
+    "provenance": { "$ref": "common.json#/$defs/provenance" },
+    "notes": { "type": ["string", "null"] },
+    "meta": { "$ref": "common.json#/$defs/record_meta" }
+  },
+
+  "required": ["catalyst_id", "domain", "name", "catalyst_type", "status", "provenance", "meta"],
+  "additionalProperties": false
+}

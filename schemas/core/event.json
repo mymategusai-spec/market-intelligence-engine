@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/event.json",
+  "title": "Event",
+  "description": "A typed, dated, evidenced change. Snapshots are the engine's memory of state; events are its memory of change. Both are kept, because a price of X tells you far less than a fall from Y to X over N days.",
+  "type": "object",
+
+  "properties": {
+    "event_id": { "type": "string" },
+    "domain": { "$ref": "common.json#/$defs/domain_id" },
+
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "asset_listed", "asset_price_reduced", "asset_price_increased",
+        "asset_removed", "asset_relisted", "asset_likely_sold", "asset_confirmed_sold",
+        "catalyst_announced", "catalyst_status_changed", "catalyst_cancelled", "catalyst_completed",
+        "supply_added", "supply_removed",
+        "regulation_changed",
+        "statistical_release",
+        "business_opened", "business_closed",
+        "entity_added", "entity_changed",
+        "indicator_threshold_crossed",
+        "other"
+      ]
+    },
+
+    "subject_type": { "type": "string", "enum": ["asset", "entity", "market", "catalyst", "value_add_project", "indicator"] },
+    "subject_id": { "type": "string" },
+
+    "occurred_at": {
+      "$ref": "common.json#/$defs/iso_date",
+      "description": "When the change happened, where known."
+    },
+    "detected_at": {
+      "$ref": "common.json#/$defs/iso_date",
+      "description": "When the engine noticed. Often later than occurred_at; the gap is itself informative."
+    },
+    "occurred_at_is_inferred": {
+      "type": "boolean",
+      "default": false,
+      "description": "True when the date is inferred from detection rather than attested. Inference is labelled, never presented as fact."
+    },
+
+    "from_value": { "type": ["number", "string", "boolean", "null"] },
+    "to_value": { "type": ["number", "string", "boolean", "null"] },
+    "change_amount": { "type": ["number", "null"] },
+    "change_percent": { "type": ["number", "null"] },
+    "money_from": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+    "money_to": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+
+    "evidence_snapshot_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "The snapshots this event was derived from."
+    },
+
+    "materiality": {
+      "type": "string",
+      "enum": ["minor", "notable", "significant", "major"],
+      "description": "Drives alerting. Set by rule, not by mood."
+    },
+    "provenance": { "$ref": "common.json#/$defs/provenance" },
+    "description": { "type": ["string", "null"] },
+    "meta": { "$ref": "common.json#/$defs/record_meta" }
+  },
+
+  "required": ["event_id", "domain", "event_type", "subject_type", "subject_id", "detected_at", "provenance", "meta"],
+  "additionalProperties": false
+}

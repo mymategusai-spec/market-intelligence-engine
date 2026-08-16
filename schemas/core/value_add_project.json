@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/value_add_project.json",
+  "title": "Value-add project",
+  "description": "Work applied to an asset to change what it earns or what it is worth. Generic: a renovation, a repositioning, a change of use or a redevelopment are all value-add projects. Costs are scenario-based ranges with explicit confidence, because a figure inferred from listing photographs is not a quote.",
+  "type": "object",
+
+  "properties": {
+    "project_id": { "type": "string" },
+    "domain": { "$ref": "common.json#/$defs/domain_id" },
+    "asset_id": { "type": "string" },
+
+    "project_type": {
+      "type": "string",
+      "description": "Domain-defined, e.g. renovation, repositioning, change_of_use, compliance_upgrade.",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+
+    "scenario": {
+      "type": "string",
+      "enum": ["minimum_viable", "good_standard", "premium", "custom"],
+      "description": "Domains name these; the japan_ski_property module maps them to minimum viable / good lodge standard / premium repositioning."
+    },
+    "scenario_description": { "type": ["string", "null"] },
+
+    "line_items": {
+      "type": "array",
+      "description": "Component costs. Ranges, not point estimates, unless a real quote exists.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_key": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "label": { "type": "string" },
+          "cost": { "$ref": "common.json#/$defs/money" },
+          "basis": {
+            "type": "string",
+            "enum": ["quote", "benchmark_rate", "comparable_project", "inferred_from_images", "assumption"],
+            "description": "inferred_from_images is the weakest basis and must never be reported as a firm cost."
+          },
+          "confidence": { "$ref": "common.json#/$defs/confidence" },
+          "required_for_compliance": { "type": "boolean", "default": false },
+          "notes": { "type": ["string", "null"] },
+          "provenance": { "$ref": "common.json#/$defs/provenance" }
+        },
+        "required": ["item_key", "label", "cost", "basis", "confidence"],
+        "additionalProperties": false
+      }
+    },
+
+    "subtotal": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+    "contingency_percent": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "description": "Explicit contingency. Mountain and heritage construction routinely exceeds estimates."
+    },
+    "contingency_amount": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+    "total_cost": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+
+    "overall_confidence": {
+      "$ref": "common.json#/$defs/confidence",
+      "description": "Confidence in the whole estimate. Reported alongside every figure derived from it."
+    },
+
+    "duration_months": { "type": ["number", "null"], "minimum": 0 },
+    "revenue_impact_note": { "type": ["string", "null"] },
+    "unlocks_compliance": {
+      "type": ["boolean", "null"],
+      "description": "Whether this project is what makes lawful commercial operation possible. If true, the project is not optional."
+    },
+
+    "provenance": { "$ref": "common.json#/$defs/provenance" },
+    "notes": { "type": ["string", "null"] },
+    "meta": { "$ref": "common.json#/$defs/record_meta" }
+  },
+
+  "required": ["project_id", "domain", "asset_id", "project_type", "scenario", "overall_confidence", "provenance", "meta"],
+  "additionalProperties": false
+}

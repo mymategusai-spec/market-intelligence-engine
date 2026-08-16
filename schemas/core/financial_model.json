@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/financial_model.json",
+  "title": "Financial model",
+  "description": "Cash-flow and cost model for an asset under one scenario. The headline metric is total project cost, never the purchase price. Every assumption is a named, sourced input rather than a number buried in a formula, so a model can be audited, re-run and disagreed with specifically.",
+  "type": "object",
+
+  "properties": {
+    "model_id": { "type": "string" },
+    "domain": { "$ref": "common.json#/$defs/domain_id" },
+    "asset_id": { "type": "string" },
+
+    "scenario": { "type": "string", "enum": ["conservative", "base", "strong"] },
+    "value_add_project_id": {
+      "type": ["string", "null"],
+      "description": "Which renovation scenario this model assumes. Revenue and cost are only coherent together."
+    },
+    "modelled_at": { "$ref": "common.json#/$defs/iso_date" },
+    "reporting_currency": { "$ref": "common.json#/$defs/currency_code" },
+
+    "capital": {
+      "type": "object",
+      "description": "The true cost of getting to an operating asset.",
+      "properties": {
+        "purchase_price": { "$ref": "common.json#/$defs/money" },
+        "acquisition_costs": { "$ref": "common.json#/$defs/money" },
+        "taxes": { "$ref": "common.json#/$defs/money" },
+        "legal": { "$ref": "common.json#/$defs/money" },
+        "due_diligence": { "$ref": "common.json#/$defs/money" },
+        "renovation": { "$ref": "common.json#/$defs/money" },
+        "furnishing": { "$ref": "common.json#/$defs/money" },
+        "licensing_compliance": { "$ref": "common.json#/$defs/money" },
+        "working_capital": { "$ref": "common.json#/$defs/money" },
+        "contingency": { "$ref": "common.json#/$defs/money" },
+        "total_project_cost": {
+          "$ref": "common.json#/$defs/money",
+          "description": "The headline investment figure. Purchase price alone is never treated as the investment."
+        }
+      },
+      "required": ["purchase_price", "total_project_cost"],
+      "additionalProperties": false
+    },
+
+    "revenue": {
+      "type": "object",
+      "description": "Seasons are named generically (peak/high/shoulder/low) rather than by calendar season, so the model works for any domain and either hemisphere. The domain module maps its own seasons onto these tiers.",
+      "properties": {
+        "rate_peak": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+        "rate_high": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+        "rate_shoulder": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+        "rate_low": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+        "utilisation_peak_percent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "utilisation_high_percent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "utilisation_shoulder_percent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "utilisation_low_percent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "capacity_units": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "Revenue-bearing capacity of the asset in domain-defined units."
+        },
+        "capacity_unit_label": {
+          "type": ["string", "null"],
+          "description": "What a capacity unit is in this domain, e.g. guests, rooms, desks, tonnes."
+        },
+        "gross_annual_revenue": { "$ref": "common.json#/$defs/money" }
+      },
+      "required": ["gross_annual_revenue"],
+      "additionalProperties": false
+    },
+
+    "owner_use": {
+      "type": ["object", "null"],
+      "description": "Owner use is a real cost. Modelled as revenue foregone at the rates that would otherwise apply, so it is visible rather than hidden.",
+      "properties": {
+        "weeks_per_year": { "type": "number", "minimum": 0 },
+        "season": { "type": "string", "enum": ["peak", "winter", "shoulder", "offseason", "mixed"] },
+        "revenue_foregone": { "$ref": "common.json#/$defs/money" },
+        "offset_by_separate_quarters": {
+          "type": ["boolean", "null"],
+          "description": "True where an owner suite, manager apartment, lock-off or separate building lets the asset trade while owners are present."
+        }
+      },
+      "required": ["weeks_per_year", "revenue_foregone"],
+      "additionalProperties": false
+    },
+
+    "operating_costs": {
+      "type": "object",
+      "properties": {
+        "management": { "$ref": "common.json#/$defs/money" },
+        "cleaning": { "$ref": "common.json#/$defs/money" },
+        "utilities": { "$ref": "common.json#/$defs/money" },
+        "insurance": { "$ref": "common.json#/$defs/money" },
+        "maintenance": { "$ref": "common.json#/$defs/money" },
+        "platform_fees": { "$ref": "common.json#/$defs/money" },
+        "taxes": { "$ref": "common.json#/$defs/money" },
+        "capex_reserve": { "$ref": "common.json#/$defs/money" },
+        "other": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+        "domain_costs": {
+          "type": "object",
+          "description": "Cost lines specific to the domain, keyed by domain-defined name. The japan_ski_property module puts snow clearing and heating here; an industrial module would put something else.",
+          "additionalProperties": { "$ref": "common.json#/$defs/money" }
+        },
+        "total_operating_costs": { "$ref": "common.json#/$defs/money" }
+      },
+      "required": ["total_operating_costs"],
+      "additionalProperties": false
+    },
+
+    "results": {
+      "type": "object",
+      "properties": {
+        "noi": { "$ref": "common.json#/$defs/money" },
+        "yield_on_purchase_price_percent": { "type": ["number", "null"] },
+        "yield_on_total_project_cost_percent": {
+          "type": ["number", "null"],
+          "description": "The honest yield. The gap between this and yield on purchase price is itself a reported metric."
+        },
+        "breakeven_occupancy_percent": { "type": ["number", "null"] },
+        "cash_on_cash_percent": { "type": ["number", "null"] }
+      },
+      "required": ["noi"],
+      "additionalProperties": false
+    },
+
+    "assumptions": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Every material input, named and sourced. A model whose assumptions are not enumerable cannot be audited.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": { "type": "string" },
+          "statement": { "type": "string" },
+          "value": { "type": ["number", "string", "boolean", "null"] },
+          "claim_type": { "$ref": "common.json#/$defs/claim_type" },
+          "confidence": { "$ref": "common.json#/$defs/confidence" },
+          "source_id": { "type": ["string", "null"] },
+          "assumption_ref": { "type": ["string", "null"], "description": "ID in ASSUMPTIONS.md, where applicable." }
+        },
+        "required": ["key", "statement", "claim_type", "confidence"],
+        "additionalProperties": false
+      }
+    },
+
+    "debt": {
+      "type": ["object", "null"],
+      "description": "Null by default: no Japanese debt is assumed (ASSUMPTIONS.md D1). Financing is upside, never a premise.",
+      "properties": {
+        "loan_amount": { "$ref": "common.json#/$defs/money" },
+        "interest_rate_percent": { "type": "number" },
+        "term_years": { "type": "number" },
+        "annual_debt_service": { "$ref": "common.json#/$defs/money" },
+        "availability_confidence": { "$ref": "common.json#/$defs/confidence" }
+      },
+      "required": ["loan_amount", "interest_rate_percent", "availability_confidence"],
+      "additionalProperties": false
+    },
+
+    "overall_confidence": { "$ref": "common.json#/$defs/confidence" },
+    "caveats": { "type": ["string", "null"] },
+    "meta": { "$ref": "common.json#/$defs/record_meta" }
+  },
+
+  "required": ["model_id", "domain", "asset_id", "scenario", "modelled_at", "reporting_currency", "capital", "revenue", "operating_costs", "results", "assumptions", "overall_confidence", "meta"],
+  "additionalProperties": false
+}

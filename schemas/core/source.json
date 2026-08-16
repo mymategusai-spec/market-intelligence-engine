@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/source.json",
+  "title": "Source",
+  "description": "An entry in the source register. Every material claim cites a source_id resolving to one of these. Registering a source also records whether automated access to it is permitted.",
+  "type": "object",
+
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9-]*$",
+      "description": "Stable identifier, e.g. JP-MLIT-CHIKA."
+    },
+    "name": { "type": "string" },
+    "name_original_language": { "type": ["string", "null"] },
+    "publisher": { "type": "string" },
+    "url": { "type": ["string", "null"], "format": "uri" },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "government_national", "government_prefectural", "government_municipal",
+        "official_statistics", "tourism_organisation", "company_filing",
+        "data_provider", "agency", "operator", "industry_research",
+        "media", "community", "other"
+      ]
+    },
+    "reliability_tier": { "$ref": "common.json#/$defs/reliability_tier" },
+    "language": { "type": "string", "examples": ["ja", "en"] },
+    "geography": {
+      "type": ["string", "null"],
+      "description": "Area the source covers, e.g. national, Nagano, Myoko."
+    },
+
+    "status": {
+      "type": "string",
+      "enum": ["CANDIDATE", "ACCESSED", "BLOCKED", "REJECTED"],
+      "description": "CANDIDATE means identified but not yet retrieved. A CANDIDATE source must never be cited as evidence."
+    },
+    "first_accessed": { "oneOf": [{ "$ref": "common.json#/$defs/iso_date" }, { "type": "null" }] },
+    "last_accessed": { "oneOf": [{ "$ref": "common.json#/$defs/iso_date" }, { "type": "null" }] },
+
+    "access": {
+      "type": "object",
+      "description": "How this source may lawfully be used. Checked before any automated collection.",
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": ["manual", "api", "bulk_download", "feed", "permitted_fetch", "prohibited"]
+        },
+        "robots_checked": { "type": "boolean", "default": false },
+        "robots_permits_automation": { "type": ["boolean", "null"] },
+        "robots_checked_date": { "oneOf": [{ "$ref": "common.json#/$defs/iso_date" }, { "type": "null" }] },
+        "terms_reviewed": { "type": "boolean", "default": false },
+        "terms_note": { "type": ["string", "null"] },
+        "rate_limit_note": { "type": ["string", "null"] },
+        "requires_payment": { "type": "boolean", "default": false },
+        "indicative_cost": { "type": ["string", "null"], "description": "Recorded for owner decision; never purchased autonomously." }
+      },
+      "required": ["method", "robots_checked", "terms_reviewed"],
+      "additionalProperties": false
+    },
+
+    "blocked_reason": { "type": ["string", "null"] },
+    "alternative_source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Alternatives pursued when this source is blocked. Blockers are recorded, not worked around silently."
+    },
+
+    "known_biases": {
+      "type": ["string", "null"],
+      "description": "E.g. operator-published figures are marketing; asking prices are not transaction prices; English-language portals under-represent cheap stock."
+    },
+    "update_frequency": { "type": ["string", "null"] },
+    "notes": { "type": ["string", "null"] },
+    "meta": { "$ref": "common.json#/$defs/record_meta" }
+  },
+
+  "required": ["source_id", "name", "publisher", "source_type", "reliability_tier", "status", "access", "meta"],
+  "additionalProperties": false,
+
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "ACCESSED" } }, "required": ["status"] },
+      "then": {
+        "required": ["url", "first_accessed", "last_accessed"],
+        "description": "A source cannot be marked ACCESSED without a URL and the dates it was retrieved."
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "BLOCKED" } }, "required": ["status"] },
+      "then": { "required": ["blocked_reason"] }
+    }
+  ]
+}

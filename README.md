@@ -146,8 +146,8 @@ install step.
 ```bash
 git clone https://github.com/mymategusai-spec/market-intelligence-engine.git
 cd market-intelligence-engine
-python3 --version          # 3.9+ required
-python3 -m unittest discover -s tests -v
+python3 --version                              # 3.9+ required
+python3 -m unittest discover -s tests -t . -v  # run from the repository root
 ```
 
 Optional tooling for later phases (charting, JSON Schema validation, dashboard build) is listed

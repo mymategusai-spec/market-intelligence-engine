@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/location_metric.json",
+  "title": "Location metric",
+  "description": "A generic proximity or access measure from an asset to something that matters. The core defines the shape; the domain defines which targets matter. distance_to_ski_lift is a japan_ski_property instance of this, not a core concept.",
+  "type": "object",
+
+  "properties": {
+    "metric_key": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "Domain-defined, e.g. nearest_lift, supermarket, convenience_store, station, airport."
+    },
+    "target_name": { "type": ["string", "null"], "description": "The specific target measured to, e.g. the named lift." },
+    "target_entity_id": { "type": ["string", "null"] },
+
+    "distance_m": { "type": ["number", "null"], "minimum": 0 },
+    "walk_minutes": { "type": ["number", "null"], "minimum": 0 },
+    "drive_minutes": { "type": ["number", "null"], "minimum": 0 },
+    "transit_minutes": { "type": ["number", "null"], "minimum": 0 },
+
+    "shuttle_available": { "type": ["boolean", "null"] },
+    "shuttle_note": { "type": ["string", "null"] },
+    "requires_vehicle": {
+      "type": ["boolean", "null"],
+      "description": "Whether reaching this target realistically requires a car. Materially affects guest experience."
+    },
+
+    "seasonal_variation": {
+      "type": ["string", "null"],
+      "description": "Where access differs by season, e.g. winter road conditions changing drive time."
+    },
+
+    "measurement_method": {
+      "type": "string",
+      "enum": ["measured", "mapping_service", "listing_claim", "estimated", "unknown"],
+      "description": "listing_claim is a seller's assertion and is treated as OPINION until corroborated."
+    },
+
+    "provenance": { "$ref": "common.json#/$defs/provenance" }
+  },
+
+  "required": ["metric_key", "measurement_method", "provenance"],
+  "additionalProperties": false
+}

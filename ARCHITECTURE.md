@@ -83,8 +83,9 @@ schemas/domains/japan_ski_property/
 ```
 
 Python dataclasses in `core/models/` and `domains/*/models/` mirror these schemas for typed
-construction and are checked against them in tests. The schema is the source of truth; the
-dataclass is a convenience.
+construction. The schema is the source of truth; the dataclass is a convenience, and is added
+when logic actually needs it rather than generated wholesale up front — unused mirror classes
+drift out of sync with the schemas they claim to represent.
 
 Why schema-first: the dashboard is JavaScript, the ingestion is Python, and future agents may
 use neither. A language-agnostic contract survives all three.

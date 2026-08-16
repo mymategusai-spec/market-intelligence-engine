@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/snapshot.json",
+  "title": "Snapshot",
+  "description": "What a subject looked like at one moment. Append-only: snapshots are never overwritten, so the system can always answer 'what did this look like six months ago?' and 'what changed?'. Stored as JSONL, one snapshot per line.",
+  "type": "object",
+
+  "properties": {
+    "snapshot_id": { "type": "string" },
+    "domain": { "$ref": "common.json#/$defs/domain_id" },
+
+    "subject_type": { "type": "string", "enum": ["asset", "entity", "market", "catalyst", "value_add_project"] },
+    "subject_id": { "type": "string" },
+
+    "captured_at": {
+      "$ref": "common.json#/$defs/iso_datetime",
+      "description": "When this capture was taken."
+    },
+    "captured_by": { "type": "string", "description": "Script, workflow or agent responsible." },
+
+    "source_id": { "type": "string" },
+    "raw_capture_path": {
+      "type": ["string", "null"],
+      "description": "Path under data/raw/ holding the unmodified retrieved content, if retained."
+    },
+
+    "state": {
+      "type": "object",
+      "description": "The observed state of the subject at capture time. Shape is defined by the subject's own schema.",
+      "additionalProperties": true
+    },
+
+    "content_hash": {
+      "type": ["string", "null"],
+      "description": "Hash of the normalised state, used to detect no-change captures cheaply."
+    },
+
+    "previous_snapshot_id": { "type": ["string", "null"] },
+    "changed": {
+      "type": ["boolean", "null"],
+      "description": "Whether this capture differs from the previous one. Derived, not asserted."
+    },
+
+    "confidence": { "$ref": "common.json#/$defs/confidence" },
+    "notes": { "type": ["string", "null"] },
+    "meta": { "$ref": "common.json#/$defs/record_meta" }
+  },
+
+  "required": ["snapshot_id", "domain", "subject_type", "subject_id", "captured_at", "captured_by", "source_id", "state", "meta"],
+  "additionalProperties": false
+}

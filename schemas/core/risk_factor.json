@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/risk_factor.json",
+  "title": "Risk factor",
+  "description": "Something that could damage or destroy an investment thesis. Risks are first-class records, not prose in a report, so they can be scored, tracked over time and revisited when evidence changes. A risk that would falsify the thesis outright is marked thesis_critical.",
+  "type": "object",
+
+  "properties": {
+    "risk_id": { "type": "string" },
+    "domain": { "$ref": "common.json#/$defs/domain_id" },
+
+    "scope": { "type": "string", "enum": ["global", "market", "submarket", "asset", "thesis"] },
+    "subject_id": { "type": ["string", "null"] },
+
+    "risk_key": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "e.g. snow_reliability, oversupply, depopulation, labour_shortage, seismic, volcanic, avalanche, flood, insurance, fx, regulatory_change, ageing_infrastructure, exit_illiquidity."
+    },
+    "label": { "type": "string" },
+    "description": { "type": "string" },
+
+    "likelihood": { "type": "string", "enum": ["remote", "unlikely", "possible", "likely", "near_certain", "unknown"] },
+    "impact": { "type": "string", "enum": ["negligible", "minor", "moderate", "severe", "fatal"] },
+    "time_horizon": { "type": "string", "enum": ["immediate", "short_term", "medium_term", "long_term", "unknown"] },
+
+    "thesis_critical": {
+      "type": "boolean",
+      "default": false,
+      "description": "True where this risk alone could invalidate the investment thesis. These are researched before any recommendation is drafted."
+    },
+
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "summary": { "type": "string" },
+          "claim_type": { "$ref": "common.json#/$defs/claim_type" },
+          "provenance": { "$ref": "common.json#/$defs/provenance" }
+        },
+        "required": ["summary", "claim_type", "provenance"],
+        "additionalProperties": false
+      }
+    },
+
+    "counter_evidence": {
+      "type": "array",
+      "description": "Evidence against the risk being material. Recorded so the risk assessment is honest in both directions.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "summary": { "type": "string" },
+          "claim_type": { "$ref": "common.json#/$defs/claim_type" },
+          "provenance": { "$ref": "common.json#/$defs/provenance" }
+        },
+        "required": ["summary", "claim_type", "provenance"],
+        "additionalProperties": false
+      }
+    },
+
+    "mitigation": { "type": ["string", "null"] },
+    "residual_after_mitigation": { "type": ["string", "null"], "enum": ["negligible", "minor", "moderate", "severe", "fatal", null] },
+    "monitoring_indicator_keys": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Indicators to watch that would show this risk materialising."
+    },
+
+    "status": { "type": "string", "enum": ["open", "monitoring", "mitigated", "materialised", "dismissed"], "default": "open" },
+    "confidence": { "$ref": "common.json#/$defs/confidence" },
+    "meta": { "$ref": "common.json#/$defs/record_meta" }
+  },
+
+  "required": ["risk_id", "domain", "scope", "risk_key", "label", "description", "likelihood", "impact", "confidence", "meta"],
+  "additionalProperties": false
+}

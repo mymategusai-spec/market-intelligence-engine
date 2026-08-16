@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/entity.json",
+  "title": "Entity",
+  "description": "Any named thing the engine tracks that is not itself an investable asset: a place, an organisation or a person. Towns, resorts, operators, managers, inspectors and developers are all entities. Domains specialise via entity_type and attributes.",
+  "type": "object",
+
+  "properties": {
+    "entity_id": { "type": "string" },
+    "domain": { "$ref": "common.json#/$defs/domain_id" },
+
+    "entity_type": {
+      "type": "string",
+      "description": "Domain-defined, e.g. market, submarket, operator, service_provider, professional, developer, authority.",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+
+    "name": { "type": "string" },
+    "name_original_language": { "type": ["string", "null"] },
+    "aliases": { "type": "array", "items": { "type": "string" } },
+
+    "parent_entity_id": {
+      "type": ["string", "null"],
+      "description": "Enables the market hierarchy: country > region > market > submarket. A region is never treated as a single market."
+    },
+    "hierarchy_level": {
+      "type": ["string", "null"],
+      "enum": ["country", "region", "market", "submarket", "organisation", "person", null]
+    },
+
+    "location": { "oneOf": [{ "$ref": "common.json#/$defs/geo_point" }, { "type": "null" }] },
+    "administrative_codes": {
+      "type": "object",
+      "description": "Official codes enabling joins to government statistics, e.g. municipality code.",
+      "additionalProperties": { "type": "string" }
+    },
+
+    "attributes": {
+      "type": "object",
+      "description": "Domain-defined attributes. Core does not interpret these; the domain module does.",
+      "additionalProperties": true
+    },
+
+    "status": { "type": "string", "enum": ["active", "inactive", "merged", "unknown"], "default": "active" },
+    "provenance": { "$ref": "common.json#/$defs/provenance" },
+    "notes": { "type": ["string", "null"] },
+    "meta": { "$ref": "common.json#/$defs/record_meta" }
+  },
+
+  "required": ["entity_id", "domain", "entity_type", "name", "provenance", "meta"],
+  "additionalProperties": false
+}

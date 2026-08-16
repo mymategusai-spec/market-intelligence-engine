@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market-intelligence-engine/schemas/core/asset.json",
+  "title": "Asset",
+  "description": "Something potentially acquirable and investable. Generic by design: a property, a business, a development site or an infrastructure-linked holding are all assets. Domain modules add their own fields via domain_attributes rather than by redefining this schema.",
+  "type": "object",
+
+  "properties": {
+    "asset_id": { "type": "string" },
+    "domain": { "$ref": "common.json#/$defs/domain_id" },
+
+    "asset_type": {
+      "type": "string",
+      "description": "Domain-defined, e.g. house, lodge, pension, ryokan, former_hotel, multi_building.",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "name": { "type": ["string", "null"] },
+
+    "market_entity_id": { "type": ["string", "null"], "description": "Entity ID of the market (town)." },
+    "submarket_entity_id": { "type": ["string", "null"], "description": "Entity ID of the neighbourhood." },
+    "location": { "oneOf": [{ "$ref": "common.json#/$defs/geo_point" }, { "type": "null" }] },
+    "address": { "type": ["string", "null"] },
+
+    "listing": {
+      "type": ["object", "null"],
+      "description": "Market-availability facts. Kept even after the asset leaves the market — delisted records are the comparable evidence the engine accumulates.",
+      "properties": {
+        "listing_url": { "type": ["string", "null"], "format": "uri" },
+        "source_id": { "type": "string" },
+        "first_seen": { "$ref": "common.json#/$defs/iso_date" },
+        "last_seen": { "$ref": "common.json#/$defs/iso_date" },
+        "asking_price": { "$ref": "common.json#/$defs/money" },
+        "original_asking_price": { "oneOf": [{ "$ref": "common.json#/$defs/money" }, { "type": "null" }] },
+        "listing_status": {
+          "type": "string",
+          "enum": ["active", "price_reduced", "price_increased", "removed", "relisted", "likely_sold", "confirmed_sold", "withdrawn", "unknown"]
+        },
+        "days_on_market": { "type": ["integer", "null"], "minimum": 0 },
+        "status_confidence": { "$ref": "common.json#/$defs/confidence" }
+      },
+      "required": ["source_id", "first_seen", "last_seen", "listing_status"],
+      "additionalProperties": false
+    },
+
+    "location_metrics": {
+      "type": "array",
+      "description": "Generic container for domain-defined proximity and access measures. The core deliberately does not know what a ski lift is.",
+      "items": { "$ref": "location_metric.json" }
+    },
+
+    "domain_attributes": {
+      "type": "object",
+      "description": "Domain-specific fields, validated by the domain schema, not by core.",
+      "additionalProperties": true
+    },
+
+    "value_add_project_ids": { "type": "array", "items": { "type": "string" } },
+    "risk_factor_ids": { "type": "array", "items": { "type": "string" } },
+
+    "provenance": { "$ref": "common.json#/$defs/provenance" },
+    "notes": { "type": ["string", "null"] },
+    "meta": { "$ref": "common.json#/$defs/record_meta" }
+  },
+
+  "required": ["asset_id", "domain", "asset_type", "provenance", "meta"],
+  "additionalProperties": false
+}
