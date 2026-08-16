@@ -83,11 +83,14 @@ X Failed to log in to github.com account mymategusai-spec (default)
   - The token in default is invalid.
 ```
 
+This does **not** block git itself — `git push` authenticates via the macOS keychain
+credential helper and succeeded for this branch. It only blocks `gh` CLI operations (PR
+creation, issue and API access), which will be needed if the work later involves pull
+requests.
+
 Re-authenticate with `! gh auth login -h github.com` in this session (the `!` prefix runs it
 here, so the output lands in the conversation). Credentials are not altered or created
 without explicit approval, so this is left for the owner.
-
-Push status for this branch is recorded in the session handoff.
 
 ---
 
