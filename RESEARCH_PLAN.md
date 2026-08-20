@@ -18,19 +18,19 @@ phase waits unnecessarily on another if useful work can proceed (master prompt �
 | 3 | Japan ski-property domain schemas | `DONE` | `schemas/domains/japan_ski_property/` |
 | 4 | Japan-wide destination screening | `ACTIVE` | `domains/japan_ski_property/research/` |
 | 5 | Ski / snow analysis | `PENDING` | `domains/japan_ski_property/research/` |
-| 6 | Town, vibe and micro-location analysis | `PENDING` | `town_profiles/`, `neighbourhoods/` |
+| 6 | Town, vibe and micro-location analysis | `PARTIAL` | `town_profiles/`, `neighbourhoods/` |
 | 7 | Historical property markets | `PARTIAL` | `property_market/` |
 | 8 | Tourism | `PARTIAL` | `tourism/` |
 | 9 | Business and economic activity | `PENDING` | `business_activity/` |
 | 10 | Off-season economy | `PENDING` | `research/` |
-| 11 | Infrastructure and development pipeline | `PENDING` | `infrastructure/` |
+| 11 | Infrastructure and development pipeline | `PARTIAL` | `infrastructure/` |
 | 12 | Regulation | `PARTIAL` | `regulation/` |
-| 13 | Property collection | `PENDING` | `properties/`, `data/property-listings/` |
-| 14 | Renovation and construction costs | `PENDING` | `renovation/` |
+| 13 | Property collection | `PARTIAL` | `properties/`, `data/property-listings/` |
+| 14 | Renovation and construction costs | `PARTIAL` | `renovation/` |
 | 15 | Inspector and contractor network | `PENDING` | `inspectors/` |
 | 16 | Management | `PENDING` | `management/` |
 | 17 | Financial modelling | `PARTIAL` | `financial_models/` |
-| 18 | Continuous monitoring | `PENDING` | `workflows/`, `scripts/monitoring/` |
+| 18 | Continuous monitoring | `PROTOTYPE` | `workflows/`, `scripts/monitoring/` |
 | 19 | Opportunity detection | `PENDING` | `core/scoring/` |
 | 20 | Dashboard | `PENDING` | `app/dashboard/` |
 | 21 | Risk and counter-thesis | `PARTIAL` | `research/` |
@@ -72,7 +72,7 @@ snowfall, powder quality, snow reliability, season length, elevation, crowds, co
 Answer *could a serious snowboarder happily spend seven days here?* against Hakuba and Niseko.
 **Fails if:** it reports marketing snowfall claims as fact, or ignores multi-year snow trend.
 
-### Phase 6 — Town, vibe and micro-location analysis · `PENDING`
+### Phase 6 — Town, vibe and micro-location analysis · `PARTIAL`
 Full town profiles (amenities, dining, après, medical, transport, English services, bad-weather
 options) and the seven-day guest experience model. Decompose each destination into
 neighbourhoods with their own price and convenience characteristics.
@@ -101,7 +101,7 @@ April–November: biking, hiking, golf, rafting, onsen, food, festivals, events.
 winter-only / winter-dominant / emerging four-season / genuine four-season.
 **Fails if:** aspirational tourism-board plans are counted as existing demand.
 
-### Phase 11 — Infrastructure and development pipeline · `PENDING`
+### Phase 11 — Infrastructure and development pipeline · `PARTIAL`
 Hotels, lodges, dwellings, subdivisions, resort expansions, lifts, gondolas, roads, rail,
 Shinkansen, airports, air routes. Every project status-classified on the ladder and never
 scored above its status. Forward accommodation supply by town.
@@ -115,12 +115,12 @@ for Australian non-residents.
 **Gating:** a market where the operating model is not legal is disqualified regardless of score.
 **Fails if:** it assumes a residential property can become commercial accommodation.
 
-### Phase 13 — Property collection · `PENDING`
+### Phase 13 — Property collection · `PARTIAL`
 Real current listings from Japanese and English sources, full attribute set, provenance, and
 append-only history from first sighting. Target ~20–30 serious opportunities.
 **Fails if:** collection breaches site terms, or history is overwritten on re-crawl.
 
-### Phase 14 — Renovation and construction costs · `PENDING`
+### Phase 14 — Renovation and construction costs · `PARTIAL`
 Component-level costs; three scenarios (minimum viable / good lodge standard / premium
 repositioning); mountain-specific items — snow load, insulation, glazing, heating, drying room,
 ski storage, fire compliance. Ranges with `renovation_confidence` and `renovation_contingency`.
@@ -143,7 +143,7 @@ purchase price and on total project cost. Conservative / base / strong. Owner us
 revenue. Capacity optimisation across 6/8/10/12/16/20+ guests.
 **Fails if:** assumptions are not individually labelled and sourced.
 
-### Phase 18 — Continuous monitoring · `PENDING`
+### Phase 18 — Continuous monitoring · `PROTOTYPE`
 GitHub Actions on the cadences in `ARCHITECTURE.md` §9, respecting robots.txt, terms and rate
 limits. A simple pipeline that reliably collects beats a sophisticated one that never runs.
 **Fails if:** it collects from prohibited sources, or silently stops without alerting.

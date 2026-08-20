@@ -6,6 +6,73 @@ Format: date · phase · what changed · why it matters.
 
 ---
 
+## 2026-08-20
+
+**Session goal: move from market screening to a decision-useful investment dataset.**
+Nine checkpoints pushed. Scorecard coverage rose from 5 to 17 of 20 dimensions.
+
+### Municipality-level tourism · Phase 8
+- **Ran the brief's explicit test and the answer reversed an earlier conclusion.** Niigata's +55%
+  foreign-stay growth is largely **not** Myoko: Myoko is ~23% of the prefecture and grew ~101%
+  (2018→FY2023) against Hakuba's ~172%. Yuzawa sits inside the same prefecture figure.
+- **Hakuba: 19-year municipal series** by nationality and month, richer than the national dataset.
+  33,491 (2006) → 447,474 (2024), 15.5% CAGR. **Australians 44.7%**, +117% in 2024.
+  2019–20 flagged as mobile-phone estimates and excluded from growth maths.
+- Dec–Mar is **84.6%** of Hakuba's foreign stays and **97.7%** of Australian stays.
+- **Myoko: ~70% single-market dependence** on Australia — correlated with the owners' own FX
+  exposure. Offset by FIT guests staying **weeks to two months**.
+
+### Occupancy · Phase 8
+- **Nagano has the lowest hotel occupancy in Japan: 39.6%, rank 47.** Niigata 45.5%.
+  Hokkaido 59.8%.
+- Corrected the naive reading: annual occupancy is the wrong denominator for a winter asset
+  (assumption F7). Legitimately: Nagano and Niigata carry **existing** oversupply.
+- **Hokkaido separates on a third axis** — ryokan 43.5% (rank 6), and it has winter seasonality
+  too, so this is not an artefact.
+- 2025 national stays **fell 0.8%**: foreign +8.2% did not offset Japanese −3.8% (assumption E7).
+
+### Property collection · Phase 13
+- **203 property records**: 51 candidates plus 152 Yuzawa apartments. 207 append-only observations.
+- **Three observed price changes, all reductions**, mean −19.4% — flagged as survivorship-biased.
+- **Yuzawa quantified**: 30 buildings, 5.1 sellers each, 17 in one tower, median A$22,250.
+- Only 4 of 51 candidates state a licence, and 3 are Hokkaido or already operating.
+- Myoko's cheap portal stock is in the **Arai-side town centre, not the ski villages**.
+
+### Renovation · Phase 14
+- Construction costs **+40–50% since 2015** and still rising; snow-country roof/exterior
+  **1.5–2.0×**; compliance corrected up to **¥1–3m**. Contingency raised to 40%.
+- Shoestring now understates true investment by **148–310%**.
+- Layers 5–6 named but **not quantified** — the model is incomplete in a known direction.
+- Per-property total project cost added; exposed that licensed properties are over-charged by
+  the model, quantifying the licence premium.
+
+### Development pipeline · Phase 11
+- **Niseko ~774 status-weighted rooms vs Myoko ~47.** Hotel101 alone is 482 with structure complete.
+- Six Senses recorded as `approved`, **not** under construction — the announced April 2026 start
+  was not independently confirmed.
+- Myoko's luxury pipeline read as double-edged, with the bear reading currently better supported
+  because land has not repriced despite the programme being funded and permitted.
+
+### Analysis
+- **Myoko verdict: `WATCH`** — operating case strong, appreciation case weak. The bull case's own
+  logic was tested against Hakuba's history and the lag is already longer (D-0015).
+- **Yuzawa case study** and reusable `VALUE_TRAP_RISK_CHECKLIST` (15 questions). The mechanism is
+  carry and control, not cheapness.
+- **Town profiles**: Hakuba's shuttle stops ~6pm, making village choice decisive. On guest
+  experience, **Nozawa ≥ Akakura > Hakuba**.
+- **Guest capacity**: bathrooms bind before bedrooms; the sprinkler threshold is the binding
+  constraint; no revenue model produced because ADR does not exist.
+
+### Engine
+- **Monitoring prototype** with 8 tests; one caught a real defect — relisting after removal
+  produced no event.
+- **Dashboard filter tests** caught a field-naming inconsistency that would have silently broken
+  listing-age filtering on 51 records.
+- **Second ranking guard added** after Furano ranked 2nd on 5 dimensions (D-0016).
+- **MLIT decision note** and ingestion interface built ahead of approval.
+
+---
+
 ## 2026-08-16
 
 ### Phase 4 — Destination screening · `ACTIVE` (first pass)
