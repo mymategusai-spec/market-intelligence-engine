@@ -1,0 +1,84 @@
+{
+  "dataset": "japan_ski_renovation_benchmarks",
+  "domain": "japan_ski_property",
+  "as_of": "2026-08-20",
+  "currency": "JPY",
+  "fx_for_display": {"rate_jpy_per_aud": 112.37, "rate_date": "2026-08-16"},
+  "description": "Renovation cost evidence layered per the brief: ordinary construction, rural/remote, ski-resort labour, snow-country requirements, foreign-owner premium, and commercial accommodation compliance. Ranges, never point figures.",
+
+  "layer_1_cost_inflation": {
+    "_claim_type": "FACT",
+    "_confidence": "high",
+    "_source": "Construction cost deflator (建設工事費デフレーター) and construction price indices, via Japanese construction industry reporting",
+    "deflator_2015_base_100": 130.9,
+    "deflator_as_of": "2025-08",
+    "building_cost_index_vs_2015_percent": "40 to 50",
+    "building_cost_index_as_of": "2026-04",
+    "labour_rate_increase_vs_2020_percent": 28,
+    "labour_note": "MLIT public works design labour rates up ~28% vs 2020 as of FY2025, rising for a 14th consecutive year including the March 2026 application.",
+    "IMPLICATION": "Construction costs have risen roughly 40-50% since 2015 and are STILL rising. Any renovation benchmark sourced from an older article is stale and understates. This applies directly to the 5-10m JPY akiya figure used in the earlier capital model, which should be treated as a floor, not a central estimate."
+  },
+
+  "layer_2_snow_country_premium": {
+    "_claim_type": "FACT",
+    "_confidence": "medium",
+    "_source": "Niigata heavy-snow-region renovation contractor reporting covering Uonuma, Tokamachi, Tsunan, Myoko and Yuzawa",
+    "roof_and_exterior_multiplier_vs_plains": "1.5 to 2.0",
+    "IMPLICATION": "Roof and exterior work - the largest single renovation line on an older mountain building - costs 1.5-2x the national benchmark in heavy-snow areas. This premium applies to Myoko, Yuzawa, Nozawa, Madarao, Iiyama and Hakuba.",
+    "components": {
+      "snow_stops_yukidome": {"fan_type": [70000, 100000], "l_type": [150000, 250000], "tile_type": [200000, 400000], "unit": "per installation"},
+      "roof_snow_melting_system": {"equipment_plus_install": [300000, 600000], "scaffolding_per_m2": [700, 1200]},
+      "mobile_snow_melter": {"unit_price": [200000, 400000], "install_and_site_prep": [100000, 200000], "scaffolding": [100000, 100000]}
+    }
+  },
+
+  "layer_3_commercial_compliance": {
+    "_claim_type": "FACT",
+    "_confidence": "medium",
+    "_source": "Japanese fire-safety contractors and administrative scriveners specialising in 簡易宿所 / 旅館業法 licensing",
+    "detached_house_fire_compliance_certificate": {
+      "range": [300000, 300000],
+      "note": "Approximately 300,000 JPY typical for a detached house where a small-scale automatic fire alarm system and emergency exit lighting are required."
+    },
+    "apartment_or_larger_building_fire_compliance": {
+      "range": [50000, 10000000],
+      "note": "Enormous range. The swing factor is whether SPRINKLERS become mandatory, which depends on floor area, number of storeys and occupant capacity. This is the single largest compliance uncertainty for a larger lodge."
+    },
+    "total_to_open_kanishukusho": {
+      "range": [1000000, 3000000],
+      "note": "Stated minimum to begin simple-lodging operation, covering fire equipment, plumbing/wet-area renovation and guest-room fit-out. Excludes general renovation."
+    },
+    "licence_application_fee": {"range": [11000, 16500], "note": "Varies by municipality"},
+    "IMPLICATION": "The earlier capital model used 500,000-2,000,000 JPY for licensing/compliance. Evidence supports 1,000,000-3,000,000 JPY as a MINIMUM for a small detached lodge, and materially more if sprinklers are triggered. The model's compliance line was too low and is corrected."
+  },
+
+  "layer_4_remote_rural": {
+    "_claim_type": "ESTIMATE",
+    "_confidence": "low",
+    "note": "Regional labour rates in areas such as Niigata are described as more reasonable than metropolitan, but material transport to remote locations adds cost. Direction of net effect is NOT established. No quantified multiplier obtained.",
+    "gap": "Needs contractor quotes per market."
+  },
+
+  "layer_5_ski_resort_labour_premium": {
+    "_claim_type": "ASSUMPTION",
+    "_confidence": "low",
+    "note": "No evidence obtained. Resort towns with construction demand from foreign buyers plausibly carry a premium over surrounding rural areas, and Hakuba/Niseko would be expected to be worst. NOT quantified and NOT modelled.",
+    "gap": "This is a named gap, not a figure. Do not invent one."
+  },
+
+  "layer_6_foreign_owner_premium": {
+    "_claim_type": "ASSUMPTION",
+    "_confidence": "low",
+    "note": "Non-resident owners without Japanese language typically need a project manager or bilingual intermediary, and cannot supervise directly. No quantified evidence obtained. Commonly assumed in the industry at 10-20% of project cost but NOT evidenced here.",
+    "gap": "Needs quotes from project managers identified in Phase 15."
+  },
+
+  "contingency_guidance": {
+    "_claim_type": "ESTIMATE",
+    "_confidence": "medium",
+    "recommended_percent_range": [30, 50],
+    "note": "Practitioner guidance is to budget 130-150% of initial estimate because 20-30% overruns are common in older buildings. Given layer 1 (costs still rising) and layer 3 (sprinkler uncertainty), the upper end is appropriate for a commercial conversion."
+  },
+
+  "revised_position": "The earlier capital model's renovation figures should be read as a FLOOR. Three separate layers push the true figure higher: costs up 40-50% since 2015 and still rising, snow-country roof/exterior at 1.5-2x, and compliance minimum of 1-3m JPY rather than 0.5-2m. Two further layers - resort labour premium and foreign-owner premium - are unquantified and NOT included, so the model remains incomplete in a known direction: understated."
+}
