@@ -1,0 +1,54 @@
+{
+  "dataset": "japan_room_occupancy_by_prefecture_2024",
+  "domain": "japan_ski_property",
+  "metric": "客室稼働率 (room occupancy rate), annual, by prefecture and facility type",
+  "period": "2024-01 to 2024-12",
+  "status": "確定値 (final)",
+  "claim_type": "FACT",
+  "confidence": "high",
+  "source": {
+    "source_id": "JP-JTA-SHUKUHAKU",
+    "publisher": "観光庁 Japan Tourism Agency",
+    "tier": 1,
+    "url": "https://www.mlit.go.jp/kankocho/content/001905698.pdf",
+    "retrieved_at": "2026-08-20",
+    "method": "PDF text extraction via ghostscript"
+  },
+  "units": "percent",
+
+  "national": {
+    "overall": 59.6, "ryokan": 36.1, "resort_hotel": 54.1,
+    "business_hotel": 73.7, "city_hotel": 72.3, "simple_lodging": 29.0,
+    "note": "No prefecture exceeded 80% occupancy for resort hotels in 2024 or 2023."
+  },
+
+  "prefectures": [
+    {"pref":"長野県","romaji":"Nagano","markets":["Hakuba","Nozawa Onsen","Madarao","Shiga Kogen","Iiyama"],
+     "overall":39.6,"overall_rank":47,"yoy_change":0.4,"vs_2019":0.8,
+     "ryokan":27.9,"ryokan_rank":41,"resort_hotel":35.4,"resort_hotel_rank":43,
+     "business_hotel":74.6,"city_hotel":73.0,"simple_lodging":15.3,"simple_lodging_rank":34,
+     "total_overnight_stays_2024":20105300,"stays_vs_2019":11.4,"stays_yoy":11.9},
+    {"pref":"新潟県","romaji":"Niigata","markets":["Myoko","Yuzawa","Naeba","Arai"],
+     "overall":45.5,"overall_rank":42,"yoy_change":1.2,"vs_2019":1.9,
+     "ryokan":26.6,"ryokan_rank":44,"resort_hotel":34.0,"resort_hotel_rank":45,
+     "business_hotel":68.1,"city_hotel":65.4,"simple_lodging":11.5,"simple_lodging_rank":42,
+     "total_overnight_stays_2024":10524240,"stays_vs_2019":-3.7,"stays_yoy":9.8},
+    {"pref":"北海道","romaji":"Hokkaido","markets":["Niseko","Kutchan","Furano","Rusutsu","Kiroro"],
+     "overall":59.8,"overall_rank":11,"yoy_change":-5.5,"vs_2019":2.3,
+     "ryokan":43.5,"ryokan_rank":6,"resort_hotel":50.5,"resort_hotel_rank":23,
+     "business_hotel":71.5,"city_hotel":72.0,"simple_lodging":25.4,"simple_lodging_rank":16,
+     "total_overnight_stays_2024":44628500,"stays_vs_2019":20.7,"stays_yoy":12.6},
+    {"pref":"岩手県","romaji":"Iwate","markets":["Appi Kogen"],
+     "overall":53.5,"overall_rank":26,"ryokan":38.7,"ryokan_rank":18,
+     "resort_hotel":42.5,"resort_hotel_rank":37,"simple_lodging":23.8,"simple_lodging_rank":17,
+     "total_overnight_stays_2024":5877210,"stays_vs_2019":-6.4,"stays_yoy":0.4},
+    {"pref":"山形県","romaji":"Yamagata","markets":["Zao"],
+     "overall":49.3,"overall_rank":36,"ryokan":37.9,"resort_hotel":36.5,"simple_lodging":12.5,
+     "total_overnight_stays_2024":4877700,"stays_vs_2019":-12.5,"stays_yoy":6.8},
+    {"pref":"群馬県","romaji":"Gunma","markets":["Minakami","Kusatsu"],
+     "overall":44.1,"overall_rank":44,"ryokan":41.2,"resort_hotel":49.1,"simple_lodging":16.0,
+     "total_overnight_stays_2024":9751210,"stays_vs_2019":12.8,"stays_yoy":-4.9}
+  ],
+
+  "interpretation_warning": "These are ANNUAL occupancy rates. A winter-dominant property that trades hard Dec-Mar and closes the rest of the year is structurally capped near 25-33% annual occupancy even at 100% winter occupancy. Annual figures for ski prefectures therefore CANNOT be compared with year-round urban occupancy, and a low annual figure is not by itself evidence of weak winter demand. The correct revenue model is winter-season occupancy multiplied by season length, not annual occupancy."
+}
