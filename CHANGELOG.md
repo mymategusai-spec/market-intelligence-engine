@@ -6,7 +6,58 @@ Format: date · phase · what changed · why it matters.
 
 ---
 
-## 2026-08-20
+## 2026-08-20 (second session)
+
+**Goal: close the data gaps preventing property-level decisions.** Nine checkpoints pushed.
+
+### ADR and revenue · Phase 8/17
+- **Rate evidence for five markets**, anchored on a complete published Hakuba rate card. High
+  season is **22 Dec – 7 Mar, only 76 nights**. A private bathroom carries a measured **22.6% rate
+  premium**.
+- **Per-guest rates differ far less than land prices do** — Kutchan land is 6.1× Myoko's but its
+  budget-end per-guest rates are close. The strongest quantitative argument yet for affordability.
+- Yuzawa whole-rental starts at **A$4,000/guest**, a quarter of Hakuba — depressed prices and
+  depressed rates are consistent.
+
+### Winter occupancy · Phase 8
+- **Niigata resort hotels: 34.0% annual (rank 45) → 64.9% January (rank 4).** Annual figures were
+  almost entirely a seasonality artefact, as assumption F7 predicted.
+- **Nagano reaches only 45.0% in the peak month**, and Nagano simple lodging is **14.2% in January,
+  below its own annual average.** The most adverse datapoint found for the small-lodge model.
+- **Hakuba's late season is collapsing**: April **−38.5%**, May **−82.7%** year on year while
+  Dec–Feb held. First directly measured climate signal.
+
+### Snow · Phase 5
+- **JMA 1991–2020 normals for nine stations overturned the snow scoring in both directions.**
+  Myoko **1,055 cm DJFM** (scored second-lowest before); Furano **535 cm** (scored highest before).
+- **Quantity and resilience are inversely related.** Myoko: most snow, **0.0 °C** January mean.
+  Furano: least snow, **−8.3 °C**. Scored separately as the brief required.
+
+### Myoko submarket · Phase 7
+- **D-0015's own trigger fired.** Akakura **+7.07%**, Myoko Kogen **+3.54%**, prefectural survey
+  **+4.88%** — against the municipality at **−0.79%**. Upgraded to `YES, IN AKAKURA SPECIFICALLY`
+  (D-0017).
+
+### Financial models · Phase 17/26
+- **Max yield 3.17% on total project cost** in any scenario. But a 16–22 guest lodge nets
+  **A$13–23k** after all costs and owner use — which is what the brief actually asked for.
+  Recorded as `YES, BUT NOT AS AN INVESTMENT` (D-0019).
+- **Capacity should be maximised, not optimised** (D-0018). Fixed costs are 26–44% of revenue at
+  6 guests, 7–11% at 24.
+- **Owner use costs ~A$25,000/yr — more than the NOI.** Separate owner quarters is the highest-value
+  property attribute identified.
+
+### Outputs
+- **20-property shortlist**: six recommended for inspection, five rejected with reasons.
+- **`EXISTING HOSPITALITY ACQUISITIONS`**: eight operating businesses. **Vendor yield claims of
+  8–10% are ~3× the modelled figure** and the gap is unexplained.
+- **`DEMAND_SUPPLY_BALANCE_SCORE`**: Niseko ~774 weighted rooms vs Myoko ~47.
+- Inspector network — honest that only one region-specific provider was found, and it is a builder.
+- Scorecard to **18 of 20 dimensions, 91% coverage**; Myoko rose 4th → 3rd.
+
+---
+
+## 2026-08-20 (first session)
 
 **Session goal: move from market screening to a decision-useful investment dataset.**
 Nine checkpoints pushed. Scorecard coverage rose from 5 to 17 of 20 dimensions.

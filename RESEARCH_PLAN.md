@@ -17,24 +17,24 @@ phase waits unnecessarily on another if useful work can proceed (master prompt �
 | 2 | Reusable core schemas | `DONE` | `schemas/core/`, `core/models/` |
 | 3 | Japan ski-property domain schemas | `DONE` | `schemas/domains/japan_ski_property/` |
 | 4 | Japan-wide destination screening | `ACTIVE` | `domains/japan_ski_property/research/` |
-| 5 | Ski / snow analysis | `PENDING` | `domains/japan_ski_property/research/` |
+| 5 | Ski / snow analysis | `PARTIAL` | `domains/japan_ski_property/research/` |
 | 6 | Town, vibe and micro-location analysis | `PARTIAL` | `town_profiles/`, `neighbourhoods/` |
 | 7 | Historical property markets | `PARTIAL` | `property_market/` |
 | 8 | Tourism | `PARTIAL` | `tourism/` |
 | 9 | Business and economic activity | `PENDING` | `business_activity/` |
-| 10 | Off-season economy | `PENDING` | `research/` |
+| 10 | Off-season economy | `PARTIAL` | `research/` |
 | 11 | Infrastructure and development pipeline | `PARTIAL` | `infrastructure/` |
 | 12 | Regulation | `PARTIAL` | `regulation/` |
 | 13 | Property collection | `PARTIAL` | `properties/`, `data/property-listings/` |
 | 14 | Renovation and construction costs | `PARTIAL` | `renovation/` |
-| 15 | Inspector and contractor network | `PENDING` | `inspectors/` |
+| 15 | Inspector and contractor network | `PARTIAL` | `inspectors/` |
 | 16 | Management | `PENDING` | `management/` |
 | 17 | Financial modelling | `PARTIAL` | `financial_models/` |
 | 18 | Continuous monitoring | `PROTOTYPE` | `workflows/`, `scripts/monitoring/` |
 | 19 | Opportunity detection | `PENDING` | `core/scoring/` |
 | 20 | Dashboard | `PENDING` | `app/dashboard/` |
 | 21 | Risk and counter-thesis | `PARTIAL` | `research/` |
-| 22 | Investment ranking | `PENDING` | `outputs/` |
+| 22 | Investment ranking | `PARTIAL` | `outputs/` |
 | 23 | Investment Committee recommendation | `PENDING` | `outputs/` |
 
 ---
@@ -66,7 +66,7 @@ substance and supply pressure. Narrow to a serious set for deep research.
 **Fails if:** the screen is a list of famous resorts rather than a genuine search including
 unfashionable markets.
 
-### Phase 5 — Ski / snow analysis · `PENDING`
+### Phase 5 — Ski / snow analysis · `PARTIAL`
 Per serious area: resorts, terrain, vertical, lifts, terrain mix, tree skiing, backcountry,
 snowfall, powder quality, snow reliability, season length, elevation, crowds, connectivity.
 Answer *could a serious snowboarder happily spend seven days here?* against Hakuba and Niseko.
@@ -126,7 +126,7 @@ repositioning); mountain-specific items — snow load, insulation, glazing, heat
 ski storage, fire compliance. Ranges with `renovation_confidence` and `renovation_contingency`.
 **Fails if:** it manufactures precision from listing photographs.
 
-### Phase 15 — Inspector and contractor network · `PENDING`
+### Phase 15 — Inspector and contractor network · `PARTIAL`
 Independent inspectors, surveyors, architects, builders and project managers per finalist
 region, with foreign-client experience and indicative fees.
 **Constraint:** research only. **No contact without owner approval.**
@@ -165,7 +165,7 @@ cheap?* and *why hasn't sophisticated capital arbitraged this away?* Exit analys
 this from us in 10–15 years?*
 **Fails if:** it is written after the recommendation to justify it.
 
-### Phase 22 — Investment ranking · `PENDING`
+### Phase 22 — Investment ranking · `PARTIAL`
 ~20–30 opportunities scored, best 10 ranked, each with thesis, total project cost, projected
 NOI, yield, risk and source confidence.
 **Fails if:** ranking is not reproducible from committed data and config.
