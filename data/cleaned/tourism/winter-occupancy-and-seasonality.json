@@ -1,0 +1,69 @@
+{
+  "dataset": "winter_occupancy_and_seasonality",
+  "domain": "japan_ski_property",
+  "as_of": "2026-08-20",
+  "claim_type": "FACT",
+  "confidence": "high",
+
+  "january_occupancy_by_prefecture_2025": {
+    "_source": {"source_id":"JP-JTA-SHUKUHAKU","url":"https://www.mlit.go.jp/kankocho/content/001879618.pdf",
+      "publisher":"観光庁","tier":1,"period":"2025-01 second preliminary","retrieved_at":"2026-08-20"},
+    "_units": "percent room occupancy",
+    "national": {"overall":54.6,"ryokan":32.9,"resort_hotel":51.4,"business_hotel":66.7,"city_hotel":66.9,"simple_lodging":25.4},
+    "prefectures": [
+      {"pref":"北海道","romaji":"Hokkaido","overall":62.4,"overall_rank":4,"yoy":8.4,
+       "ryokan":41.9,"ryokan_rank":6,"resort_hotel":66.2,"resort_hotel_rank":3,
+       "simple_lodging":34.2,"simple_lodging_rank":5},
+      {"pref":"新潟県","romaji":"Niigata","overall":40.9,"overall_rank":36,"yoy":1.8,
+       "ryokan":27.2,"ryokan_rank":33,"resort_hotel":64.9,"resort_hotel_rank":4,
+       "simple_lodging":23.8,"simple_lodging_rank":13},
+      {"pref":"長野県","romaji":"Nagano","overall":38.5,"overall_rank":42,"yoy":3.4,
+       "ryokan":28.1,"ryokan_rank":32,"resort_hotel":45.0,"resort_hotel_rank":20,
+       "simple_lodging":14.2,"simple_lodging_rank":25},
+      {"pref":"岩手県","romaji":"Iwate","overall":48.0,"overall_rank":22,
+       "ryokan":32.1,"resort_hotel":45.0,"simple_lodging":22.4}
+    ]
+  },
+
+  "annual_vs_january_resort_hotels": {
+    "_claim_type": "CALCULATION",
+    "_question": "Does annual oversupply mask strong winter occupancy?",
+    "_answer": "It depends entirely on the prefecture, and the answer differs sharply between them.",
+    "niigata": {"annual_2024":34.0,"annual_rank":45,"january_2025":64.9,"january_rank":4,
+      "uplift_pp":30.9,"verdict":"YES - annual figures massively understate. Rank moves from 45th to 4th."},
+    "hokkaido": {"annual_2024":50.5,"annual_rank":23,"january_2025":66.2,"january_rank":3,
+      "uplift_pp":15.7,"verdict":"YES - strong winter uplift from an already decent annual base."},
+    "nagano": {"annual_2024":35.4,"annual_rank":43,"january_2025":45.0,"january_rank":20,
+      "uplift_pp":9.6,"verdict":"PARTIALLY, and much less than the others. Nagano's resort hotels reach only 45.0% in the peak ski month."},
+    "nagano_simple_lodging": {"annual_2024":15.3,"january_2025":14.2,
+      "verdict":"NO UPLIFT AT ALL. Nagano simple lodging is LOWER in January than its annual average, against a national January figure of 25.4%. This is the single most adverse datapoint found for the Nagano lodge case."}
+  },
+
+  "hakuba_monthly_ski_visits": {
+    "_source": {"source_id":"MUNI-HAKUBA-TOURISM","url":"https://www.vill.hakuba.lg.jp/material/files/group/7/tukibetu.pdf",
+      "publisher":"白馬村","tier":2,"retrieved_at":"2026-08-20"},
+    "_coverage": "Four Hakuba Village ski areas: Sanosaka, Goryu/Hakuba47, Happo-one, Iwatake. Does NOT cover the whole Hakuba Valley (Tsugaike, Cortina and others are separate municipalities).",
+    "_units": "skier visits",
+    "seasons": ["R04-R05","R05-R06","R06-R07","R07-R08"],
+    "monthly": {
+      "nov": [null, 264, 822, 822],
+      "dec": [136401, 151051, 174352, 184040],
+      "jan": [267778, 325660, 369840, 372981],
+      "feb": [263229, 333558, 353813, 364970],
+      "mar": [169280, 182940, 210566, 199039],
+      "apr": [38977, 43821, 50229, 30881],
+      "may": [4263, 3774, 11158, 1929]
+    },
+    "season_totals": [879928, 1041068, 1170780, 1153840],
+    "derived": {
+      "_claim_type": "CALCULATION",
+      "growth_4_seasons_percent": 31.1,
+      "latest_season_yoy_percent": -1.4,
+      "latest_season_note": "R07-R08 is the FIRST decline in the series.",
+      "month_share_latest_season_percent": {"dec":15.9,"jan":32.3,"feb":31.6,"mar":17.2,"apr":2.7,"may":0.2},
+      "jan_feb_share_percent": 63.9,
+      "dec_to_mar_share_percent": 97.1,
+      "late_season_yoy": {"mar_percent":-5.5,"apr_percent":-38.5,"may_percent":-82.7}
+    }
+  }
+}

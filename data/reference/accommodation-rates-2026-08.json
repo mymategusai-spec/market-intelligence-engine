@@ -1,0 +1,163 @@
+{
+  "dataset": "japan_ski_accommodation_rates",
+  "domain": "japan_ski_property",
+  "as_of": "2026-08-20",
+  "currency": "JPY",
+  "fx_note": "AUD at 112.37 JPY/AUD (2026-08-16). AUD figures are CALCULATION.",
+
+  "critical_definitions": {
+    "per_person_per_night": "Japanese lodges and pensions overwhelmingly price PER PERSON PER NIGHT, often including breakfast or half board. This is NOT comparable with Western whole-property nightly rates without dividing by capacity.",
+    "whole_property": "Rate for exclusive use of the entire property regardless of occupancy.",
+    "derived_per_guest": "whole_property rate divided by stated maximum capacity. A CALCULATION, and an upper bound on realised per-guest revenue because properties rarely sell at full capacity.",
+    "inclusions_warning": "Rates including meals are NOT comparable with self-catering rates. Half-board ryokan rates can be 2-4x business hotel rates largely because of food. Each observation below records inclusions."
+  },
+
+  "national_context": {
+    "national_average_adr_jpy": 32340,
+    "as_of": "2026-05",
+    "note": "Record high; +19% over three years",
+    "by_facility_type": {
+      "ryokan": {"adr": 33086, "yoy_vs_2024_05_percent": 6.9},
+      "resort_hotel": {"adr": 46167, "yoy_vs_2024_05_percent": 7.5}
+    },
+    "claim_type": "FACT", "confidence": "medium",
+    "source": "Japanese hotel-industry analysis citing JTA data. Direct fetch of the publisher returned HTTP 403; figures taken from the search index.",
+    "caveat": "These are PER ROOM rates for hotels/ryokan across all of Japan, dominated by urban and high-end properties. They are context, NOT a benchmark for a self-catering ski lodge."
+  },
+
+  "markets": {
+
+    "hakuba": {
+      "evidence_quality": "STRONG - a complete published rate card with defined seasons",
+      "confidence": "high",
+      "season_definition": {
+        "high": "22 December - 7 March",
+        "low": "8 March - 21 December",
+        "high_season_days": 76,
+        "IMPLICATION": "The operator's own high season is only 76 days. Earlier modelling assumed a 100-140 night sellable core season. If 76 days is representative, the revenue base is materially narrower than assumed and the minpaku 180-night cap is even less binding."
+      },
+      "source": {"name": "Mojo Lodge Hakuba published rate card", "url": "https://www.mojolodge.com/rates-ski-lodge-hakuba", "tier": 4, "retrieved_at": "2026-08-20"},
+      "inclusions": "Full daily breakfast, airport/valley transfer, morning ski shuttle, wifi, 10% consumption tax",
+      "per_person_per_night": {
+        "shared_bathroom": {
+          "twin_double_single_occupancy": {"low": 7000, "high": 12400},
+          "twin_double_double_occupancy": {"low": 8750, "high": 15500},
+          "twin_bunk_single": {"low": 6200, "high": 10800},
+          "twin_bunk_double": {"low": 7750, "high": 13500},
+          "triple_2share": {"low": 6600, "high": 9200},
+          "triple_3share": {"low": null, "high": 11500}
+        },
+        "private_bathroom": {
+          "double_single": {"low": 7400, "high": 13200},
+          "double_double": {"low": 9250, "high": 16500},
+          "twin_queen_single": {"low": 8400, "high": 15200},
+          "twin_queen_double": {"low": 10500, "high": 19000},
+          "family_suite_2share": {"low": 9600, "high": 12000},
+          "family_suite_3share": {"low": 7600, "high": 9500}
+        }
+      },
+      "self_contained_2br_sleeps_4": {"3share": {"low": 10800, "high": 13500}, "4share": {"low": 13800, "high": 17250}},
+      "whole_lodge": {"low": 265000, "high": 330000},
+      "minimum_stay": "7 nights in peak season; 1-2 night stays incur a 4,000 JPY surcharge",
+      "long_stay_discounts": "5-30% for 10+ nights, scaling to 30% for 60+ nights",
+      "cleaning_fee": "None listed separately",
+      "KEY_FINDING_bathroom_premium": {
+        "comparison": "Twin/Queen double with PRIVATE bathroom 19,000 JPY vs Twin/Double double with SHARED bathroom 15,500 JPY, both high season",
+        "premium_percent": 22.6,
+        "claim_type": "CALCULATION",
+        "significance": "Quantifies the bathroom constraint identified in the property analysis. A private bathroom commands roughly a 23% rate premium in the same lodge, which is the return on the most expensive renovation category in a snow-country building."
+      },
+      "other_observations": [
+        {"property": "Silver Maple Chalet, Echoland", "type": "whole_property", "capacity": 12, "bedrooms": 4, "bathrooms": 3, "rate_usd": 929, "rate_jpy_approx": 140000, "season": "March 2026 (shoulder)", "derived_per_guest": 11667, "confidence": "low", "note": "USD-quoted aggregator figure, converted approximately"}
+      ]
+    },
+
+    "myoko": {
+      "evidence_quality": "GOOD - nine independent data points, no single published rate card",
+      "confidence": "medium",
+      "observations": [
+        {"property": "Myoko Yuki House", "type": "whole_property", "capacity": 12, "rate": 120000, "derived_per_guest": 10000, "season": "unstated"},
+        {"property": "Koguma Chalet Myoko", "type": "whole_property", "capacity": 8, "rate_from": 88000, "derived_per_guest": 11000, "season": "from-rate", "note": "Short drive to Suginohara"},
+        {"property": "Wasabi Chalets", "type": "whole_property", "capacity": 6, "rate_range": [90000, 120000], "derived_per_guest": [15000, 20000], "season": "varies by location and season", "note": "Highest per-guest rate observed in Myoko"},
+        {"property": "Akakura Wakui Hotel", "type": "whole_or_unit", "capacity": 4, "rate_from": 33000, "derived_per_guest": 8250},
+        {"property": "Ski Sea Japan House", "type": "whole_property", "capacity": 4, "rate": 33000, "derived_per_guest": 8250, "note": "Coastal Joetsu-Myoko, not the ski village - a location discount comparator"},
+        {"property": "Kogen House, Akakura main street", "type": "unit", "unit": "1BR", "rate_from": 45000, "note": "Ensuite per room, heated flooring, described as luxury"},
+        {"property": "Akakura general", "type": "per_person_per_night", "rate_from": 9200, "note": "Twin room. Also cited: 10th night free on 10-night stays"},
+        {"property": "Kofukan Ryokan", "type": "per_person_per_night", "rate_from": 7900, "inclusions": "breakfast"},
+        {"property": "Pension Soratobu Usagi", "type": "per_person_per_night", "rate_1pax": 6500, "rate_3plus_pax": 4500},
+        {"property": "Akakura Kanko Hotel", "type": "per_person_per_night", "rate": 50000, "inclusions": "half board, private onsen, minibar", "note": "Luxury ceiling comparator, new wing"}
+      ],
+      "minimum_stay_evidence": "Yuki Lodge (Ikenotaira): 5 nights minimum in peak season (pre-Christmas to early March)"
+    },
+
+    "niseko_kutchan": {
+      "evidence_quality": "MEDIUM - a stated market range plus two points; extreme dispersion",
+      "confidence": "medium",
+      "market_range_whole_property": [110000, 1400000],
+      "range_note": "A 13x spread. Niseko is not one rate market - it spans budget cabins to ultra-luxury villas, and a market-level average would be meaningless.",
+      "observations": [
+        {"property": "Peak Niseko, 4BR cabin", "type": "whole_property", "capacity": 8, "average_nightly": 69000, "derived_per_guest": 8625},
+        {"property": "6BR villa, Middle Hirafu", "type": "whole_property", "bedrooms": 6, "rate_usd": [2236, 2662], "rate_jpy_approx": [250000, 300000], "note": "Discounted from list"}
+      ],
+      "booking_behaviour": "January and February sell out; bookings typically open in March for the following winter."
+    },
+
+    "nozawa_onsen": {
+      "evidence_quality": "WEAK - capacity data good, rate data poor. Operators use dynamic pricing behind booking engines.",
+      "confidence": "low",
+      "observations": [
+        {"property": "Pensions, aggregator floor", "type": "per_person_per_night", "rate_from": 8182},
+        {"property": "Seisenso Inn", "type": "per_person_per_night", "rate_around": 5000, "note": "Possibly dated"},
+        {"property": "Kamoshika Ski Lodge", "type": "whole_property", "capacity": 16, "bedrooms": 5, "bathrooms": 5, "size_m2": 345, "rate": null, "note": "Rates dynamic, not published. 25% non-refundable deposit, 75% balance 100 days before arrival."}
+      ],
+      "gap": "No published seasonal rate card obtained. Two operator sites returned HTTP 403."
+    },
+
+    "yuzawa": {
+      "evidence_quality": "MEDIUM - two clear whole-property points",
+      "confidence": "medium",
+      "observations": [
+        {"property": "Naeba West condominium", "type": "whole_or_unit", "capacity": 2, "rate_from": 17560, "inclusions": "tax included", "derived_per_guest": 8780},
+        {"property": "Echigo-Yuzawa cottage/lodge whole-rental, cheapest observed", "type": "whole_property", "capacity": 2, "rate": 8000, "derived_per_guest": 4000, "inclusions": "room only"}
+      ],
+      "KEY_FINDING": {
+        "statement": "Yuzawa whole-rental rates start around 4,000 JPY per guest per night, roughly a QUARTER of Hakuba's high-season per-person rate of 15,500 JPY.",
+        "claim_type": "CALCULATION", "confidence": "medium",
+        "significance": "Yuzawa's depressed property prices are matched by depressed room rates. The two are consistent, which supports the value-trap reading: the asset is cheap because what it earns is cheap, not because the market has mispriced it."
+      }
+    },
+
+    "madarao_iiyama": {"evidence_quality": "NONE", "confidence": "unknown", "note": "Madarao Kogen Hotel identified but rates only via booking engines."},
+    "furano": {"evidence_quality": "NONE", "confidence": "unknown"},
+    "rusutsu": {"evidence_quality": "NONE", "confidence": "unknown"},
+    "appi_hachimantai": {"evidence_quality": "NONE", "confidence": "unknown"},
+    "shiga_kogen": {"evidence_quality": "NONE", "confidence": "unknown"}
+  },
+
+  "benchmark_bands_per_guest_per_night": {
+    "_method": "Derived from whole-property rates divided by stated capacity, and from published per-person rates. An UPPER BOUND on realised revenue per guest, because properties rarely sell at full capacity and shoulder rates are lower.",
+    "_claim_type": "ESTIMATE",
+    "hakuba_high_season": {"low": 9200, "central": 15500, "high": 19000, "confidence": "high"},
+    "hakuba_low_season": {"low": 6200, "central": 8750, "high": 13800, "confidence": "high"},
+    "myoko_winter": {"low": 8250, "central": 10500, "high": 20000, "confidence": "medium"},
+    "niseko_winter": {"low": 8625, "central": 20000, "high": 175000, "confidence": "low", "note": "Range is genuinely this wide; a central figure is not meaningful"},
+    "nozawa_winter": {"low": 5000, "central": 8182, "high": null, "confidence": "low"},
+    "yuzawa_winter": {"low": 4000, "central": 8780, "high": null, "confidence": "medium"}
+  },
+
+  "cross_market_finding": {
+    "statement": "On per-guest-per-night rates, Hakuba high season (~15,500 central) is roughly 1.5x Myoko (~10,500) and roughly 1.8x Yuzawa (~8,780), with Yuzawa's floor at a quarter of Hakuba's central rate.",
+    "claim_type": "CALCULATION",
+    "confidence": "medium",
+    "significance": "Rate differentials are much SMALLER than land price differentials. Kutchan land is 6.1x Myoko's, but Niseko's budget-end per-guest rates (8,625) are close to Myoko's (10,500). This means cheaper markets are not proportionally less productive per guest - which is the strongest quantitative argument yet for the affordability thesis, and it cuts against the land-price-led ranking."
+  },
+
+  "data_gaps": [
+    "No occupancy data pairs with these rates - rates alone do not give revenue",
+    "Five of ten requested markets have no rate evidence at all",
+    "No systematic capacity-band comparison (6/8/10/12/16/20+) within a single market",
+    "Cleaning fees visible for none",
+    "Summer and autumn rates almost entirely absent",
+    "Most operators use dynamic pricing behind booking engines; published rate cards are the exception"
+  ]
+}
