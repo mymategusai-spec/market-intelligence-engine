@@ -1,0 +1,87 @@
+{
+  "dataset": "ski_market_development_pipeline",
+  "domain": "japan_ski_property",
+  "as_of": "2026-08-20",
+  "status_ladder": ["rumoured","proposed","announced","planning","approved","funded","under_construction","completed","cancelled"],
+  "weighting_note": "Confidence weights per status live in config/core/engine.json. A rumoured project contributes 0.0 to forward supply; under_construction contributes 0.95. Room counts below are NOT summed unweighted anywhere.",
+
+  "projects": [
+    {
+      "catalyst_id":"MYO-SIXSENSES","name":"Six Senses Myoko","market":"Myoko",
+      "catalyst_type":"hotel","developer":"Patience Capital Group","operator":"Six Senses (IHG)",
+      "status":"approved","status_confidence":"medium",
+      "status_note":"Source states permitting expected by March 2026 and construction commencing April 2026. As of 2026-08-20 that start has NOT been independently confirmed. Recorded as approved rather than under_construction; upgrading requires evidence of actual site works.",
+      "rooms":57,"room_note":"rooms and suites, many with private onsen",
+      "expected_completion":"2028-12","expected_completion_confidence":"low",
+      "source_id":"SEC-MOUNTAINWATCH","tier":5,"retrieved_at":"2026-08-20"
+    },
+    {
+      "catalyst_id":"MYO-LIME-MGALLERY","name":"Lime Resort Myoko - MGallery Collection","market":"Myoko",
+      "catalyst_type":"hotel","developer":"Patience Capital Group","operator":"Accor (MGallery)",
+      "status":"planning","status_confidence":"medium",
+      "rooms":38,"room_note":"Refurbishment of an EXISTING resort, not new-build. Adds branded capacity but little or no net room supply.",
+      "net_new_supply_rooms":0,"net_supply_note":"Refurbishment - treat net new supply as approximately zero pending confirmation of prior room count.",
+      "expected_completion":"2027-Q1","expected_completion_confidence":"low",
+      "source_id":"SEC-TOPHOTELPROJECTS","tier":5,"retrieved_at":"2026-08-20"
+    },
+    {
+      "catalyst_id":"MYO-PCG-MASTERPLAN","name":"PCG Suginohara masterplan","market":"Myoko",
+      "catalyst_type":"resort_expansion","developer":"Patience Capital Group",
+      "status":"proposed","status_confidence":"low",
+      "scope_note":"Four hotels and two commercial facilities around Suginohara, completion horizon to approximately 2034. Room counts NOT established.",
+      "rooms":null,
+      "expected_completion":"2034","expected_completion_confidence":"low",
+      "source_id":"SEC-TOPHOTELPROJECTS","tier":5,"retrieved_at":"2026-08-20",
+      "warning":"A 2034 horizon at proposed status carries a 0.1 weight. This must NOT be counted as committed supply."
+    },
+    {
+      "catalyst_id":"NIS-HOTEL101","name":"Hotel101 Niseko","market":"Kutchan/Niseko",
+      "catalyst_type":"hotel","developer":"Hotel101 Global",
+      "status":"under_construction","status_confidence":"high",
+      "status_note":"Structural phase reported complete - the strongest status evidence in this pipeline.",
+      "rooms":482,"expected_completion":"2026-12","expected_completion_confidence":"medium",
+      "source_id":"SEC-HOTELNEWS","tier":5,"retrieved_at":"2026-08-20"
+    },
+    {
+      "catalyst_id":"NIS-MOXY","name":"Moxy Niseko Village","market":"Kutchan/Niseko",
+      "catalyst_type":"hotel","operator":"Marriott (Moxy)",
+      "status":"under_construction","status_confidence":"medium",
+      "rooms":310,"expected_completion":"2026","expected_completion_confidence":"medium",
+      "source_id":"SEC-TOPHOTELPROJECTS","tier":5,"retrieved_at":"2026-08-20"
+    },
+    {
+      "catalyst_id":"NIS-AMAN","name":"Aman Niseko Resort and Residences","market":"Kutchan/Niseko",
+      "catalyst_type":"hotel","operator":"Aman",
+      "status":"planning","status_confidence":"low",
+      "rooms":61,"expected_completion":"2029","expected_completion_confidence":"low",
+      "source_id":"SEC-TOPHOTELPROJECTS","tier":5,"retrieved_at":"2026-08-20"
+    },
+    {
+      "catalyst_id":"NIS-CAPELLA","name":"Capella Niseko","market":"Kutchan/Niseko",
+      "catalyst_type":"hotel","operator":"Capella",
+      "status":"approved","status_confidence":"low",
+      "status_note":"Construction reported to begin in 2026; not confirmed started.",
+      "rooms":null,"expected_completion":null,
+      "source_id":"SEC-POWDERLIFE","tier":5,"retrieved_at":"2026-08-20"
+    },
+    {
+      "catalyst_id":"NIS-PIPELINE-22","name":"Niseko pipeline, 22 developments to 2029","market":"Kutchan/Niseko",
+      "catalyst_type":"resort_expansion",
+      "status":"announced","status_confidence":"low",
+      "rooms":null,
+      "scope_note":"An agency report counts 22 developments in the Niseko pipeline by 2029. Individual projects, statuses and room counts NOT established.",
+      "source_id":"AGENCY-UCHI","tier":4,"conflict":"Agency with transactional interest",
+      "retrieved_at":"2026-08-20",
+      "warning":"Aggregate counts from an interested party are the weakest form of pipeline evidence. Recorded to flag the scale of the question, not as a supply figure."
+    }
+  ],
+
+  "data_gaps": [
+    "EXISTING room supply per town - without it no forward supply ratio can be computed",
+    "Hakuba pipeline entirely unresearched",
+    "Nozawa Onsen, Madarao, Furano, Rusutsu pipelines unresearched",
+    "No lift, gondola, road, rail or airport projects captured for any market",
+    "No green-season infrastructure captured",
+    "All sources Tier 4-5; no municipal planning records consulted"
+  ]
+}
