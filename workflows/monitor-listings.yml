@@ -1,0 +1,40 @@
+# Scheduled listing monitor.
+#
+# NOT ENABLED. Committed as the intended shape so the wiring is reviewable before
+# anything runs against a live site. Two things must happen first:
+#   1. Every source must be cleared for automation (robots.txt AND terms reviewed),
+#      recorded in the source register. Absence of a check is not permission.
+#   2. A collector must exist. monitor.py deliberately operates on already-retrieved
+#      records so it can never itself be the thing that breaches a site's terms.
+#
+# Rename to .github/workflows/ to activate.
+
+name: Monitor property listings
+
+on:
+  schedule:
+    - cron: "0 21 * * *"   # 06:00 JST daily
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show monitoring status
+        run: python3 scripts/monitoring/monitor.py --status
+
+      # - name: Collect (NOT ENABLED - requires cleared sources)
+      #   run: python3 scripts/ingestion/collect_listings.py --permitted-only
+
+      - name: Run tests
+        run: python3 -m unittest discover -s tests -t . -v
+
+      # - name: Commit new observations
+      #   run: |
+      #     git config user.name "market-intelligence-engine"
+      #     git config user.email "noreply@github.com"
+      #     git add data/property-listings/
+      #     git diff --staged --quiet || git commit -m "Monitoring: $(date -u +%Y-%m-%d) observations"
+      #     git push
