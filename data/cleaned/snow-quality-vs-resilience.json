@@ -1,0 +1,63 @@
+{
+  "dataset": "snow_quality_and_resilience_scores",
+  "domain": "japan_ski_property",
+  "as_of": "2026-08-20",
+  "method": "Two SEPARATE scores per the brief. Quality = how good the snow is now (volume and dryness). Resilience = how exposed it is to warming (thermal margin, elevation, regional trend). A market can score high on one and low on the other, and Myoko is the clearest example.",
+  "source": "JMA 1991-2020 normals (data/cleaned/jma-station-normals.json) plus the elevation-dependent trend literature in domains/japan_ski_property/research/thesis-critical-risks.md",
+
+  "measured_inputs": [
+    {"market":"Myoko","station":"関山 Sekiyama","djfm_snowfall_cm":1055,"annual_snowfall_cm":1061,"max_snow_depth_cm":204,"jan_mean_temp_c":0.0,"resort_summit_m":1500,"village_m":null},
+    {"market":"Nozawa Onsen","station":"野沢温泉","djfm_snowfall_cm":1041,"annual_snowfall_cm":1087,"max_snow_depth_cm":205,"jan_mean_temp_c":-1.6,"resort_summit_m":1650,"village_m":576},
+    {"market":"Kiroro","station":"赤井川 Akaigawa","djfm_snowfall_cm":861,"annual_snowfall_cm":966,"max_snow_depth_cm":166,"jan_mean_temp_c":null},
+    {"market":"Rusutsu","station":"喜茂別 Kimobetsu","djfm_snowfall_cm":818,"annual_snowfall_cm":954,"max_snow_depth_cm":145,"jan_mean_temp_c":-7.2},
+    {"market":"Madarao/Iiyama","station":"飯山 Iiyama","djfm_snowfall_cm":809,"annual_snowfall_cm":821,"max_snow_depth_cm":144,"jan_mean_temp_c":-1.6},
+    {"market":"Hakuba","station":"白馬","djfm_snowfall_cm":630,"annual_snowfall_cm":655,"max_snow_depth_cm":100,"jan_mean_temp_c":-2.8,"resort_summit_m":1831,"village_m":703},
+    {"market":"Sugadaira","station":"菅平","djfm_snowfall_cm":602,"annual_snowfall_cm":648,"max_snow_depth_cm":104,"jan_mean_temp_c":-6.2},
+    {"market":"Furano","station":"富良野","djfm_snowfall_cm":535,"annual_snowfall_cm":628,"max_snow_depth_cm":78,"jan_mean_temp_c":-8.3}
+  ],
+
+  "scores": [
+    {"market":"Myoko","snow_quality":9.0,"snow_resilience":3.0,"confidence":"high",
+     "quality_rationale":"Highest measured DJFM snowfall of any station sampled at 1,055cm, with a 204cm normal maximum depth. This is world-class volume and it directly contradicts the earlier elevation-based score of 5.0.",
+     "resilience_rationale":"January mean temperature of EXACTLY 0.0C. Myoko has the most snow and the least thermal margin of any market measured. A 1-2C warming shifts a large share of its precipitation from snow to rain at village level. It also sits in the low-elevation Japan Sea band where declining maximum snow depth is evidenced, and Takada nearby is a named declining station."},
+    {"market":"Nozawa Onsen","snow_quality":9.0,"snow_resilience":4.0,"confidence":"high",
+     "quality_rationale":"1,041cm DJFM and the deepest normal maximum depth measured at 205cm. Essentially tied with Myoko on volume.",
+     "resilience_rationale":"January mean -1.6C gives a slightly better margin than Myoko but is still thin. 576m village elevation is the lowest of the Honshu candidates. Large vertical to 1,650m protects the upper mountain; the village does not have that protection."},
+    {"market":"Madarao/Iiyama","snow_quality":7.5,"snow_resilience":4.0,"confidence":"high",
+     "quality_rationale":"809cm DJFM, 144cm depth - well above Hakuba.",
+     "resilience_rationale":"January mean -1.6C, same thin margin as Nozawa, same Japan Sea regime."},
+    {"market":"Kiroro","snow_quality":8.0,"snow_resilience":7.5,"confidence":"medium",
+     "quality_rationale":"861cm DJFM, 166cm depth - the best Hokkaido volume measured.",
+     "resilience_rationale":"Hokkaido regime shows no clear long-term decline. January temperature not returned by the station, so the thermal margin is inferred from neighbours rather than measured."},
+    {"market":"Rusutsu","snow_quality":8.0,"snow_resilience":8.5,"confidence":"high",
+     "quality_rationale":"818cm DJFM, and at -7.2C this is genuinely dry snow rather than the heavy maritime snow of the Japan Sea coast.",
+     "resilience_rationale":"A 7.2C thermal buffer below freezing in January. Even substantial warming leaves precipitation falling as snow. Hokkaido regime shows no clear decline."},
+    {"market":"Hakuba","snow_quality":6.0,"snow_resilience":5.5,"confidence":"high",
+     "quality_rationale":"630cm DJFM and a 100cm normal maximum depth - SECOND LOWEST of the Honshu stations sampled and only 60% of Myoko's volume. This materially revises the earlier score of 6.5 downward on quality grounds, though it remains defensible because Hakuba's summit at 1,831m is the highest of the candidates and its 1,128m vertical above the village means on-mountain conditions are far better than the valley station indicates.",
+     "resilience_rationale":"January mean -2.8C is a better margin than Myoko or Nozawa. The largest station-to-summit vertical of any candidate (1,128m) means terrain remains skiable as the snowline rises. Offset by directly measured evidence of late-season collapse: April visits -38.5% and May -82.7% year on year."},
+    {"market":"Furano","snow_quality":6.0,"snow_resilience":9.0,"confidence":"high",
+     "quality_rationale":"LOWEST measured snowfall of any station sampled at 535cm DJFM and only 78cm normal maximum depth. This sharply revises the earlier score of 8.5 downward. Furano's reputation rests on snow DRYNESS, not volume.",
+     "resilience_rationale":"January mean -8.3C is the coldest measured, giving the largest thermal buffer of any candidate. Hokkaido regime shows no clear long-term decline. Furano's snow is the most future-proof of any market examined."},
+    {"market":"Sugadaira","snow_quality":5.5,"snow_resilience":7.0,"confidence":"high",
+     "quality_rationale":"602cm DJFM, 104cm depth - low volume.",
+     "resilience_rationale":"January mean -6.2C is a strong margin for a Honshu station, reflecting its high plateau elevation."}
+  ],
+
+  "headline_finding": {
+    "statement": "Snow QUANTITY and snow RESILIENCE are inversely related across these markets. The snowiest places are the warmest and least protected; the driest, coldest places get the least snow.",
+    "evidence": "Myoko: 1,055cm DJFM at 0.0C. Furano: 535cm at -8.3C. Myoko gets 97% more snow with 8.3C less thermal margin.",
+    "claim_type": "CALCULATION",
+    "confidence": "high",
+    "significance": "This is a genuine investment trade-off, not a ranking. A buyer optimising for snow TODAY should look at Myoko or Nozawa. A buyer optimising for snow in 2040 should look at Hokkaido. The 10-15 year horizon in the brief sits awkwardly between the two."
+  },
+
+  "corrections_to_earlier_scores": {
+    "note": "The Phase 4 snow_reliability scores were built from base elevation and regional regime BEFORE any station data existed. Measured data substantially revises them.",
+    "changes": [
+      {"market":"Myoko","was":5.0,"now_quality":9.0,"now_resilience":3.0,"reason":"Had the most snow of any market and was scored second-lowest. Elevation-based inference was wrong on volume and right on fragility."},
+      {"market":"Nozawa Onsen","was":4.5,"now_quality":9.0,"now_resilience":4.0,"reason":"Scored lowest on the basis of its 565m base; actually has the deepest measured snowpack of any station sampled."},
+      {"market":"Furano","was":8.5,"now_quality":6.0,"now_resilience":9.0,"reason":"Scored highest on regional inference; actually has the LEAST snow of any station sampled. Its resilience score is deserved, its quality score was not."},
+      {"market":"Hakuba","was":6.5,"now_quality":6.0,"now_resilience":5.5,"reason":"Roughly confirmed, but for different reasons than assumed. Its advantage is vertical and thermal margin, not snowfall volume."}
+    ]
+  }
+}

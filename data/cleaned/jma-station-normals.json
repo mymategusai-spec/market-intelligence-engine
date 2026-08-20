@@ -1,0 +1,715 @@
+{
+ "dataset": "jma_station_climate_normals",
+ "domain": "japan_ski_property",
+ "retrieved_at": "2026-08-20",
+ "claim_type": "FACT",
+ "confidence": "high",
+ "source": {
+  "source_id": "JP-JMA-SNOW",
+  "publisher": "気象庁 Japan Meteorological Agency",
+  "tier": 1,
+  "method": "Climate normals pages (nml_amd_ym.php) parsed directly from JMA",
+  "normals_period": "1991-2020, 30 years"
+ },
+ "critical_caveat": "These are VALLEY/village stations, not mountain stations. Ski terrain sits ~1,000m above most of them and is colder and snowier. These figures describe the SETTLEMENT - where the property, road access and guest experience are - not the upper mountain. Both matter and they are not the same thing.",
+ "columns": {
+  "snowfall_cm": "降雪の深さ合計",
+  "max_snow_depth_cm": "最深積雪",
+  "mean_temp_c": "平均気温"
+ },
+ "stations": [
+  {
+   "station": "Hakuba",
+   "station_ja": "白馬",
+   "prefecture": "Nagano",
+   "market": "Hakuba",
+   "prec_no": 48,
+   "block_no": "0396",
+   "url": "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?prec_no=48&block_no=0396&view=p1",
+   "normals_period": "1991～2020",
+   "monthly": {
+    "1": {
+     "mean_temp_c": -2.8,
+     "snowfall_cm": 216.0,
+     "max_snow_depth_cm": 82.0
+    },
+    "2": {
+     "mean_temp_c": -2.4,
+     "snowfall_cm": 174.0,
+     "max_snow_depth_cm": 97.0
+    },
+    "3": {
+     "mean_temp_c": 1.2,
+     "snowfall_cm": 110.0,
+     "max_snow_depth_cm": 70.0
+    },
+    "4": {
+     "mean_temp_c": 7.6,
+     "snowfall_cm": 7.0,
+     "max_snow_depth_cm": 7.0
+    },
+    "5": {
+     "mean_temp_c": 13.8,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "6": {
+     "mean_temp_c": 17.7,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "7": {
+     "mean_temp_c": 21.5,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "8": {
+     "mean_temp_c": 22.6,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "9": {
+     "mean_temp_c": 18.2,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "10": {
+     "mean_temp_c": 11.9,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "11": {
+     "mean_temp_c": 5.5,
+     "snowfall_cm": 14.0,
+     "max_snow_depth_cm": 7.0
+    },
+    "12": {
+     "mean_temp_c": -0.1,
+     "snowfall_cm": 130.0,
+     "max_snow_depth_cm": 46.0
+    },
+    "annual": {
+     "mean_temp_c": 9.6,
+     "snowfall_cm": 655.0,
+     "max_snow_depth_cm": 100.0
+    }
+   }
+  },
+  {
+   "station": "Nozawa Onsen",
+   "station_ja": "野沢温泉",
+   "prefecture": "Nagano",
+   "market": "Nozawa Onsen",
+   "prec_no": 48,
+   "block_no": "0393",
+   "url": "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?prec_no=48&block_no=0393&view=p1",
+   "normals_period": "1991～2020",
+   "monthly": {
+    "1": {
+     "mean_temp_c": -1.6,
+     "snowfall_cm": 366.0,
+     "max_snow_depth_cm": 171.0
+    },
+    "2": {
+     "mean_temp_c": -1.3,
+     "snowfall_cm": 282.0,
+     "max_snow_depth_cm": 199.0
+    },
+    "3": {
+     "mean_temp_c": 1.9,
+     "snowfall_cm": 170.0,
+     "max_snow_depth_cm": 164.0
+    },
+    "4": {
+     "mean_temp_c": 8.0,
+     "snowfall_cm": 35.0,
+     "max_snow_depth_cm": 77.0
+    },
+    "5": {
+     "mean_temp_c": 14.4,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "6": {
+     "mean_temp_c": 18.4,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "7": {
+     "mean_temp_c": 22.3,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "8": {
+     "mean_temp_c": 23.3,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "9": {
+     "mean_temp_c": 19.0,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "10": {
+     "mean_temp_c": 12.7,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "11": {
+     "mean_temp_c": 6.4,
+     "snowfall_cm": 16.0,
+     "max_snow_depth_cm": 8.0
+    },
+    "12": {
+     "mean_temp_c": 0.9,
+     "snowfall_cm": 223.0,
+     "max_snow_depth_cm": 88.0
+    },
+    "annual": {
+     "mean_temp_c": 10.4,
+     "snowfall_cm": 1087.0,
+     "max_snow_depth_cm": 205.0
+    }
+   }
+  },
+  {
+   "station": "Iiyama",
+   "station_ja": "飯山",
+   "prefecture": "Nagano",
+   "market": "Madarao/Iiyama",
+   "prec_no": 48,
+   "block_no": "0395",
+   "url": "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?prec_no=48&block_no=0395&view=p1",
+   "normals_period": "1991～2020",
+   "monthly": {
+    "1": {
+     "mean_temp_c": -1.6,
+     "snowfall_cm": 303.0,
+     "max_snow_depth_cm": 122.0
+    },
+    "2": {
+     "mean_temp_c": -1.2,
+     "snowfall_cm": 228.0,
+     "max_snow_depth_cm": 139.0
+    },
+    "3": {
+     "mean_temp_c": 2.4,
+     "snowfall_cm": 121.0,
+     "max_snow_depth_cm": 106.0
+    },
+    "4": {
+     "mean_temp_c": 9.3,
+     "snowfall_cm": 15.0,
+     "max_snow_depth_cm": 24.0
+    },
+    "5": {
+     "mean_temp_c": 15.7,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "6": {
+     "mean_temp_c": 19.9,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "7": {
+     "mean_temp_c": 23.7,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "8": {
+     "mean_temp_c": 24.7,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "9": {
+     "mean_temp_c": 20.4,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "10": {
+     "mean_temp_c": 13.8,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "11": {
+     "mean_temp_c": 7.2,
+     "snowfall_cm": 4.0,
+     "max_snow_depth_cm": 2.0
+    },
+    "12": {
+     "mean_temp_c": 1.4,
+     "snowfall_cm": 157.0,
+     "max_snow_depth_cm": 62.0
+    },
+    "annual": {
+     "mean_temp_c": 11.3,
+     "snowfall_cm": 821.0,
+     "max_snow_depth_cm": 144.0
+    }
+   }
+  },
+  {
+   "station": "Shinanomachi",
+   "station_ja": "信濃町",
+   "prefecture": "Nagano",
+   "market": "Myoko/Madarao (Nagano side)",
+   "prec_no": 48,
+   "block_no": "0394",
+   "url": "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?prec_no=48&block_no=0394&view=p1",
+   "normals_period": "1991～2020",
+   "monthly": {
+    "1": {
+     "mean_temp_c": -2.9,
+     "snowfall_cm": 241.0,
+     "max_snow_depth_cm": 94.0
+    },
+    "2": {
+     "mean_temp_c": -2.5,
+     "snowfall_cm": 189.0,
+     "max_snow_depth_cm": 109.0
+    },
+    "3": {
+     "mean_temp_c": 1.1,
+     "snowfall_cm": 123.0,
+     "max_snow_depth_cm": 82.0
+    },
+    "4": {
+     "mean_temp_c": 7.5,
+     "snowfall_cm": 12.0,
+     "max_snow_depth_cm": 16.0
+    },
+    "5": {
+     "mean_temp_c": 13.4,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "6": {
+     "mean_temp_c": 17.3,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "7": {
+     "mean_temp_c": 21.3,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "8": {
+     "mean_temp_c": 22.3,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "9": {
+     "mean_temp_c": 18.2,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "10": {
+     "mean_temp_c": 11.9,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "11": {
+     "mean_temp_c": 5.6,
+     "snowfall_cm": 12.0,
+     "max_snow_depth_cm": 7.0
+    },
+    "12": {
+     "mean_temp_c": 0.0,
+     "snowfall_cm": 149.0,
+     "max_snow_depth_cm": 52.0
+    },
+    "annual": {
+     "mean_temp_c": 9.4,
+     "snowfall_cm": 726.0,
+     "max_snow_depth_cm": 114.0
+    }
+   }
+  },
+  {
+   "station": "Sekiyama",
+   "station_ja": "関山",
+   "prefecture": "Niigata",
+   "market": "Myoko",
+   "prec_no": 54,
+   "block_no": "0998",
+   "url": "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?prec_no=54&block_no=0998&view=p1",
+   "normals_period": "1991～2020",
+   "monthly": {
+    "1": {
+     "mean_temp_c": 0.0,
+     "snowfall_cm": 385.0,
+     "max_snow_depth_cm": 172.0
+    },
+    "2": {
+     "mean_temp_c": 0.3,
+     "snowfall_cm": 291.0,
+     "max_snow_depth_cm": 192.0
+    },
+    "3": {
+     "mean_temp_c": 3.4,
+     "snowfall_cm": 159.0,
+     "max_snow_depth_cm": 149.0
+    },
+    "4": {
+     "mean_temp_c": 9.8,
+     "snowfall_cm": 18.0,
+     "max_snow_depth_cm": 43.0
+    },
+    "5": {
+     "mean_temp_c": 15.6,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "6": {
+     "mean_temp_c": 19.3,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "7": {
+     "mean_temp_c": 23.2,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "8": {
+     "mean_temp_c": 24.4,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "9": {
+     "mean_temp_c": 20.3,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "10": {
+     "mean_temp_c": 14.5,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "11": {
+     "mean_temp_c": 8.5,
+     "snowfall_cm": 12.0,
+     "max_snow_depth_cm": 6.0
+    },
+    "12": {
+     "mean_temp_c": 2.9,
+     "snowfall_cm": 220.0,
+     "max_snow_depth_cm": 88.0
+    },
+    "annual": {
+     "mean_temp_c": 11.9,
+     "snowfall_cm": 1061.0,
+     "max_snow_depth_cm": 204.0
+    }
+   }
+  },
+  {
+   "station": "Sugadaira",
+   "station_ja": "菅平",
+   "prefecture": "Nagano",
+   "market": "Sugadaira",
+   "prec_no": 48,
+   "block_no": "0992",
+   "url": "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?prec_no=48&block_no=0992&view=p1",
+   "normals_period": "1991～2020",
+   "monthly": {
+    "1": {
+     "mean_temp_c": -6.2,
+     "snowfall_cm": 192.0,
+     "max_snow_depth_cm": 82.0
+    },
+    "2": {
+     "mean_temp_c": -5.6,
+     "snowfall_cm": 153.0,
+     "max_snow_depth_cm": 100.0
+    },
+    "3": {
+     "mean_temp_c": -1.8,
+     "snowfall_cm": 136.0,
+     "max_snow_depth_cm": 86.0
+    },
+    "4": {
+     "mean_temp_c": 4.8,
+     "snowfall_cm": 35.0,
+     "max_snow_depth_cm": 42.0
+    },
+    "5": {
+     "mean_temp_c": 10.7,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "6": {
+     "mean_temp_c": 14.7,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "7": {
+     "mean_temp_c": 18.8,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "8": {
+     "mean_temp_c": 19.5,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "9": {
+     "mean_temp_c": 15.3,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "10": {
+     "mean_temp_c": 8.9,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "11": {
+     "mean_temp_c": 3.0,
+     "snowfall_cm": 12.0,
+     "max_snow_depth_cm": 5.0
+    },
+    "12": {
+     "mean_temp_c": -3.0,
+     "snowfall_cm": 121.0,
+     "max_snow_depth_cm": 39.0
+    },
+    "annual": {
+     "mean_temp_c": 6.6,
+     "snowfall_cm": 648.0,
+     "max_snow_depth_cm": 104.0
+    }
+   }
+  },
+  {
+   "station": "Kimobetsu",
+   "station_ja": "喜茂別",
+   "prefecture": "Hokkaido",
+   "market": "Rusutsu area",
+   "prec_no": 16,
+   "block_no": "0060",
+   "url": "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?prec_no=16&block_no=0060&view=p1",
+   "normals_period": "1991～2020",
+   "monthly": {
+    "1": {
+     "mean_temp_c": -7.2,
+     "snowfall_cm": 238.0,
+     "max_snow_depth_cm": 118.0
+    },
+    "2": {
+     "mean_temp_c": -6.7,
+     "snowfall_cm": 193.0,
+     "max_snow_depth_cm": 142.0
+    },
+    "3": {
+     "mean_temp_c": -2.5,
+     "snowfall_cm": 143.0,
+     "max_snow_depth_cm": 138.0
+    },
+    "4": {
+     "mean_temp_c": 3.5,
+     "snowfall_cm": 32.0,
+     "max_snow_depth_cm": 90.0
+    },
+    "5": {
+     "mean_temp_c": 10.2,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 1.0
+    },
+    "6": {
+     "mean_temp_c": 15.0,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "7": {
+     "mean_temp_c": 19.0,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "8": {
+     "mean_temp_c": 19.6,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "9": {
+     "mean_temp_c": 15.0,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "10": {
+     "mean_temp_c": 8.2,
+     "snowfall_cm": 3.0,
+     "max_snow_depth_cm": 2.0
+    },
+    "11": {
+     "mean_temp_c": 1.5,
+     "snowfall_cm": 95.0,
+     "max_snow_depth_cm": 29.0
+    },
+    "12": {
+     "mean_temp_c": -4.8,
+     "snowfall_cm": 244.0,
+     "max_snow_depth_cm": 79.0
+    },
+    "annual": {
+     "mean_temp_c": 5.9,
+     "snowfall_cm": 954.0,
+     "max_snow_depth_cm": 145.0
+    }
+   }
+  },
+  {
+   "station": "Akaigawa",
+   "station_ja": "赤井川",
+   "prefecture": "Hokkaido",
+   "market": "Kiroro",
+   "prec_no": 16,
+   "block_no": "1091",
+   "url": "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?prec_no=16&block_no=1091&view=p1",
+   "normals_period": "1991～2020",
+   "monthly": {
+    "1": {
+     "mean_temp_c": null,
+     "snowfall_cm": 256.0,
+     "max_snow_depth_cm": 126.0
+    },
+    "2": {
+     "mean_temp_c": null,
+     "snowfall_cm": 213.0,
+     "max_snow_depth_cm": 161.0
+    },
+    "3": {
+     "mean_temp_c": null,
+     "snowfall_cm": 149.0,
+     "max_snow_depth_cm": 153.0
+    },
+    "4": {
+     "mean_temp_c": null,
+     "snowfall_cm": 30.0,
+     "max_snow_depth_cm": 94.0
+    },
+    "5": {
+     "mean_temp_c": null,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 2.0
+    },
+    "6": {
+     "mean_temp_c": null,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "7": {
+     "mean_temp_c": null,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "8": {
+     "mean_temp_c": null,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "9": {
+     "mean_temp_c": null,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "10": {
+     "mean_temp_c": null,
+     "snowfall_cm": 1.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "11": {
+     "mean_temp_c": null,
+     "snowfall_cm": 76.0,
+     "max_snow_depth_cm": 24.0
+    },
+    "12": {
+     "mean_temp_c": null,
+     "snowfall_cm": 243.0,
+     "max_snow_depth_cm": 78.0
+    },
+    "annual": {
+     "mean_temp_c": null,
+     "snowfall_cm": 966.0,
+     "max_snow_depth_cm": 166.0
+    }
+   }
+  },
+  {
+   "station": "Furano",
+   "station_ja": "富良野",
+   "prefecture": "Hokkaido",
+   "market": "Furano",
+   "prec_no": 12,
+   "block_no": "0021",
+   "url": "https://www.data.jma.go.jp/stats/etrn/view/nml_amd_ym.php?prec_no=12&block_no=0021&view=p1",
+   "normals_period": "1991～2020",
+   "monthly": {
+    "1": {
+     "mean_temp_c": -8.3,
+     "snowfall_cm": 145.0,
+     "max_snow_depth_cm": 64.0
+    },
+    "2": {
+     "mean_temp_c": -7.4,
+     "snowfall_cm": 121.0,
+     "max_snow_depth_cm": 73.0
+    },
+    "3": {
+     "mean_temp_c": -2.2,
+     "snowfall_cm": 110.0,
+     "max_snow_depth_cm": 71.0
+    },
+    "4": {
+     "mean_temp_c": 5.3,
+     "snowfall_cm": 22.0,
+     "max_snow_depth_cm": 23.0
+    },
+    "5": {
+     "mean_temp_c": 12.1,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "6": {
+     "mean_temp_c": 16.8,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "7": {
+     "mean_temp_c": 20.6,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "8": {
+     "mean_temp_c": 20.8,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "9": {
+     "mean_temp_c": 16.1,
+     "snowfall_cm": 0.0,
+     "max_snow_depth_cm": 0.0
+    },
+    "10": {
+     "mean_temp_c": 9.2,
+     "snowfall_cm": 2.0,
+     "max_snow_depth_cm": 2.0
+    },
+    "11": {
+     "mean_temp_c": 2.1,
+     "snowfall_cm": 72.0,
+     "max_snow_depth_cm": 23.0
+    },
+    "12": {
+     "mean_temp_c": -5.1,
+     "snowfall_cm": 159.0,
+     "max_snow_depth_cm": 46.0
+    },
+    "annual": {
+     "mean_temp_c": 6.7,
+     "snowfall_cm": 628.0,
+     "max_snow_depth_cm": 78.0
+    }
+   }
+  }
+ ]
+}
