@@ -2,7 +2,7 @@
  "dataset": "phase_4_market_screening_scores",
  "domain": "japan_ski_property",
  "as_of": "2026-08-20",
- "status": "PROVISIONAL - EXPANDED",
+ "status": "PROVISIONAL - REVISED WITH MEASURED SNOW, OCCUPANCY AND SUBMARKET DATA",
  "methodology": "Each component is scored 0-10 with an explicit rationale citing the evidence behind it, per config/domains/japan_ski_property/scoring_components.json. A market is scored on a dimension ONLY where evidence exists. Absence of negative evidence is never treated as a positive score. Markets below the coverage threshold are reported as INSUFFICIENT DATA FOR RANKING rather than ranked.",
  "scored_dimensions_available": 20,
  "markets": [
@@ -25,9 +25,9 @@
     },
     {
      "key": "snow_reliability",
-     "value": 6.5,
-     "confidence": "low",
-     "rationale": "760m base, highest of the Honshu candidates, in the eastern-Honshu high-elevation regime showing no declining trend. Offset: snow reported being piled onto the highest course to sustain operations."
+     "value": 6.0,
+     "confidence": "medium",
+     "rationale": "JMA 1991-2020: 630cm DJFM, 100cm max depth - SECOND LOWEST of the Honshu stations and 60% of Myoko's. Offset by a -2.8C January mean and a 1,128m vertical above the village, the largest of any candidate, so terrain stays skiable as the snowline rises. Late season measurably collapsing: April visits -38.5%, May -82.7%."
     },
     {
      "key": "tourism_growth",
@@ -50,8 +50,8 @@
     {
      "key": "off_season_demand",
      "value": 4.0,
-     "confidence": "medium",
-     "rationale": "84.6% of foreign overnight stays fall Dec-Mar, and 97.7% of Australian stays. Nagano prefecture-wide summer is strong but that is domestic and not specific to Hakuba."
+     "confidence": "high",
+     "rationale": "84.6% of foreign overnight stays fall Dec-Mar and 97.7% of Australian stays. Directly measured, not inferred."
     },
     {
      "key": "accessibility",
@@ -112,6 +112,12 @@
      "value": 5.5,
      "confidence": "low",
      "rationale": "Inverted. Snow stress at the resort, prefecture-wide oversupply (occupancy last in Japan), and entry after a large run. Offset by demonstrated decoupling of tourism from resident decline."
+    },
+    {
+     "key": "ski_quality",
+     "value": 7.5,
+     "confidence": "medium",
+     "rationale": "1,831m summit and 1,071m vertical at Happo-one, the largest terrain of the Honshu candidates, across four village resorts plus the wider valley."
     }
    ]
   },
@@ -128,15 +134,15 @@
     },
     {
      "key": "property_price_momentum",
-     "value": 2.0,
-     "confidence": "medium",
-     "rationale": "-0.79% in 2026. Bottomed 2022 and recovered only ~5% in four years despite eight years of announced investment."
+     "value": 5.5,
+     "confidence": "high",
+     "rationale": "REVISED UPWARD. Municipality -0.79%, but the ski submarket Myoko Kogen is +3.54% and the Akakura point +7.07%, with the 2025 prefectural survey +4.88%. The municipal average is dominated by the Arai-side town and was masking a rising ski micro-market."
     },
     {
      "key": "snow_reliability",
-     "value": 5.0,
-     "confidence": "low",
-     "rationale": "~730m base on the Japan Sea side. Takada, the nearest long-record station, is one of two named as showing marked long-term decline - though it is a lowland station."
+     "value": 4.0,
+     "confidence": "high",
+     "rationale": "SPLIT SCORE. Snow QUALITY is the best measured anywhere: 1,055cm DJFM and 204cm max depth at Sekiyama. Snow RESILIENCE is the worst measured: January mean exactly 0.0C, no thermal margin, in the low-elevation Japan Sea band where decline is evidenced. Scored at 4.0 as the resilience-weighted blend for a 10-15 year hold; see snow-quality-vs-resilience.md for the separated scores of 9.0 and 3.0."
     },
     {
      "key": "tourism_growth",
@@ -152,9 +158,9 @@
     },
     {
      "key": "winter_occupancy",
-     "value": 4.0,
+     "value": 5.5,
      "confidence": "medium",
-     "rationale": "Niigata simple-lodging occupancy 11.5%, rank 42 of 47, and ryokan 26.6%, rank 44. The weakest facility-class occupancy of any candidate region."
+     "rationale": "REVISED UPWARD from 4.0. Niigata resort hotels reach 64.9% in January, rank 4 nationally, against an annual 34.0% at rank 45. The annual figure was almost entirely a seasonality artefact."
     },
     {
      "key": "accessibility",
@@ -206,9 +212,9 @@
     },
     {
      "key": "capital_growth_potential",
-     "value": 3.5,
+     "value": 5.5,
      "confidence": "medium",
-     "rationale": "Eight years of committed capital have not moved municipal land prices. The lag is already longer than the one Hakuba exhibited, so 'land simply lags' is weakly supported."
+     "rationale": "REVISED UPWARD from 3.5. The bear case rested on capital not moving land prices; disaggregation shows it has, in Akakura. Tempered because Myoko Kogen is -79% from its 1993 peak with recovery only from 2024 - a turn, not yet a trajectory."
     },
     {
      "key": "exit_liquidity",
@@ -221,6 +227,12 @@
      "value": 3.0,
      "confidence": "low",
      "rationale": "Inverted. Population -46.7% by 2050, ~70% single-source-market dependence correlated with the owners' own FX exposure, adjacent station showing snow decline, and worst-in-class occupancy."
+    },
+    {
+     "key": "ski_quality",
+     "value": 8.0,
+     "confidence": "high",
+     "rationale": "Highest measured snowfall of any candidate, across 8-9 resorts within the Myoko area."
     }
    ]
   },
@@ -244,8 +256,8 @@
     {
      "key": "snow_reliability",
      "value": 4.5,
-     "confidence": "low",
-     "rationale": "565m base, the LOWEST of the Honshu candidates, squarely in the elevation band where Japan Sea side snow decline is evidenced. Large vertical protects the upper mountain but not the village."
+     "confidence": "high",
+     "rationale": "SPLIT. Quality 9.0 - the deepest snowpack measured at 205cm and 1,041cm DJFM. Resilience 4.0 - 565m base, the lowest of the Honshu candidates, -1.6C January mean."
     },
     {
      "key": "winter_occupancy",
@@ -255,9 +267,9 @@
     },
     {
      "key": "off_season_demand",
-     "value": 6.0,
+     "value": 6.5,
      "confidence": "low",
-     "rationale": "Described as a working village with festivals and events through BOTH winter and summer - a genuine year-round signal rather than a tourism-board aspiration."
+     "rationale": "Festivals and events through both winter and summer in a working village - a genuine year-round signal rather than a tourism-board plan."
     },
     {
      "key": "accessibility",
@@ -312,6 +324,12 @@
      "value": 5.0,
      "confidence": "low",
      "rationale": "Inverted. Low base elevation is a structural snow concern and population projection was not retrieved - a material unknown rather than a clean bill of health."
+    },
+    {
+     "key": "ski_quality",
+     "value": 8.0,
+     "confidence": "high",
+     "rationale": "1,085m vertical to 1,650m, the largest vertical of the Honshu candidates, with the deepest measured snowpack."
     }
    ]
   },
@@ -335,20 +353,20 @@
     {
      "key": "snow_reliability",
      "value": 8.0,
-     "confidence": "low",
-     "rationale": "Hokkaido regime shows no clear long-term snowfall reduction at Sapporo or Akita. The 260m base is low in absolute terms but elevation is not comparable across regions."
+     "confidence": "medium",
+     "rationale": "Hokkaido proxies (Kimobetsu 818cm at -7.2C, Akaigawa 861cm) show good volume with a large thermal buffer. Resilience is the best measured after Furano. Niseko's own station returned no usable snow columns, so this is a proxy."
     },
     {
      "key": "winter_occupancy",
-     "value": 6.5,
-     "confidence": "medium",
-     "rationale": "Hokkaido simple lodging 25.4% (rank 16) and ryokan 43.5% (rank 6) - roughly double Nagano and Niigata for the licence class that matters."
+     "value": 7.5,
+     "confidence": "high",
+     "rationale": "REVISED UPWARD from 6.5. Hokkaido resort hotels reach 66.2% in January, rank 3 nationally, and simple lodging 34.2%, rank 5 - roughly double Nagano."
     },
     {
      "key": "off_season_demand",
-     "value": 7.0,
+     "value": 7.5,
      "confidence": "medium",
-     "rationale": "Hokkaido ryokan occupancy rank 6 nationally despite winter seasonality implies genuine four-season demand, not a winter-only market."
+     "rationale": "Hokkaido ryokan occupancy rank 6 annually despite winter seasonality implies genuine four-season demand."
     },
     {
      "key": "accessibility",
@@ -529,5 +547,6 @@
     }
    ]
   }
- ]
+ ],
+ "revision_note": "Snow scores rebuilt from JMA 1991-2020 station normals rather than elevation inference. Myoko's property momentum and capital growth revised upward after the Akakura submarket test. Winter occupancy revised using January prefecture data rather than annual."
 }

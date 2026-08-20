@@ -7,6 +7,70 @@ it**. A decision without a reversal trigger is a belief, not a decision.
 
 ---
 
+## D-0019 · 2026-08-20 · The thesis resolves as a lifestyle asset, not an investment
+
+**Decision.** On current evidence the investment thesis is recorded as
+**`YES, BUT NOT AS AN INVESTMENT`**: a well-chosen property can largely pay for itself, but does not
+produce a return that compensates for the capital at risk.
+
+**Evidence.** No property, in any scenario modelled, yields more than **3.17%** on total project
+cost; the range is 0.7–3.2%, before Japanese income tax on non-resident rental income. That is
+below an Australian risk-free rate while carrying currency, snow, depopulation, oversupply and
+liquidity risk. But a 16–22 guest lodge generates **A$13,000–23,000 of NOI** in the base case
+*after* all operating costs and *after* three weeks of owner use at peak rates — which is exactly
+what the brief asked: that tourism "materially support ownership costs".
+
+**Confidence.** Medium. Occupancy is an assumption and drives revenue linearly.
+
+**Changes it if:** audited accounts from an operating business show materially higher achievable
+occupancy or rates. Vendor yield claims of 8–10% are **3× the modelled figure** and that gap is
+unexplained — resolving it could move this decision in either direction.
+
+---
+
+## D-0018 · 2026-08-20 · Capacity should be maximised subject to regulatory and management limits
+
+**Decision.** Guest capacity is maximised, not optimised to a mid-range figure. The earlier
+10–16 guest hypothesis is retired.
+
+**Evidence.** Yield rises **monotonically** with capacity in every market modelled — Hakuba 1.21%
+at 6 guests to 3.54% at 24 — with no interior optimum. Remote ownership carries ~A$8,450/yr of
+irreducible fixed cost (insurance, snow clearing, the legally-required tax representative), which
+is **26–44% of revenue at 6 guests and 7–11% at 24.** A 6-guest Madarao property is NOI-negative.
+Conservative-case breakeven is 8 guests in Myoko and 10 in Madarao and Nozawa.
+
+**Confidence.** Medium-high on the mechanism.
+
+**Changes it if:** the sprinkler threshold proves to impose a step-change larger than the 2.5×
+proxy modelled. Yield still rises through that proxy, so the step would have to be much larger to
+create an interior optimum — but it is unresolved and it is the binding constraint.
+
+---
+
+## D-0017 · 2026-08-20 · Myoko upgraded to `YES, IN A SPECIFIC SUBMARKET`
+
+**Decision.** Myoko moves from `WATCH` (D-0015) to a qualified **`YES, IN AKAKURA ONSEN
+SPECIFICALLY`**. The qualification is load-bearing: it does not extend to Myoko municipality
+generally, to the Arai-side town centre, or to Suginosawa on masterplan speculation.
+
+**Evidence.** D-0015's own upgrade trigger fired. 2026 land prices: **Akakura +7.07%**, Myoko Kogen
+**+3.54%**, 2025 prefectural survey **+4.88%** — against the municipality at **−0.79%**. The bear
+case rested substantially on "eight years of committed capital have not moved land prices"; that
+does not survive disaggregation. Supporting: highest measured snowfall of any market (1,061 cm),
+Niigata resort hotels at 64.9% in January (rank 4), lowest forward supply pressure, best-structured
+walkable village, and FIT guests staying weeks to months.
+
+**Confidence.** Medium-high.
+
+**Changes it if:** the Akakura rise proves to be a one-year spike rather than a trend — Myoko Kogen
+is still **−79% from its 1993 peak** with recovery only from 2024. Point-level history and MLIT
+transaction data would settle it.
+
+**Not changed:** population −46.7% by 2050, ~70% Australian concentration, and a January mean of
+exactly 0.0 °C giving the worst snow resilience measured.
+
+---
+
 ## D-0016 · 2026-08-20 · Rankings require both weight coverage and a dimension count
 
 **Decision.** A market is ranked only with **≥40% weight coverage AND ≥10 of 20 scored
