@@ -1,110 +1,533 @@
 {
-  "dataset": "phase_4_market_screening_scores",
-  "domain": "japan_ski_property",
-  "as_of": "2026-08-16",
-  "status": "PROVISIONAL",
-
-  "important": "These are ESTIMATE-class judgements derived from the evidence gathered in Phase 4, 7, 8 and 21. Only 5 of 20 scorecard dimensions have any evidence at all. Ski quality, town vibe, amenities, accessibility, rental demand, occupancy, off-season demand, management availability, regulation, renovation opportunity, business growth, infrastructure, future supply balance, capital growth and exit liquidity are ALL unscored. The engine reports them as missing rather than defaulting them, so these rankings must not be read as a recommendation.",
-
-  "scored_dimensions": ["affordability", "property_price_momentum", "snow_reliability", "tourism_growth", "risk"],
-  "unscored_dimensions_count": 15,
-
-  "markets": [
+ "dataset": "phase_4_market_screening_scores",
+ "domain": "japan_ski_property",
+ "as_of": "2026-08-20",
+ "status": "PROVISIONAL - EXPANDED",
+ "methodology": "Each component is scored 0-10 with an explicit rationale citing the evidence behind it, per config/domains/japan_ski_property/scoring_components.json. A market is scored on a dimension ONLY where evidence exists. Absence of negative evidence is never treated as a positive score. Markets below the coverage threshold are reported as INSUFFICIENT DATA FOR RANKING rather than ranked.",
+ "scored_dimensions_available": 20,
+ "markets": [
+  {
+   "market_id": "hakuba",
+   "name": "Hakuba",
+   "prefecture": "Nagano",
+   "components": [
     {
-      "market_id": "hakuba",
-      "name": "Hakuba",
-      "prefecture": "Nagano",
-      "components": [
-        { "key": "affordability", "value": 8.0, "confidence": "medium",
-          "rationale": "Land at 25,556 JPY/m2, second cheapest of the six markets scored, and still 54% below its 1995 peak." },
-        { "key": "property_price_momentum", "value": 10.0, "confidence": "medium",
-          "rationale": "+26.93% in 2026, national rank 1; benchmark point +33.0% after +29.6% the prior year." },
-        { "key": "snow_reliability", "value": 6.5, "confidence": "low",
-          "rationale": "760m base, the highest of the Honshu candidates, in the eastern-Honshu high-elevation regime that shows no declining trend. Offset: snow is being piled onto the highest course to sustain operations." },
-        { "key": "tourism_growth", "value": 6.0, "confidence": "low",
-          "rationale": "Nagano foreign overnight stays +5% in 2025 to 2.45m - modest growth but from by far the largest base of the candidates. Prefecture-level proxy, not town-level." },
-        { "key": "risk", "value": 6.0, "confidence": "low",
-          "rationale": "Inverted scale. Tourism appears demonstrably decoupled from resident decline. Offset by snow stress at the resort and by entry after a 194% run from the 2018 low." }
-      ]
+     "key": "affordability",
+     "value": 6.5,
+     "confidence": "medium",
+     "rationale": "Land is cheap (25,556 JPY/m2, 2nd lowest) and still 54% below the 1995 peak, but ACTUAL candidate stock is expensive: lodge-type properties run A$845k-1.1m total project cost. Land price and entry price diverge here."
     },
     {
-      "market_id": "nozawa_onsen",
-      "name": "Nozawa Onsen",
-      "prefecture": "Nagano",
-      "components": [
-        { "key": "affordability", "value": 7.0, "confidence": "medium",
-          "rationale": "Land at 29,350 JPY/m2, mid-range of the markets scored." },
-        { "key": "property_price_momentum", "value": 9.0, "confidence": "medium",
-          "rationale": "+21.69% in 2026, national rank 2, with materially less promotional coverage than lower-performing markets." },
-        { "key": "snow_reliability", "value": 5.0, "confidence": "low",
-          "rationale": "565m base is the LOWEST of the Honshu candidates, in the elevation band where Japan Sea side snow decline is evidenced. Large vertical (1,085m) protects the upper mountain but not the village." },
-        { "key": "tourism_growth", "value": 6.0, "confidence": "low",
-          "rationale": "Nagano prefecture proxy, +5%. No town-level data retrieved." },
-        { "key": "risk", "value": 5.0, "confidence": "low",
-          "rationale": "Inverted scale. Low base elevation is a structural concern. Population projection not retrieved - a material unknown, not a clean bill of health." }
-      ]
+     "key": "property_price_momentum",
+     "value": 10.0,
+     "confidence": "medium",
+     "rationale": "+26.93% in 2026, national rank 1; benchmark point +33.0% after +29.6% the prior year."
     },
     {
-      "market_id": "kutchan_niseko",
-      "name": "Kutchan / Niseko",
-      "prefecture": "Hokkaido",
-      "components": [
-        { "key": "affordability", "value": 2.0, "confidence": "medium",
-          "rationale": "Land at 120,750 JPY/m2 - 4.7x Hakuba and 6.1x Myoko. Hardest market for the low-entry-cost thesis." },
-        { "key": "property_price_momentum", "value": 7.0, "confidence": "medium",
-          "rationale": "+12.33% in 2026, national rank 21. Solid continued appreciation from a high base." },
-        { "key": "snow_reliability", "value": 8.0, "confidence": "low",
-          "rationale": "Hokkaido regime shows no clear long-term snowfall reduction at Sapporo or Akita. The 260m base is low in absolute terms but elevation is not comparable across regions - Niseko's snow comes from a colder regime." },
-        { "key": "risk", "value": 7.0, "confidence": "low",
-          "rationale": "Inverted scale. Most established market with demonstrated exit liquidity and a favourable snow regime. Principal risks are price level and Hokkaido-wide depopulation." }
-      ]
+     "key": "snow_reliability",
+     "value": 6.5,
+     "confidence": "low",
+     "rationale": "760m base, highest of the Honshu candidates, in the eastern-Honshu high-elevation regime showing no declining trend. Offset: snow reported being piled onto the highest course to sustain operations."
     },
     {
-      "market_id": "myoko",
-      "name": "Myoko Kogen",
-      "prefecture": "Niigata",
-      "components": [
-        { "key": "affordability", "value": 9.0, "confidence": "medium",
-          "rationale": "Land at 19,904 JPY/m2, the cheapest of the markets scored, and 63% below its 1993 peak." },
-        { "key": "property_price_momentum", "value": 2.0, "confidence": "medium",
-          "rationale": "-0.79% in 2026. Bottomed in 2022 and has recovered only ~5% in four years, while being the most heavily promoted market on the longlist." },
-        { "key": "snow_reliability", "value": 5.0, "confidence": "low",
-          "rationale": "~730m base on the Japan Sea side. Takada, the nearest long-record station, is one of two named as showing marked long-term decline - though it is a lowland station and does not measure the upper mountain." },
-        { "key": "tourism_growth", "value": 7.0, "confidence": "low",
-          "rationale": "Niigata foreign overnight stays +55% in 2025, second-fastest nationally - but off a base one-third of Nagano's, and prefecture-level figures include Niigata City and Yuzawa." },
-        { "key": "risk", "value": 3.0, "confidence": "low",
-          "rationale": "Inverted scale. Population projected -46.7% by 2050. Tourism decoupling from resident decline is not yet demonstrated at town level. Investment case rests on anticipated rather than realised repricing." }
-      ]
+     "key": "tourism_growth",
+     "value": 9.0,
+     "confidence": "high",
+     "rationale": "19-year municipal series: 33,491 (2006) to 447,474 (2024) foreign overnight stays. 15.5% CAGR, +172% vs 2018, the last methodologically comparable year. Highest-quality tourism evidence in the project."
     },
     {
-      "market_id": "furano",
-      "name": "Furano",
-      "prefecture": "Hokkaido",
-      "components": [
-        { "key": "affordability", "value": 6.0, "confidence": "medium",
-          "rationale": "Land at 35,760 JPY/m2, the most expensive of the non-Niseko markets scored." },
-        { "key": "property_price_momentum", "value": 6.0, "confidence": "medium",
-          "rationale": "+6.73% in 2026, national rank 56. Moderate, steady appreciation." },
-        { "key": "snow_reliability", "value": 8.5, "confidence": "low",
-          "rationale": "Hokkaido regime with no clear long-term decline, and a higher base elevation than Niseko. Regional inference only - no station data retrieved." }
-      ]
+     "key": "rental_demand",
+     "value": 7.0,
+     "confidence": "medium",
+     "rationale": "447,474 foreign overnight stays, by far the largest of any candidate. Australians 44.7% and growing 117% in 2024; demand is also diversifying (Thailand +282%, Taiwan +85%)."
     },
     {
-      "market_id": "yuzawa",
-      "name": "Yuzawa",
-      "prefecture": "Niigata",
-      "components": [
-        { "key": "affordability", "value": 7.5, "confidence": "medium",
-          "rationale": "Land at 28,100 JPY/m2 and 85% below its 1993 peak. Cheap by every measure - which is precisely the trap." },
-        { "key": "property_price_momentum", "value": 2.0, "confidence": "medium",
-          "rationale": "-0.44% in 2026, still falling 33 years after the peak. The longest documented decline of any market scored." },
-        { "key": "snow_reliability", "value": 4.0, "confidence": "low",
-          "rationale": "Low elevation on the Japan Sea side, the band where declining maximum snow depth is evidenced." },
-        { "key": "tourism_growth", "value": 7.0, "confidence": "low",
-          "rationale": "Niigata prefecture proxy, +55%. Yuzawa is itself a large component of that figure, so the proxy is less independent here than elsewhere." },
-        { "key": "risk", "value": 2.0, "confidence": "low",
-          "rationale": "Inverted scale. Bubble-era oversupply has not cleared in three decades despite Shinkansen access. Included as a benchmark, not as a candidate." }
-      ]
+     "key": "winter_occupancy",
+     "value": 5.0,
+     "confidence": "medium",
+     "rationale": "Nagano simple-lodging occupancy 15.3% and ryokan 27.9%; the prefecture is LAST in Japan overall at 39.6%. Adjusted for winter seasonality this is not disastrous, but it is well below Hokkaido."
+    },
+    {
+     "key": "off_season_demand",
+     "value": 4.0,
+     "confidence": "medium",
+     "rationale": "84.6% of foreign overnight stays fall Dec-Mar, and 97.7% of Australian stays. Nagano prefecture-wide summer is strong but that is domestic and not specific to Hakuba."
+    },
+    {
+     "key": "accessibility",
+     "value": 7.0,
+     "confidence": "low",
+     "rationale": "Established bus and transfer network from Nagano; the most developed inbound transfer infrastructure of the Honshu candidates."
+    },
+    {
+     "key": "amenities",
+     "value": 8.0,
+     "confidence": "low",
+     "rationale": "Best accommodation and dining variety in the region, extensive English-language service. Discounted because facilities are spread across separate villages."
+    },
+    {
+     "key": "town_vibe",
+     "value": 6.5,
+     "confidence": "low",
+     "rationale": "Strong dining and nightlife in Echoland/Wadano, but the valley is dispersed and the free shuttle reportedly stops around 6pm, leaving guests taxi-dependent across villages after dark."
+    },
+    {
+     "key": "management_availability",
+     "value": 8.0,
+     "confidence": "low",
+     "rationale": "Many foreign-owned and operated businesses with English-language service; the deepest operator ecosystem of the Honshu candidates."
+    },
+    {
+     "key": "regulation",
+     "value": 6.0,
+     "confidence": "low",
+     "rationale": "National path to a lawful licence is clear. Municipal ordinances unchecked - the largest open regulatory risk, and it is unchecked everywhere, so this does not discriminate between markets."
+    },
+    {
+     "key": "renovation_opportunity",
+     "value": 5.0,
+     "confidence": "low",
+     "rationale": "Snow-country premium of 1.5-2.0x applies on roof/exterior. Candidate stock is already largely renovated and priced accordingly, leaving less value-add headroom."
+    },
+    {
+     "key": "business_growth",
+     "value": 8.0,
+     "confidence": "medium",
+     "rationale": "MLIT explicitly attributes Hakuba's land-price rise to overseas buyers purchasing homes and OPENING ACCOMMODATION BUSINESSES. That is direct official evidence of private capital entering."
+    },
+    {
+     "key": "capital_growth_potential",
+     "value": 7.0,
+     "confidence": "low",
+     "rationale": "Multiple independent drivers align: demand growth, business formation, land momentum. Discounted because entry now follows a 194% run from the 2018 low."
+    },
+    {
+     "key": "exit_liquidity",
+     "value": 7.5,
+     "confidence": "low",
+     "rationale": "Deepest foreign buyer pool, most active agency market, widest range of stock. Best exit prospects of the Honshu candidates."
+    },
+    {
+     "key": "risk",
+     "value": 5.5,
+     "confidence": "low",
+     "rationale": "Inverted. Snow stress at the resort, prefecture-wide oversupply (occupancy last in Japan), and entry after a large run. Offset by demonstrated decoupling of tourism from resident decline."
     }
-  ]
+   ]
+  },
+  {
+   "market_id": "myoko",
+   "name": "Myoko Kogen",
+   "prefecture": "Niigata",
+   "components": [
+    {
+     "key": "affordability",
+     "value": 9.0,
+     "confidence": "medium",
+     "rationale": "Land 19,904 JPY/m2, cheapest of the candidates and 63% below the 1993 peak. Real lodge stock from A$343k, with candidate total project costs from A$544k."
+    },
+    {
+     "key": "property_price_momentum",
+     "value": 2.0,
+     "confidence": "medium",
+     "rationale": "-0.79% in 2026. Bottomed 2022 and recovered only ~5% in four years despite eight years of announced investment."
+    },
+    {
+     "key": "snow_reliability",
+     "value": 5.0,
+     "confidence": "low",
+     "rationale": "~730m base on the Japan Sea side. Takada, the nearest long-record station, is one of two named as showing marked long-term decline - though it is a lowland station."
+    },
+    {
+     "key": "tourism_growth",
+     "value": 5.5,
+     "confidence": "medium",
+     "rationale": "59,721 (2018) to 120,000 (FY2023), roughly doubling - real growth. But only ~23% of Niigata's foreign stays, growing at about half Hakuba's rate, and the city's own target is ~7%/yr to 2029."
+    },
+    {
+     "key": "rental_demand",
+     "value": 6.5,
+     "confidence": "medium",
+     "rationale": "Volume is small, but demand QUALITY is the best found anywhere: FIT visitors staying several weeks to two months. For a self-contained lodge that beats high-volume short stays."
+    },
+    {
+     "key": "winter_occupancy",
+     "value": 4.0,
+     "confidence": "medium",
+     "rationale": "Niigata simple-lodging occupancy 11.5%, rank 42 of 47, and ryokan 26.6%, rank 44. The weakest facility-class occupancy of any candidate region."
+    },
+    {
+     "key": "accessibility",
+     "value": 7.0,
+     "confidence": "low",
+     "rationale": "Shinkansen to Joetsu-Myoko with a short transfer. Genuinely good access from Tokyo."
+    },
+    {
+     "key": "amenities",
+     "value": 7.0,
+     "confidence": "low",
+     "rationale": "50+ restaurants and bars in Akakura Onsen, convenience store, onsen. Discounted because a supermarket in the village is unconfirmed."
+    },
+    {
+     "key": "town_vibe",
+     "value": 8.5,
+     "confidence": "low",
+     "rationale": "Walkable onsen village with accommodation, dining and lifts together; quiet traditional character explicitly cited by official sources as matching inbound preference. Best town structure after Nozawa."
+    },
+    {
+     "key": "regulation",
+     "value": 6.0,
+     "confidence": "low",
+     "rationale": "Same national position as other markets; municipal ordinances unchecked. Local opposition to foreign investment is a leading indicator of possible tightening."
+    },
+    {
+     "key": "renovation_opportunity",
+     "value": 6.5,
+     "confidence": "low",
+     "rationale": "Cheapest stock with genuine value-add headroom, including disused ryokan and cleared sites. Offset by the snow-country cost premium."
+    },
+    {
+     "key": "business_growth",
+     "value": 6.0,
+     "confidence": "low",
+     "rationale": "Official source notes accommodation businesses opened by foreign owners are increasing. Weaker evidence than Hakuba's, and not quantified."
+    },
+    {
+     "key": "infrastructure",
+     "value": 6.0,
+     "confidence": "medium",
+     "rationale": "Six Senses (57 rooms) approved and an Accor MGallery (38) in planning, from a funded developer. Status-weighted, not counted at face value."
+    },
+    {
+     "key": "future_supply_balance",
+     "value": 7.0,
+     "confidence": "medium",
+     "rationale": "Only ~47 status-weighted committed rooms, and the MGallery is a refurbishment with near-zero net new supply. Very low forward supply pressure - the inverse of Niseko."
+    },
+    {
+     "key": "capital_growth_potential",
+     "value": 3.5,
+     "confidence": "medium",
+     "rationale": "Eight years of committed capital have not moved municipal land prices. The lag is already longer than the one Hakuba exhibited, so 'land simply lags' is weakly supported."
+    },
+    {
+     "key": "exit_liquidity",
+     "value": 4.0,
+     "confidence": "low",
+     "rationale": "Thin buyer pool. Most demand is foreign and concentrated; no evidence of an active domestic buyer market for lodge assets."
+    },
+    {
+     "key": "risk",
+     "value": 3.0,
+     "confidence": "low",
+     "rationale": "Inverted. Population -46.7% by 2050, ~70% single-source-market dependence correlated with the owners' own FX exposure, adjacent station showing snow decline, and worst-in-class occupancy."
+    }
+   ]
+  },
+  {
+   "market_id": "nozawa_onsen",
+   "name": "Nozawa Onsen",
+   "prefecture": "Nagano",
+   "components": [
+    {
+     "key": "affordability",
+     "value": 6.5,
+     "confidence": "medium",
+     "rationale": "Land 29,350 JPY/m2, mid-range. Limited candidate stock observed and no used houses at all on the domestic portal."
+    },
+    {
+     "key": "property_price_momentum",
+     "value": 9.0,
+     "confidence": "medium",
+     "rationale": "+21.69% in 2026, national rank 2, with a fraction of the promotional coverage directed at lower-performing markets."
+    },
+    {
+     "key": "snow_reliability",
+     "value": 4.5,
+     "confidence": "low",
+     "rationale": "565m base, the LOWEST of the Honshu candidates, squarely in the elevation band where Japan Sea side snow decline is evidenced. Large vertical protects the upper mountain but not the village."
+    },
+    {
+     "key": "winter_occupancy",
+     "value": 5.0,
+     "confidence": "medium",
+     "rationale": "Nagano prefecture figures as for Hakuba: simple lodging 15.3%, ryokan 27.9%."
+    },
+    {
+     "key": "off_season_demand",
+     "value": 6.0,
+     "confidence": "low",
+     "rationale": "Described as a working village with festivals and events through BOTH winter and summer - a genuine year-round signal rather than a tourism-board aspiration."
+    },
+    {
+     "key": "accessibility",
+     "value": 6.5,
+     "confidence": "low",
+     "rationale": "Shinkansen to Iiyama then roughly 25 minutes by bus. Good, slightly less direct than Hakuba's established transfer network."
+    },
+    {
+     "key": "amenities",
+     "value": 7.0,
+     "confidence": "low",
+     "rationale": "Good dining and nightlife, 13 free public onsen, everything within the village."
+    },
+    {
+     "key": "town_vibe",
+     "value": 9.0,
+     "confidence": "low",
+     "rationale": "The strongest town structure examined: most walkable, no shuttle required, no car needed, authentic working village with genuine onsen character. Best guest-experience profile of any candidate."
+    },
+    {
+     "key": "management_availability",
+     "value": 6.0,
+     "confidence": "low",
+     "rationale": "At least one professionally rental-managed apartment observed in listings, evidencing that management capacity exists. Thinner evidence than Hakuba's."
+    },
+    {
+     "key": "regulation",
+     "value": 6.0,
+     "confidence": "low",
+     "rationale": "As other markets; municipal ordinances unchecked."
+    },
+    {
+     "key": "renovation_opportunity",
+     "value": 5.0,
+     "confidence": "low",
+     "rationale": "Snow-country premium applies. Little candidate stock observed to assess."
+    },
+    {
+     "key": "capital_growth_potential",
+     "value": 7.0,
+     "confidence": "low",
+     "rationale": "Strong momentum with less speculative attention than Myoko, in a market with genuine four-season village life."
+    },
+    {
+     "key": "exit_liquidity",
+     "value": 5.5,
+     "confidence": "low",
+     "rationale": "Some foreign buyer interest evidenced by listings, but a much thinner market than Hakuba."
+    },
+    {
+     "key": "risk",
+     "value": 5.0,
+     "confidence": "low",
+     "rationale": "Inverted. Low base elevation is a structural snow concern and population projection was not retrieved - a material unknown rather than a clean bill of health."
+    }
+   ]
+  },
+  {
+   "market_id": "kutchan_niseko",
+   "name": "Kutchan / Niseko",
+   "prefecture": "Hokkaido",
+   "components": [
+    {
+     "key": "affordability",
+     "value": 2.0,
+     "confidence": "medium",
+     "rationale": "Land 120,750 JPY/m2 - 4.7x Hakuba and 6.1x Myoko. Hardest market for the low-entry-cost thesis."
+    },
+    {
+     "key": "property_price_momentum",
+     "value": 7.0,
+     "confidence": "medium",
+     "rationale": "+12.33% in 2026, national rank 21. Solid continued appreciation from a high base."
+    },
+    {
+     "key": "snow_reliability",
+     "value": 8.0,
+     "confidence": "low",
+     "rationale": "Hokkaido regime shows no clear long-term snowfall reduction at Sapporo or Akita. The 260m base is low in absolute terms but elevation is not comparable across regions."
+    },
+    {
+     "key": "winter_occupancy",
+     "value": 6.5,
+     "confidence": "medium",
+     "rationale": "Hokkaido simple lodging 25.4% (rank 16) and ryokan 43.5% (rank 6) - roughly double Nagano and Niigata for the licence class that matters."
+    },
+    {
+     "key": "off_season_demand",
+     "value": 7.0,
+     "confidence": "medium",
+     "rationale": "Hokkaido ryokan occupancy rank 6 nationally despite winter seasonality implies genuine four-season demand, not a winter-only market."
+    },
+    {
+     "key": "accessibility",
+     "value": 6.0,
+     "confidence": "low",
+     "rationale": "New Chitose airport with a 2-3 hour transfer. Direct international access is a strength; the ground transfer is long."
+    },
+    {
+     "key": "management_availability",
+     "value": 8.0,
+     "confidence": "low",
+     "rationale": "Most developed operator ecosystem in Japanese ski property, with extensive foreign-facing management."
+    },
+    {
+     "key": "regulation",
+     "value": 6.5,
+     "confidence": "medium",
+     "rationale": "Scored above other markets because hotel-LICENSED properties appear in actual listings here, evidencing that licensing is achievable and transferable in practice, not just in theory."
+    },
+    {
+     "key": "renovation_opportunity",
+     "value": 3.0,
+     "confidence": "low",
+     "rationale": "Stock is expensive and much of it is new or recently built, leaving little value-add headroom for a renovation strategy."
+    },
+    {
+     "key": "infrastructure",
+     "value": 8.0,
+     "confidence": "medium",
+     "rationale": "The largest committed pipeline of any candidate: Hotel101 (482 rooms, structural phase complete), Moxy (310), Aman (61), Capella. Strong signal of investor confidence."
+    },
+    {
+     "key": "future_supply_balance",
+     "value": 2.5,
+     "confidence": "medium",
+     "rationale": "The same pipeline read as risk: ~774 status-weighted committed rooms, roughly 16x Myoko's, arriving into a prefecture already at 59.8% occupancy. Highest supply risk of any candidate."
+    },
+    {
+     "key": "capital_growth_potential",
+     "value": 6.0,
+     "confidence": "low",
+     "rationale": "Proven appreciation, but from a high base and into substantial new supply."
+    },
+    {
+     "key": "exit_liquidity",
+     "value": 8.5,
+     "confidence": "low",
+     "rationale": "Deepest and most institutional buyer pool in Japanese ski property, including branded operators and international capital."
+    },
+    {
+     "key": "risk",
+     "value": 6.0,
+     "confidence": "low",
+     "rationale": "Inverted. Favourable snow regime, best occupancy, demonstrated liquidity. Principal risks are price level, the incoming supply wave, and Hokkaido-wide depopulation."
+    }
+   ]
+  },
+  {
+   "market_id": "madarao",
+   "name": "Madarao",
+   "prefecture": "Nagano",
+   "components": [
+    {
+     "key": "affordability",
+     "value": 8.5,
+     "confidence": "medium",
+     "rationale": "Cheapest per bedroom of any candidate: Ridge Runner at 8 bedrooms for A$378k, roughly A$47k per bedroom."
+    },
+    {
+     "key": "snow_reliability",
+     "value": 5.0,
+     "confidence": "low",
+     "rationale": "Japan Sea side, Nagano/Niigata border. No station data retrieved."
+    },
+    {
+     "key": "winter_occupancy",
+     "value": 5.0,
+     "confidence": "medium",
+     "rationale": "Nagano prefecture figures."
+    },
+    {
+     "key": "renovation_opportunity",
+     "value": 6.0,
+     "confidence": "low",
+     "rationale": "Lodge-type stock at low prices suggests value-add headroom."
+    },
+    {
+     "key": "risk",
+     "value": 3.5,
+     "confidence": "low",
+     "rationale": "Inverted. An observed -15.7% price reduction alongside the cheapest per-bedroom pricing is the signature of weak demand, not value. Flagged for the value-trap checklist and not yet cleared."
+    }
+   ]
+  },
+  {
+   "market_id": "furano",
+   "name": "Furano",
+   "prefecture": "Hokkaido",
+   "components": [
+    {
+     "key": "affordability",
+     "value": 6.0,
+     "confidence": "medium",
+     "rationale": "Land 35,760 JPY/m2, the most expensive of the non-Niseko markets scored."
+    },
+    {
+     "key": "property_price_momentum",
+     "value": 6.0,
+     "confidence": "medium",
+     "rationale": "+6.73% in 2026, national rank 56. Moderate, steady appreciation."
+    },
+    {
+     "key": "snow_reliability",
+     "value": 8.5,
+     "confidence": "low",
+     "rationale": "Hokkaido regime with no clear long-term decline, and a higher base elevation than Niseko. Regional inference only."
+    },
+    {
+     "key": "winter_occupancy",
+     "value": 6.5,
+     "confidence": "medium",
+     "rationale": "Hokkaido prefecture figures."
+    },
+    {
+     "key": "off_season_demand",
+     "value": 7.5,
+     "confidence": "low",
+     "rationale": "Hokkaido four-season signal plus Furano's established summer visitation. Not separately measured for the town."
+    }
+   ]
+  },
+  {
+   "market_id": "yuzawa",
+   "name": "Yuzawa (control case)",
+   "prefecture": "Niigata",
+   "components": [
+    {
+     "key": "affordability",
+     "value": 7.5,
+     "confidence": "medium",
+     "rationale": "Median apartment asking 2.5m JPY (A$22,250), cheapest 350,000 JPY. Cheap by every measure - which is precisely the trap."
+    },
+    {
+     "key": "property_price_momentum",
+     "value": 2.0,
+     "confidence": "medium",
+     "rationale": "-0.44% in 2026, still falling 33 years after the 1993 peak and down 85% from it."
+    },
+    {
+     "key": "snow_reliability",
+     "value": 4.0,
+     "confidence": "low",
+     "rationale": "Low elevation on the Japan Sea side, the band where declining maximum snow depth is evidenced."
+    },
+    {
+     "key": "winter_occupancy",
+     "value": 3.0,
+     "confidence": "medium",
+     "rationale": "Niigata simple lodging 11.5%, rank 42."
+    },
+    {
+     "key": "accessibility",
+     "value": 9.0,
+     "confidence": "high",
+     "rationale": "Direct Shinkansen from Tokyo - the best access of any candidate. Recorded because it demonstrates that accessibility alone does not create value."
+    },
+    {
+     "key": "exit_liquidity",
+     "value": 1.0,
+     "confidence": "high",
+     "rationale": "152 apartments for sale across 30 buildings, 5.1 simultaneous sellers per building, 17 in one tower. Proven illiquidity, directly measured."
+    },
+    {
+     "key": "risk",
+     "value": 1.5,
+     "confidence": "high",
+     "rationale": "Inverted. Negative-carry assets, fragmented ownership preventing repositioning, ageing buildings entering major-repair cycles into 40-50% construction cost inflation, and 33 years of continuous decline."
+    }
+   ]
+  }
+ ]
 }

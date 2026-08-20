@@ -79,12 +79,22 @@ def weight_coverage(result, weight_set):
     return scored / total
 
 
-def run(weight_set, markets, explain=False, min_coverage=0.0):
+def run(weight_set, markets, explain=False, min_coverage=0.0, min_dimensions=0):
+    """Rank markets, withholding any whose evidence is too thin to compare honestly.
+
+    Two independent guards, because either alone is gameable. Weight coverage stops a
+    market being carried by one heavily-weighted dimension; the dimension count stops a
+    market qualifying on a handful of its strongest scores. A market must clear both.
+    """
     results = [score(name, components, weight_set) for _mid, name, components in markets]
     coverage = {r.subject_id: weight_coverage(r, weight_set) for r in results}
+    dims = {r.subject_id: len(r.components) for r in results}
 
-    rankable = [r for r in results if coverage[r.subject_id] >= min_coverage]
-    withheld = [r for r in results if coverage[r.subject_id] < min_coverage]
+    def qualifies(r):
+        return coverage[r.subject_id] >= min_coverage and dims[r.subject_id] >= min_dimensions
+
+    rankable = [r for r in results if qualifies(r)]
+    withheld = [r for r in results if not qualifies(r)]
     ranked = rank(rankable)
 
     print("\n%s" % ("=" * 78))
@@ -110,13 +120,15 @@ def run(weight_set, markets, explain=False, min_coverage=0.0):
         )
 
     if withheld:
-        print("\n  Withheld — evidence coverage below %.0f%%:" % (min_coverage * 100))
+        print("\n  INSUFFICIENT DATA FOR RANKING (needs >=%.0f%% coverage and >=%d dimensions):"
+              % (min_coverage * 100, min_dimensions))
         for result in withheld:
             print(
-                "    %-22s coverage %.0f%% (would have scored %.2f)"
-                % (result.subject_id, coverage[result.subject_id] * 100, result.total_score)
+                "    %-24s coverage %.0f%%, %d dimensions scored"
+                % (result.subject_id, coverage[result.subject_id] * 100, dims[result.subject_id])
             )
-        print("    Too little is known to rank these against the others.")
+        print("    Not ranked. Too little is known to compare these with the others,")
+        print("    and ranking them on their strongest dimensions alone would reward ignorance.")
 
     if explain:
         for result in ranked:
@@ -133,9 +145,16 @@ def main():
     parser.add_argument(
         "--min-coverage",
         type=float,
-        default=0.25,
+        default=0.40,
         help="Minimum fraction of total weight that must be scored for a market to be "
-             "ranked at all (default 0.25). Below this, too little is known.",
+             "ranked at all (default 0.40). Below this, too little is known.",
+    )
+    parser.add_argument(
+        "--min-dimensions",
+        type=int,
+        default=10,
+        help="Minimum number of scored dimensions for a market to be ranked (default 10 "
+             "of 20). Stops a market qualifying on a handful of its strongest scores.",
     )
     args = parser.parse_args()
 
@@ -146,20 +165,16 @@ def main():
     print("PROVISIONAL MARKET SCREENING — NOT A RECOMMENDATION")
     print("=" * 78)
     print("Evidence as of : %s" % evidence["as_of"])
-    print("Scored         : %s" % ", ".join(evidence["scored_dimensions"]))
-    print("Unscored       : %d of 20 scorecard dimensions have no evidence at all"
-          % evidence["unscored_dimensions_count"])
+    print("Status         : %s" % evidence["status"])
+    print("Dimensions     : %d defined in the scorecard" % evidence["scored_dimensions_available"])
     print()
-    print("Missing entirely: ski quality, town vibe, amenities, accessibility, rental")
-    print("demand, occupancy, off-season demand, management availability, regulation,")
-    print("renovation opportunity, business growth, infrastructure, future supply")
-    print("balance, capital growth potential, exit liquidity.")
+    print("Unscored dimensions are reported, never substituted with a midpoint - that")
+    print("would flatter exactly the markets least is known about. Absence of negative")
+    print("evidence is never scored as a positive.")
     print()
-    print("The engine reports these as missing rather than substituting a midpoint,")
-    print("which would flatter exactly the markets least is known about.")
-    print()
-    print("Markets below %.0f%% weight coverage are withheld from ranking entirely."
-          % (args.min_coverage * 100))
+    print("Markets are ranked only with >=%.0f%% weight coverage AND >=%d of 20 dimensions."
+          % (args.min_coverage * 100, args.min_dimensions))
+    print("Below either threshold: INSUFFICIENT DATA FOR RANKING.")
 
     if args.all_profiles:
         selected = list(weight_sets.values())
@@ -176,7 +191,8 @@ def main():
     orderings = {}
     for weight_set in selected:
         ranked = run(
-            weight_set, markets, explain=args.explain, min_coverage=args.min_coverage
+            weight_set, markets, explain=args.explain,
+            min_coverage=args.min_coverage, min_dimensions=args.min_dimensions,
         )
         orderings[weight_set.weight_set_id] = [r.subject_id for r in ranked]
 
