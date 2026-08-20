@@ -1,13 +1,11 @@
 # Next Actions
 
-**Last updated:** 2026-08-16
+**Last updated:** 2026-08-20
 **Branch:** `main`
-**Current phases:** 4 active · 7, 8, 12, 17, 21 partial
-**Overall status:** Foundations complete. Research under way. **No investment conclusion
-reached, and none should be inferred from anything in this repository.**
+**Status:** Evidence density substantially increased. **No investment conclusion reached, and none
+should be inferred.**
 
-This is the handoff file. Read it first, then `prompts/master-prompt.md`, `PROJECT_BRIEF.md`
-and `RESEARCH_PLAN.md`.
+Read this first, then `prompts/master-prompt.md`, `PROJECT_BRIEF.md`, `RESEARCH_PLAN.md`.
 
 ---
 
@@ -15,224 +13,135 @@ and `RESEARCH_PLAN.md`.
 
 | Phase | Status |
 | --- | --- |
-| 1 — Architecture and foundations | `DONE` |
-| 2 — Core schemas and engine | `DONE` — 104 tests, stdlib only |
-| 3 — Domain module `japan_ski_property` | `DONE` |
-| 4 — Destination screening | `ACTIVE` — first pass complete, six markets scored |
-| 7 — Historical property markets | `PARTIAL` — 2026 land prices + 30-year histories |
-| 8 — Tourism | `PARTIAL` — prefecture level, plus Myoko municipal |
-| 12 — Regulation | `PARTIAL` — brought forward because it is gating |
-| 21 — Risk and counter-thesis | `PARTIAL` — brought forward, snow and depopulation |
-| 17 / 47 — Capital strategies | `PARTIAL` — cost side modelled, revenue side not |
-| 5, 6, 9–11, 13–16, 18–20, 22, 23 | `PENDING` |
+| 1–3 Architecture, core engine, domain module | `DONE` — 119 tests |
+| 4 Destination screening | `ACTIVE` — 4 markets ranked at 68–85% coverage, 3 withheld |
+| 6 Town profiles / micro-location | `PARTIAL` — Myoko, Hakuba, Nozawa |
+| 7 Historical property markets | `PARTIAL` — 2026 land prices, 30-year histories |
+| 8 Tourism | `PARTIAL` — Hakuba 19-yr series, Myoko partial, occupancy by prefecture |
+| 11 Infrastructure pipeline | `PARTIAL` — Myoko and Niseko only |
+| 12 Regulation | `PARTIAL` — national resolved, municipal unchecked |
+| 13 Property collection | `PARTIAL` — 203 records, 3 price events |
+| 14 Renovation costs | `PARTIAL` — 3 of 6 layers evidenced |
+| 17/47 Capital strategies | `PARTIAL` — cost side only |
+| 18 Monitoring | `PROTOTYPE` — pipeline + tests, collection not enabled |
+| 21 Risk / counter-thesis | `PARTIAL` — snow, depopulation, Yuzawa, Myoko bull/bear |
+| 26 Guest capacity | `PARTIAL` — constraints identified, optimum blocked on ADR |
+| 5, 9, 10, 15, 16, 19, 20, 22, 23 | `PENDING` |
 
 ```bash
-python3 -m unittest discover -s tests -t . -v          # 104 tests, no install step
+python3 -m unittest discover -s tests -t . -v      # 119 tests, no install step
 python3 scripts/analysis/screen_markets.py --all-profiles --explain
+python3 scripts/analysis/property_costs.py --all
 python3 scripts/analysis/capital_model.py --strategies
+python3 scripts/monitoring/monitor.py --status
 ```
 
-The screening script runs the whole engine path on real evidence — config in, evidence in,
-explained and reproducible ranking out. Change a weight in
-`config/domains/japan_ski_property/weights.json` and re-run to see the ranking move.
+**Current ranking** (Hakuba/Myoko 17 of 20 dimensions, Nozawa/Kutchan 14, all `low` confidence):
 
-**Current provisional order** (5 of 20 dimensions scored, all `low` confidence, Kutchan and
-Furano withheld for insufficient coverage): **Hakuba > Nozawa Onsen > Myoko > Yuzawa**, stable
-across every weight profile. [`analysis/scorecards/phase-04-market-screening.md`](../analysis/scorecards/phase-04-market-screening.md)
-explains why that stability is weaker evidence than it appears — two of the five scored
-dimensions derive from the same land-price dataset.
+> **Hakuba > Nozawa Onsen > Kutchan/Niseko > Myoko**
+> Madarao, Furano and Yuzawa: `INSUFFICIENT DATA FOR RANKING`
 
 ---
 
-## The findings that matter so far
+## The findings that would change an owner's mind
 
-**1. Japanese ski land is three markets, not one.** Corroborated across two independent sources
-to within 0.02pp:
+**1. Prefecture data was misleading us, and the correction cost Myoko its best argument.**
+Niigata's +55% foreign-stay growth is **not** Myoko — Myoko is ~23% of the prefecture and grew at
+about half Hakuba's rate. Yuzawa sits inside the same figure. (D-0014)
 
-| Regime | Markets (2026 公示地価 change) |
-| --- | --- |
-| Recovering strongly | Hakuba **+26.9%** (national #1), Nozawa Onsen **+21.7%** (#2) |
-| Established, still rising | Kutchan **+12.3%**, Furano **+6.7%** |
-| Flat or still falling | Myoko **−0.79%**, Yuzawa **−0.44%** |
+**2. Hakuba's decoupling is now evidenced over 19 years.** 33,491 → 447,474 foreign overnight
+stays, 15.5% CAGR, +172% against 2018. **Australians are 44.7%** and grew 117% in 2024.
 
-→ [`domains/japan_ski_property/property_market/land-price-regimes.md`](../domains/japan_ski_property/property_market/land-price-regimes.md)
+**3. Nagano has the lowest hotel occupancy in Japan (39.6%, rank 47).** Read correctly: annual
+figures penalise winter-only assets, and the revenue model must be seasonal (F7). Read
+legitimately: Nagano and Niigata carry **existing** accommodation oversupply — the Yuzawa
+mechanism at prefecture scale.
 
-**2. Narrative and official data disagree about Myoko.** The market promoted hardest to exactly
-this project's buyer profile bottomed in 2022, has recovered ~5%, and was still negative in 2026.
-That is not disqualifying — it may be what a pre-capital market looks like — but the Myoko case
-rests on **anticipated** rather than **realised** appreciation. It yields a monitorable
-prediction: land prices should turn positive as the 2028 first stage approaches.
+**4. Hokkaido separates on a third independent axis.** Ryokan occupancy 43.5% (rank 6) vs Nagano
+27.9% and Niigata 26.6% — and Hokkaido has winter seasonality too, so this is not a seasonality
+artefact.
 
-**3. Yuzawa is a documented 33-year value trap, and is now the benchmark.** Down **85%** from its
-1993 peak and *still falling*, despite Shinkansen access, snow and abundant cheap stock. Every
-cheap candidate must now answer: *what is different here that was not true of Yuzawa?* (D-0011)
+**5. But Niseko's forward supply is ~16× Myoko's.** ~774 status-weighted committed rooms, into a
+prefecture already half-empty annually. Hotel101 alone is 482 rooms with its structure complete.
 
-**4. Nozawa Onsen was under-weighted and has been promoted.** National **#2** for appreciation,
-with a fraction of Myoko's promotional coverage — precisely what an evidence-led screen should
-surface and a sentiment-led one would miss.
+**6. Yuzawa is quantified.** 152 apartments across 30 buildings, 5.1 sellers per building, 17 in
+one tower, median A$22,250, cheapest A$3,100. The mechanism is **not cheapness — it is carry and
+control**: negative-carry assets whose owners cannot fix them.
 
-**5. Neighbourhood matters about twice as much as town.** Within-town land-price spreads are
-**11.1× in Hakuba** and **14.0× in Myoko**, against ~6× between municipalities. No property may
-be scored on a market-level view alone (D-0012).
+**7. All three observed price changes were reductions**, mean −19.4%. Survivorship-biased toward
+slow movers, so an upper bound on discounting, not an estimate.
 
-**6. Snow risk is real, and elevation-specific.** Japan's operational resort count is **40% below
-its 1999 peak**. Peer-reviewed work finds snow declining at **low elevations on the Japan Sea
-side**, but stable-to-heavier at **high elevations in eastern Honshu**, with no clear decline in
-Hokkaido. Takada — adjacent to Myoko — is one of two stations named as showing marked decline.
-Base elevation and regional regime are now screening criteria (D-0013).
+**8. Costs are worse than modelled.** Construction +40–50% since 2015 and still rising;
+snow-country roof/exterior 1.5–2.0×; compliance corrected up to ¥1–3m. Purchase price now
+understates true investment by **148–310%** at the shoestring level.
 
-**7. Depopulation is severe, and worst in the cheapest market.** Myoko is projected to lose
-**46.7% of its population by 2050**. The sharper screening question is not "is the town
-shrinking?" but "**has tourism demonstrably decoupled from resident decline here?**" Hakuba and
-Kutchan appear to have; Myoko has not yet; Yuzawa did not over 33 years.
+**9. Hakuba's shuttle stops ~6pm**, making village choice decisive and the cheap fringes less
+attractive than their price suggests. On guest experience for a car-free four:
+**Nozawa ≥ Akakura > Hakuba.**
 
-**7a. Myoko's own tourism numbers complicate its case — in both directions.** Myoko City's 4th
-Tourism Promotion Plan (municipal government, the best tourism source obtained so far) records
-**120,000 foreign overnight stays in FY2023** against Niigata's ~820,000 prefecture-wide. Myoko
-is a **minority of the prefecture**, so the +55% cannot be attributed to it — weakening the
-strongest evidence for the early-stage case. The city's own target is ~7%/year to 2029, modest
-against a prefecture that grew 55% in a year.
-
-But international visitors reportedly stay **one to two weeks** in Myoko Kogen, with Australians
-specifically drawn there. For a self-contained lodge that is the single most valuable demand
-characteristic found anywhere in this research: fewer turnovers, lower cleaning cost per night,
-less marketing dependence. **The volume case is weaker than it looked; the quality-of-demand case
-is stronger than anything else found.**
-
-**7b. Purchase price understates the real investment by 93–284%.** The capital model gives an
-indicative answer to one of the four core questions:
-
-| Strategy | Purchase (A$) | **Total project cost (A$)** | Per owner | Multiple |
-| --- | --- | --- | --- | --- |
-| Shoestring | 71,000 | **167,000 – 273,000** | 84k – 137k | 2.35× – 3.84× |
-| Sensible | 222,000 | **429,000 – 635,000** | 215k – 317k | 1.93× – 2.85× |
-| Strong | 534,000 | **1,014,000 – 1,429,000** | 507k – 715k | 1.90× – 2.68× |
-
-**The cheaper the property, the worse the ratio.** Inspection, legal, licensing, compliance and
-furnishing do not scale down with purchase price, while a cheap building usually needs *more*
-renovation. This inverts the intuition the thesis rests on: buying cheaper concentrates the
-budget into the least predictable line while fixed costs stay fixed. **No revenue is modelled** —
-rates and occupancy were not obtained.
-→ [`domains/japan_ski_property/financial_models/capital-requirement.md`](../domains/japan_ski_property/financial_models/capital-requirement.md)
-
-**7c. FX is doing more work than anyone admits.** AUD rose from ~84 JPY in 2021 to ~112 in 2026,
-so the same property is **~25% cheaper in AUD with no change in its Japanese price**. Part of the
-"Japan is cheap" story is AUD strength — and it is reversible over a 10–15 year hold for owners
-earning JPY and spending AUD.
-
-**8. A hypothesis now worth stating plainly.** The cheap Honshu markets tend to be lower-elevation
-Japan Sea side *and* more severely depopulating. That is not a coincidence, and it is the most
-plausible current answer to *why hasn't capital arbitraged this away?* — **the discount may be
-compensation for real risk rather than an oversight.** Testing this is the central task of
-Phases 5–11.
-→ [`domains/japan_ski_property/research/thesis-critical-risks.md`](../domains/japan_ski_property/research/thesis-critical-risks.md)
-
-**9. The buyer is not the constraint; the licence is.**
-Foreign freehold ownership is unrestricted with no nationality surcharge. What determines the
-business is the operating licence — and the minpaku 180-night cap probably does **not** bind on
-a winter-dominant ski property, whose sellable season is ~100–140 nights. It constrains the
-four-season upside instead. The genuinely open risk is the **municipal ordinance layer**, which
-can designate zero-day lodging zones and varies between neighbouring towns.
-→ [`domains/japan_ski_property/regulation/regulatory-baseline.md`](../domains/japan_ski_property/regulation/regulatory-baseline.md)
+**10. Myoko is `WATCH`** — strong as an operating business, weak as a land-appreciation play.
+Eight years of funded investment have not moved land prices, and the lag is already longer than
+the Hakuba comparison it relies on. (D-0015)
 
 ---
 
 ## Immediate next actions
 
-In priority order. Each is independently startable.
-
-1. **Retrieve land prices directly from MLIT**, upgrading `verification_status` from
-   `CORROBORATED_SECONDARY`. Also retrieve the missing municipalities — Niseko-cho, Shiga
-   Kogen/Yamanouchi, Iiyama (which contains Madarao), Appi/Hachimantai, Rusutsu, Kiroro — and
-   build full year-by-year series with 1/3/5/10-year change and CAGR for survivors.
-2. **Retrieve IPSS municipal population projections** for every longlist town. Depopulation is
-   the constraint the marketing omits and applies across rural Japan; it must be measured per
-   town, not assumed.
-3. **Retrieve IPSS projections for Hakuba, Nozawa, Kutchan, Iiyama, Yuzawa and Furano.**
-   Currently only Myoko's is known, so no cross-market comparison is possible. This is the
-   highest-priority single gap — it is what would show whether the appreciating markets are
-   also the depopulating ones.
-4. **Pull JMA station series** for each candidate: 30+ years, with station elevation and
-   distance recorded alongside. This resolves E3 per market rather than nationally.
-5. **Research Nozawa Onsen properly.** Newly promoted on evidence; currently the largest gap
-   between what the data says and what has actually been researched. Note its **565 m base** is
-   the lowest of the Honshu candidates — the land-price signal and the snow-risk signal point in
-   opposite directions here.
-6. **Read the two peer-reviewed snow papers in full.** The elevation-dependence finding is
-   load-bearing for screening and was accessed via summary only.
-3. **Establish the accommodation capacity of the Patience Capital Myoko development.** Until
-   room and bed counts are known it cannot enter the forward supply ratio — and a large nearby
-   development raises a destination's profile *and* its competing supply at once.
-4. **Pull JMA measured snowfall** for candidate towns and compare against marketed figures. The
-   schema already stores both separately; the station's distance and elevation must be recorded
-   with each figure.
-5. **Check municipal minpaku ordinances** for Myoko, Hakuba, Nozawa, Madarao and Kutchan.
-6. **Research the towns nobody is marketing.** Yuzawa first — a known cheap resort-apartment
-   market and a clean test of whether cheap and viable coincide. Phase 4 cannot close until the
-   screen has looked where the marketing does not.
-7. **Check portal robots.txt and terms** before designing any Phase 13 collector. This may
-   constrain the whole collection approach, so establish it before building.
-
----
-
-## Known blockers
-
-| Blocker | Impact | Status |
-| --- | --- | --- |
-| MLIT per-municipality land-price detail not in the press release | Phase 4's main finding stays `UNVERIFIED` | Detail pages and the Real Estate Information Library identified; retrieval is the next step |
-| Japan Today returns HTTP 403 | One Myoko source unavailable | Worked around — same wire story via Financial Express; recorded in `SOURCES.md` |
-| `gh` CLI token invalid | No PR/issue/API via `gh` | Not blocking — `git push` works via keychain. Fix with `gh auth login -h github.com` |
-| No package manager or index access | Cannot install third-party libraries | **Resolved by design** — stdlib-only core (D-0002) |
+1. **Akakura-level land prices.** The single highest-value test in the project. If Akakura is
+   rising while Myoko's municipal average falls, the Myoko bull case survives in the sub-market
+   that matters. One data point could move D-0015 either way.
+2. **The sprinkler threshold** — floor area, storeys and occupant capacity at which sprinklers
+   become mandatory. Largest unresolved cost, and it constrains the guest-capacity question.
+   Source: municipal fire authorities.
+3. **ADR by market and season.** Blocks all revenue, NOI, yield and capacity optimisation. Nothing
+   downstream can be finished without it.
+4. **Existing room supply per town** — the missing denominator for the forward supply ratio.
+   Without it, 774 Niseko rooms could be a 5% or a 50% increase.
+5. **JMA station snowfall series** for each candidate (関山 54816 for Myoko, 野沢温泉 48031 at
+   576 m). Ski quality is unscored for every market.
+6. **Municipal minpaku ordinances** for Myoko, Hakuba, Nozawa, Madarao, Kutchan. Regulation
+   currently does not discriminate between markets because it is unchecked everywhere.
+7. **Hakuba's development pipeline** — absent, and Hakuba leads the ranking.
+8. **Re-verify the 43 `AVAILABILITY UNVERIFIED` listings** — the first real test of the
+   append-only history.
+9. **Distance to lift for every candidate** — a core filter, currently empty on every record.
+10. **Apply the value-trap checklist to Madarao** before its per-bedroom pricing is treated as
+    opportunity.
 
 ---
 
 ## Requires owner approval
 
-Never actioned autonomously (master prompt §53).
-
-| Item | Why it needs approval | Blocking? |
+| Item | Why | Blocking? |
 | --- | --- | --- |
-| **MLIT Real Estate Information Library API registration** | Free, but creates an account in the owners' name — an external commitment. Would give programmatic access to **actual transaction prices** from Q3 2005, the highest-value dataset for Phases 7, 13 and 22 | **No** — the same data is browsable without the API. It slows research, it does not stop it |
-| Contacting agents, sellers, inspectors, contractors | External contact with real people | No — not needed until Phase 15/16 |
-| Purchasing paid data | Spends money | No — none identified as necessary yet |
-| Creating paid cloud resources | Spends money | No — the dashboard is designed to be static and free (D-0007) |
-
----
+| **MLIT API registration** | Free, but creates a government account in an owner's name and accepts terms. Would replace the asking-price discount guess with actual transaction prices back to 2005, and is the direct route to the Akakura question. **Recommendation: approve.** See [`outputs/mlit-api-access-decision.md`](mlit-api-access-decision.md) | No |
+| Contacting agents, sellers, inspectors, contractors | External contact with real people | Not yet — Phase 15/16 |
+| Enabling scheduled collection | Runs automated requests against live sites | No — workflow committed but deliberately disabled |
 
 ## Open questions for the owner
 
-None blocking. Both would sharpen the work when convenient:
-
-- **Capital ceiling.** Currently open-ended (`ASSUMPTIONS.md` A3). The engine will derive
-  shoestring / sensible / strong requirements regardless, but a rough ceiling would focus
-  screening considerably.
-- **Return vs lifestyle weighting.** Five weight profiles exist and are fully adjustable.
-  `balanced` is being used as a neutral default and is explicitly flagged as *not* the owners'
-  stated preference.
+- **Capital ceiling.** Total project cost now spans A$544k–1.39m across priority candidates. A
+  ceiling would materially focus the work.
+- **Return vs lifestyle.** Ranking is stable across four of five weight profiles, so this is
+  currently less decisive than expected — but it will matter more as evidence deepens.
 
 ---
 
-## Standing rules for whoever works next
+## Standing rules
 
-- Do not delete historical observations. Append.
-- Do not cite a `CANDIDATE` source as evidence, or present an `ESTIMATE` as a `FACT`.
-- Do not let a proposed development score like a funded one.
-- Do not assume a residential property can lawfully be operated as commercial accommodation.
-- Treat commentary from brokerages and developers as conflicted (D-0009); label it, use it, do
-  not rely on it alone.
-- Search Japanese-language sources. English-only research systematically over-weights the
-  internationalised markets — the ones least likely to be undervalued.
-- Commit and push to `origin/main` after every meaningful work unit.
-- Update this file, `CHANGELOG.md`, `SOURCES.md`, `ASSUMPTIONS.md` and `DECISIONS.md` as work
-  proceeds, not in a batch at the end.
+- Append, never delete. Never cite a `CANDIDATE` source. Never present an `ESTIMATE` as `FACT`.
+- **Never use prefecture data to argue a town-level case** (D-0014).
+- Never let a proposed development score like a funded one.
+- Never score a market well because negative evidence is missing.
+- Respect robots.txt and rate limits; stop rather than press.
+- Commit and push after every meaningful unit.
 
 ---
 
 ## Session log
 
-**2026-08-16 —** Intake blocker resolved when the owner supplied the master prompt. Phases 1–3
-completed: architecture, core schemas and engine logic (104 tests), and the
-`japan_ski_property` domain module with its scoring configuration. Phase 4 first pass written,
-surfacing the narrative-versus-data tension on Myoko and the conflicted-source problem. Phase 12
-brought forward, resolving foreign ownership favourably and identifying the municipal ordinance
-layer as the largest open regulatory risk.
+**2026-08-20 —** Municipality tourism (Hakuba 19-year series; Myoko partial), prefecture occupancy,
+203 property records with 3 price events, layered renovation benchmarks, development pipeline,
+Myoko bull/bear verdict, Yuzawa case study and `VALUE_TRAP_RISK_CHECKLIST`, town profiles and
+micro-location, guest-capacity constraints, MLIT decision note and ingestion interface, monitoring
+prototype, and scorecard coverage from 5 to 17 of 20 dimensions. Eight checkpoints pushed.

@@ -7,6 +7,63 @@ it**. A decision without a reversal trigger is a belief, not a decision.
 
 ---
 
+## D-0016 · 2026-08-20 · Rankings require both weight coverage and a dimension count
+
+**Decision.** A market is ranked only with **≥40% weight coverage AND ≥10 of 20 scored
+dimensions**. Below either, it is reported as `INSUFFICIENT DATA FOR RANKING`.
+
+**Evidence.** The original 25% coverage guard was written when the best-covered market had 5 of 20
+dimensions. Once real coverage reached 85%, that threshold let **Furano rank 2nd under
+`pure_investment` on 5 dimensions** — purely because the only things known about it were
+favourable. Either guard alone is gameable: coverage alone can be met by one heavily-weighted
+dimension; a dimension count alone can be met by ten trivially-weighted ones.
+
+**Confidence.** High.
+
+**Changes it if:** coverage rises broadly, at which point both thresholds should rise with it. A
+guard calibrated to yesterday's data quality silently degrades.
+
+---
+
+## D-0015 · 2026-08-20 · Myoko is `WATCH`, and the case is an operating case not an appreciation case
+
+**Decision.** Myoko is not rejected, but its investment case is explicitly reframed: **strong as an
+operating business, weak as a land-appreciation play.** Recorded with named upgrade and downgrade
+triggers.
+
+**Evidence.** Eight years of announced and funded investment have not moved municipal land prices
+(−0.79% in 2026, +5.3% off the 2022 low). The tourism argument that appeared to support it was a
+prefecture aggregate — Myoko is ~23% of Niigata and grew at roughly half Hakuba's rate. Against
+that: FIT guests staying weeks to two months, a walkable onsen village with 50+ venues, the lowest
+entry price of any candidate, and the lowest forward supply pressure.
+
+Testing the bull case's own logic settled it. Hakuba's land turned within one to four years of its
+demand doubling; Myoko's demand doubled 2018–FY2023 and land is still falling. **The lag is already
+longer than the one the comparison relies on.**
+
+**Confidence.** Medium.
+
+**Changes it if:** Akakura-specific land prices are found to be rising while the municipal average
+falls — the sub-market hypothesis, and the single highest-value outstanding test.
+
+---
+
+## D-0014 · 2026-08-20 · Prefecture-level data may not be used to argue a town-level case
+
+**Decision.** No market-level conclusion may rest on prefecture-level statistics where the market
+is a minority of the prefecture. Prefecture data may provide context and must be labelled as such.
+
+**Evidence.** Niigata's +55% foreign overnight-stay growth was read as support for Myoko. At
+municipality level Myoko is ~23% of the prefecture, and Yuzawa — a documented 33-year value trap —
+sits inside the same figure. The inference was wrong, and it was wrong in the direction that
+flattered the market being promoted.
+
+**Confidence.** High. This is the brief's own instruction, now with a worked example of the failure.
+
+**Changes it if:** nothing.
+
+---
+
 ## D-0013 · 2026-08-16 · Base elevation and regional snow regime are first-class screening criteria
 
 **Decision.** Snow risk is assessed per market as a function of **base elevation** and
