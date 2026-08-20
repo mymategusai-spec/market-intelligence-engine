@@ -1,0 +1,77 @@
+{
+  "dataset": "operating_assumptions",
+  "domain": "japan_ski_property",
+  "as_of": "2026-08-20",
+  "purpose": "Inputs for property-level financial models. Every line declares claim type, confidence and basis. Lines marked ASSUMPTION are NOT evidenced and are the reason models are reported as ranges across three scenarios.",
+
+  "season_structure": {
+    "_claim_type": "FACT",
+    "_confidence": "high",
+    "_source": "Mojo Lodge Hakuba published rate card, corroborated by Hakuba Village monthly ski-visit data",
+    "high_season": {"dates": "22 Dec - 7 Mar", "nights": 76},
+    "shoulder_season": {"dates": "1-21 Dec, 8 Mar - 30 Apr", "nights": 75,
+      "warning": "Hakuba April ski visits fell 38.5% and May 82.7% year on year in R07-R08. Shoulder revenue is the least reliable component of any projection and is stress-tested downward in the conservative case."},
+    "low_season": {"dates": "May - Nov", "nights": 214,
+      "note": "Modelled at zero unless a market has evidenced four-season demand. Foreign stays in Hakuba are 84.6% Dec-Mar and Australian stays 97.7%."}
+  },
+
+  "occupancy_scenarios": {
+    "_claim_type": "ASSUMPTION",
+    "_confidence": "low",
+    "_basis": "No property-level occupancy data exists for any candidate. Bracketed by two measured anchors: Nagano simple-lodging occupancy is 14.2% in January (the category average, including part-time and hobby operators) and Niigata resort hotels reach 64.9% in January (rank 4 nationally). A well-run, foreign-facing, professionally-marketed lodge should sit far above the first and can plausibly approach the second.",
+    "_warning": "This is the single weakest input in the model and it drives revenue linearly. Treat the spread between scenarios as the honest measure of what is not known.",
+    "conservative": {"high_season": 0.40, "shoulder": 0.10, "low": 0.0},
+    "base": {"high_season": 0.55, "shoulder": 0.20, "low": 0.0},
+    "strong": {"high_season": 0.70, "shoulder": 0.30, "low": 0.0}
+  },
+
+  "rate_per_guest_night_jpy": {
+    "_claim_type": "ESTIMATE",
+    "_confidence": "medium",
+    "_source": "data/reference/accommodation-rates-2026-08.json benchmark bands",
+    "_note": "Derived from whole-property rates divided by capacity and from published per-person rates. Shoulder rates use the observed low-season figures where a rate card exists.",
+    "Hakuba": {"high": 15500, "shoulder": 8750},
+    "Myoko": {"high": 10500, "shoulder": 7000},
+    "Nozawa Onsen": {"high": 9000, "shoulder": 6000},
+    "Madarao": {"high": 9000, "shoulder": 6000},
+    "Kutchan/Niseko": {"high": 20000, "shoulder": 10000},
+    "Furano": {"high": 12000, "shoulder": 7000},
+    "Yuzawa": {"high": 8780, "shoulder": 4000},
+    "default": {"high": 10000, "shoulder": 6000}
+  },
+
+  "operating_cost_rates": {
+    "_claim_type": "ASSUMPTION",
+    "_confidence": "low",
+    "_warning": "NO Japanese operator quotes were obtained. These are industry-standard placeholders and are the second-weakest input after occupancy. Phase 16 must replace them.",
+    "management_percent_of_gross": 20.0,
+    "platform_commission_percent_of_gross": 15.0,
+    "cleaning_per_changeover_jpy": 25000,
+    "assumed_average_stay_nights": 5,
+    "utilities_heating_per_occupied_night_jpy": 2500,
+    "utilities_note": "Snow-country heating over a four-month winter is a material cost and is charged per occupied night as a simplification.",
+    "insurance_annual_jpy": 250000,
+    "maintenance_percent_of_gross": 5.0,
+    "snow_clearing_annual_jpy": 400000,
+    "snow_clearing_note": "Snow-country specific. Roof and access clearing across a season.",
+    "capex_reserve_percent_of_gross": 5.0,
+    "fixed_admin_annual_jpy": 300000,
+    "fixed_admin_note": "Tax representative (納税管理人), accounting and compliance for non-resident owners. Legally required."
+  },
+
+  "owner_use": {
+    "_claim_type": "ASSUMPTION",
+    "weeks_per_year": 3,
+    "season": "high",
+    "note": "Master prompt assumes 2-4 weeks; 3 is used. Priced as revenue foregone at high-season rates unless the property has separate owner quarters."
+  },
+
+  "not_modelled": [
+    "Japanese income tax on non-resident rental income",
+    "Consumption tax registration thresholds",
+    "Debt - none assumed (ASSUMPTIONS.md D1)",
+    "Currency transfer costs and FX hedging",
+    "Owner travel",
+    "Vacancy during renovation - the first year is assumed non-trading via working capital in the capital model"
+  ]
+}
