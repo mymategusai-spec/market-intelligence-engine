@@ -1,0 +1,92 @@
+{
+  "dataset": "hakuba_foreign_overnight_stays",
+  "domain": "japan_ski_property",
+  "municipality": "白馬村",
+  "romaji": "Hakuba",
+  "prefecture": "Nagano",
+  "metric": "foreign_overnight_stays",
+  "metric_ja": "外国人観光客延宿泊者数",
+  "units": "person-nights",
+  "claim_type": "FACT",
+  "confidence": "high",
+
+  "source": {
+    "source_id": "MUNI-HAKUBA-TOURISM",
+    "publisher": "白馬村 (Hakuba Village)",
+    "tier": 2,
+    "url": "https://www.vill.hakuba.lg.jp/material/files/group/7/gaikokujintoukei.pdf",
+    "retrieved_at": "2026-08-20",
+    "method": "PDF text extraction via ghostscript",
+    "coverage": "Accommodation facilities within Hakuba Village; calendar years",
+    "methodology_break": "The PDF states that R1-R2 (2019-2020) figures are ESTIMATES derived from NTT docomo Mobile Spatial Statistics, not accommodation returns. Those two years are NOT methodologically comparable with the rest of the series and are flagged per-row. Mobile data also suppresses small-nationality counts into 'other'."
+  },
+
+  "annual_totals": [
+    {"year": 2006, "era": "H18", "total": 33491, "australia": 7250},
+    {"year": 2007, "era": "H19", "total": 40967, "australia": 12138},
+    {"year": 2008, "era": "H20", "total": 49664, "australia": 17921},
+    {"year": 2009, "era": "H21", "total": 42695, "australia": 17163},
+    {"year": 2010, "era": "H22", "total": 43510, "australia": 14903},
+    {"year": 2011, "era": "H23", "total": 56024, "australia": 29497},
+    {"year": 2012, "era": "H24", "total": 44819, "australia": 20057},
+    {"year": 2013, "era": "H25", "total": 60556, "australia": 34096},
+    {"year": 2014, "era": "H26", "total": 77724, "australia": 43094},
+    {"year": 2015, "era": "H27", "total": 100356, "australia": 51845},
+    {"year": 2016, "era": "H28", "total": 104226, "australia": 52363},
+    {"year": 2017, "era": "H29", "total": 113970, "australia": 44870},
+    {"year": 2018, "era": "H30", "total": 164377, "australia": 76003},
+    {"year": 2019, "era": "R1", "total": 278835, "australia": 166590, "methodology": "mobile_spatial_estimate", "comparable": false},
+    {"year": 2020, "era": "R2", "total": 272177, "australia": 196137, "methodology": "mobile_spatial_estimate", "comparable": false},
+    {"year": 2021, "era": "R3", "total": 2041, "australia": 59, "note": "COVID border closure"},
+    {"year": 2022, "era": "R4", "total": 5037, "australia": 1203, "note": "COVID border restrictions"},
+    {"year": 2023, "era": "R5", "total": 252481, "australia": 92303},
+    {"year": 2024, "era": "R6", "total": 447474, "australia": 199885}
+  ],
+
+  "latest_year_2024_by_origin": {
+    "total": 447474,
+    "yoy_percent": 77.2,
+    "regions": {
+      "oceania": {"stays": 206978, "share_percent": 46.3, "yoy_percent": 117.0},
+      "asia": {"stays": 135534, "share_percent": 30.3, "yoy_percent": 75.3},
+      "north_america": {"stays": 30472, "share_percent": 6.8, "yoy_percent": 30.4},
+      "europe": {"stays": 17352, "share_percent": 3.9, "yoy_percent": 135.6},
+      "other_or_unknown": {"stays": 57138, "share_percent": 12.8}
+    },
+    "countries": {
+      "australia": {"stays": 199885, "share_percent": 44.7, "yoy_percent": 116.6},
+      "taiwan": {"stays": 36009, "share_percent": 8.0},
+      "hong_kong": {"stays": 26629, "share_percent": 6.0},
+      "usa": {"stays": 23414, "share_percent": 5.2},
+      "thailand": {"stays": 23454, "share_percent": 5.2, "yoy_percent": 281.7},
+      "singapore": {"stays": 22585, "share_percent": 5.0},
+      "china": {"stays": 10078, "share_percent": 2.3},
+      "uk": {"stays": 8752, "share_percent": 2.0},
+      "canada": {"stays": 7058, "share_percent": 1.6},
+      "new_zealand": {"stays": 7093, "share_percent": 1.6},
+      "korea": {"stays": 4286, "share_percent": 1.0}
+    }
+  },
+
+  "seasonality_2024": {
+    "all_foreign_by_month": {
+      "jan": 93342, "feb": 82680, "mar": 50833, "apr": 11142, "may": 10044, "jun": 6871,
+      "jul": 5051, "aug": 6416, "sep": 8385, "oct": 13240, "nov": 7855, "dec": 151615
+    },
+    "australia_by_month": {
+      "jan": 45680, "feb": 42902, "mar": 22189, "apr": 1139, "may": 175, "jun": 188,
+      "jul": 295, "aug": 741, "sep": 801, "oct": 1238, "nov": 0, "dec": 84537
+    },
+    "dec_to_mar_share_all_foreign_percent": 84.6,
+    "dec_to_mar_share_australia_percent": 97.7
+  },
+
+  "derived": {
+    "_claim_type": "CALCULATION",
+    "cagr_2006_2024_percent": 15.5,
+    "cagr_2014_2024_percent": 19.1,
+    "vs_2019_percent": 60.5,
+    "vs_2019_note": "2024 exceeds the 2019 figure by ~60%, but 2019 is a mobile-data estimate and not strictly comparable. Against 2018 (164,377, same methodology) 2024 is +172%.",
+    "vs_2018_percent": 172.2
+  }
+}

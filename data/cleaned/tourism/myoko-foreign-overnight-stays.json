@@ -1,0 +1,69 @@
+{
+  "dataset": "myoko_foreign_overnight_stays",
+  "domain": "japan_ski_property",
+  "municipality": "妙高市",
+  "romaji": "Myoko",
+  "prefecture": "Niigata",
+  "metric": "foreign_overnight_stays",
+  "units": "person-nights",
+  "claim_type": "FACT",
+  "confidence": "medium",
+  "confidence_note": "Figures come from two separate official sources covering different years and are not a continuous series. Myoko does not publish an annual nationality-by-month series equivalent to Hakuba's.",
+
+  "sources": [
+    {
+      "source_id": "MLIT-HOKUSHIN-MYOKO",
+      "publisher": "MLIT 北陸信越運輸局 (Hokushinetsu District Transport Bureau)",
+      "tier": 1,
+      "url": "https://wwwtb.mlit.go.jp/hokushin/content/000117742.pdf",
+      "retrieved_at": "2026-08-20",
+      "data_origin": "(一社)妙高ツーリズムマネジメント (Myoko Tourism Management)",
+      "covers": "to 2018"
+    },
+    {
+      "source_id": "MUNI-MYOKO-TOURISM-PLAN",
+      "publisher": "妙高市 (Myoko City), 第4次妙高市観光振興計画",
+      "tier": 2,
+      "retrieved_at": "2026-08-16",
+      "covers": "FY2023 baseline, FY2029 targets"
+    }
+  ],
+
+  "observations": [
+    {"year": 2017, "foreign_overnight_stays": 45977, "source_id": "MLIT-HOKUSHIN-MYOKO"},
+    {"year": 2018, "foreign_overnight_stays": 59721, "source_id": "MLIT-HOKUSHIN-MYOKO",
+     "note": "Described in the source as approximately 60,000"},
+    {"fiscal_year": 2023, "foreign_overnight_stays": 120000, "source_id": "MUNI-MYOKO-TOURISM-PLAN",
+     "note": "Plan baseline. Fiscal year, not calendar year - not strictly comparable with the rows above."},
+    {"fiscal_year": 2029, "foreign_overnight_stays": 180000, "source_id": "MUNI-MYOKO-TOURISM-PLAN",
+     "claim_type": "TARGET", "note": "City's own target, not an observation"}
+  ],
+
+  "structure_2018": {
+    "seasonality": "Approximately 80% of foreign overnight stays occur January-March",
+    "jan_mar_australian_stays": 30000,
+    "jan_mar_total_inbound_stays": 46000,
+    "australian_share_of_inbound_percent": 70,
+    "australian_share_note": "Source states Australians are just under 70% of inbound. A separate Nikkei report cites 69% (prefecture survey).",
+    "travel_type": "Australians are overwhelmingly FIT (independent travellers), not package groups",
+    "length_of_stay": "Australian visitors reportedly stay from several weeks up to two months",
+    "claim_type": "FACT"
+  },
+
+  "qualitative_from_source": {
+    "selling_points": ["高湿度の絶妙な雪質 (snow quality)", "豪雪 (heavy snowfall)", "妙高山 (the mountain itself)"],
+    "akakura_onsen_structure": "Accommodation and restaurants sit within one walkable onsen town, adjacent to the slopes",
+    "character": "Quiet, settled, retains an old-Japan atmosphere - explicitly cited as matching inbound preference for Japanese culture and history",
+    "foreign_operators": "Accommodation businesses opened by foreign owners are increasing",
+    "claim_type": "OPINION",
+    "note": "Official source, but these are promotional/qualitative characterisations rather than measurements"
+  },
+
+  "data_gaps": [
+    "No continuous annual series 2019-2025",
+    "No nationality-by-month breakdown equivalent to Hakuba's",
+    "FY2023 figure is fiscal year; earlier figures are calendar year",
+    "No domestic overnight stay figures",
+    "No occupancy or ADR"
+  ]
+}
